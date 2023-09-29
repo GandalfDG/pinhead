@@ -11,6 +11,10 @@ config_version=5
 [application]
 
 config/name="PinHead"
-run/main_scene="res://cabinet.tscn"
+run/main_scene="res://elements/cabinet.tscn"
 config/features=PackedStringArray("4.1", "Forward Plus")
 config/icon="res://icon.svg"
+
+[editor]
+
+movie_writer/movie_file="/home/jackc/Videos/pinhead.avi"

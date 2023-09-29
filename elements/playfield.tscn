@@ -1,0 +1,40 @@
+[gd_scene load_steps=6 format=3 uid="uid://bayeondowqkqd"]
+
+[ext_resource type="PackedScene" uid="uid://cgdjulw3q7axd" path="res://elements/pop_bumper.tscn" id="1_f5eqv"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_70fuv"]
+friction = 0.2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hsyfl"]
+albedo_color = Color(0.34902, 0.176471, 0.0705882, 1)
+clearcoat_enabled = true
+clearcoat = 0.2
+clearcoat_roughness = 0.25
+
+[sub_resource type="BoxMesh" id="BoxMesh_gwcmk"]
+material = SubResource("StandardMaterial3D_hsyfl")
+size = Vector3(2, 0.1, 3)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_mcn0f"]
+size = Vector3(6.32393, 0.1, 6.43483)
+
+[node name="Playfield" type="StaticBody3D"]
+collision_layer = 2
+collision_mask = 0
+physics_material_override = SubResource("PhysicsMaterial_70fuv")
+
+[node name="SurfaceMesh" type="MeshInstance3D" parent="."]
+transform = Transform3D(2.38836, 0, 0, 0, 1, 0, 0, 0, 2.03051, 0, 0, 0)
+mesh = SubResource("BoxMesh_gwcmk")
+
+[node name="SurfaceCollisionShape" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_mcn0f")
+
+[node name="PopBumper" parent="." instance=ExtResource("1_f5eqv")]
+transform = Transform3D(0.97901, 0, -0.203813, 0, 1, 0, 0.203813, 0, 0.97901, 0.0523435, 0.177049, -0.545895)
+
+[node name="PopBumper2" parent="." instance=ExtResource("1_f5eqv")]
+transform = Transform3D(0.97901, 0, -0.203813, 0, 1, 0, 0.203813, 0, 0.97901, 0.647925, 0.177049, -0.000659436)
+
+[node name="PopBumper3" parent="." instance=ExtResource("1_f5eqv")]
+transform = Transform3D(0.97901, 0, -0.203813, 0, 1, 0, 0.203813, 0, 0.97901, 0.796544, 0.177049, -0.79416)

@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://dcvo5ah70qi2a"]
+[gd_scene load_steps=8 format=3 uid="uid://dcvo5ah70qi2a"]
 
-[ext_resource type="PackedScene" uid="uid://d1roo8csw0bth" path="res://ball.tscn" id="1_i21t7"]
-[ext_resource type="PackedScene" uid="uid://bayeondowqkqd" path="res://playfield.tscn" id="2_3snn6"]
+[ext_resource type="PackedScene" uid="uid://d1roo8csw0bth" path="res://elements/ball.tscn" id="1_i21t7"]
+[ext_resource type="Script" path="res://free_look_camera.gd" id="1_phovk"]
+[ext_resource type="PackedScene" uid="uid://bayeondowqkqd" path="res://elements/playfield.tscn" id="2_3snn6"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_yc56g"]
 
@@ -25,10 +26,11 @@ camera_attributes = SubResource("CameraAttributesPractical_rw54l")
 transform = Transform3D(0.964465, -0.0801747, 0.251751, 0, 0.952847, 0.303451, -0.26421, -0.292668, 0.918988, 0, 1.95647, 0)
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.971197, 0.238279, 0, -0.238279, 0.971197, 0, 0.79427, 3)
+transform = Transform3D(0.736076, -0.0866199, -0.671333, -0.0198803, 0.988584, -0.149351, 0.676607, 0.12328, 0.725951, -0.231292, 0.127868, 0.492498)
+script = ExtResource("1_phovk")
 
 [node name="Playfield" parent="." instance=ExtResource("2_3snn6")]
 transform = Transform3D(1, 0, 0, 0, 0.997594, -0.0693212, 0, 0.0693212, 0.997594, 0, 0, 0)
 
 [node name="Ball" parent="." instance=ExtResource("1_i21t7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.695046, 0.215774, -1.22373)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.267309, 0.226595, -1.10054)
