@@ -26,11 +26,12 @@ camera_attributes = SubResource("CameraAttributesPractical_rw54l")
 transform = Transform3D(0.964465, -0.0801747, 0.251751, 0, 0.952847, 0.303451, -0.26421, -0.292668, 0.918988, 0, 1.95647, 0)
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(0.736076, -0.0866199, -0.671333, -0.0198803, 0.988584, -0.149351, 0.676607, 0.12328, 0.725951, -0.231292, 0.127868, 0.492498)
+transform = Transform3D(0.486368, -0.542705, 0.684775, 0, 0.783716, 0.621119, -0.873754, -0.302092, 0.381174, 1.37984, 1.19695, 2.00126)
 script = ExtResource("1_phovk")
+default_velocity = 2.0
 
 [node name="Playfield" parent="." instance=ExtResource("2_3snn6")]
 transform = Transform3D(1, 0, 0, 0, 0.997594, -0.0693212, 0, 0.0693212, 0.997594, 0, 0, 0)
 
 [node name="Ball" parent="." instance=ExtResource("1_i21t7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.267309, 0.226595, -1.10054)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.267309, 0.0453454, 1.5078)

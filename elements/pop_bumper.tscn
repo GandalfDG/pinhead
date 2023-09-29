@@ -11,8 +11,8 @@ emission_energy_multiplier = 0.47
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_xa0o1"]
 material = SubResource("StandardMaterial3D_42nhi")
-top_radius = 0.3
-bottom_radius = 0.35
+top_radius = 0.2
+bottom_radius = 0.25
 height = 0.1
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_eqae3"]
