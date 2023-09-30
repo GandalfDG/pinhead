@@ -9,6 +9,9 @@ func _ready():
 	flipper_action = "left_flipper" if flipper_side == "left" else "right_flipper"
 
 
+func get_dimensions():
+	return $FlipperMesh.get_aabb()
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if Input.is_action_pressed(flipper_action):
