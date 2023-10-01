@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://dcvo5ah70qi2a"]
 
 [ext_resource type="PackedScene" uid="uid://d1roo8csw0bth" path="res://elements/ball.tscn" id="1_i21t7"]
-[ext_resource type="Script" path="res://free_look_camera.gd" id="1_phovk"]
+[ext_resource type="Script" path="res://plugins/free_look_camera.gd" id="1_m442r"]
 [ext_resource type="PackedScene" uid="uid://bayeondowqkqd" path="res://elements/playfield.tscn" id="2_3snn6"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_yc56g"]
@@ -27,11 +27,11 @@ transform = Transform3D(0.964465, -0.0801747, 0.251751, 0, 0.952847, 0.303451, -
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(0.486368, -0.542705, 0.684775, 0, 0.783716, 0.621119, -0.873754, -0.302092, 0.381174, 1.37984, 1.19695, 2.00126)
-script = ExtResource("1_phovk")
+script = ExtResource("1_m442r")
 default_velocity = 2.0
 
 [node name="Playfield" parent="." instance=ExtResource("2_3snn6")]
 transform = Transform3D(1, 0, 0, 0, 0.997594, -0.0693212, 0, 0.0693212, 0.997594, 0, 0, 0)
 
 [node name="Ball" parent="." instance=ExtResource("1_i21t7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.267309, 0.0453454, 1.5078)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.977663, 0.249111, -1.42456)

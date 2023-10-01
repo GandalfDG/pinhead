@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://cbv0xr561pac4"]
+
+[ext_resource type="Script" path="res://elements/FlipperPair.gd" id="1_hkja1"]
+[ext_resource type="PackedScene" uid="uid://dxy60i7pcq7a6" path="res://elements/flipper.tscn" id="2_0vc0b"]
+
+[node name="FlipperPair" type="Node3D"]
+script = ExtResource("1_hkja1")
+flipper_angle = 35.8
+flipper_gap = 0.99
+
+[node name="FlipperLeft" parent="." instance=ExtResource("2_0vc0b")]
+transform = Transform3D(0.811064, 0, -0.584958, 0, 1, 0, 0.584958, 0, 0.811064, -0.495, 0, 0)
+
+[node name="FlipperRight" parent="." instance=ExtResource("2_0vc0b")]
+transform = Transform3D(-0.811064, 0, -0.584958, 0, 1, 0, 0.584958, 0, -0.811064, 0.495, 0, 0)
+flipper_side = "right"

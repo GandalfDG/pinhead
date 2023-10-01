@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://bayeondowqkqd"]
+[gd_scene load_steps=8 format=3 uid="uid://bayeondowqkqd"]
 
 [ext_resource type="PackedScene" uid="uid://cgdjulw3q7axd" path="res://elements/pop_bumper.tscn" id="1_f5eqv"]
 [ext_resource type="PackedScene" uid="uid://dxy60i7pcq7a6" path="res://elements/flipper.tscn" id="2_mgsmm"]
+[ext_resource type="PackedScene" uid="uid://cbv0xr561pac4" path="res://elements/flipper_pair.tscn" id="3_2ucad"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_70fuv"]
 friction = 0.2
@@ -40,9 +41,11 @@ transform = Transform3D(0.97901, 0, -0.203813, 0, 1, 0, 0.203813, 0, 0.97901, -0
 [node name="PopBumper3" parent="." instance=ExtResource("1_f5eqv")]
 transform = Transform3D(0.97901, 0, -0.203813, 0, 1, 0, 0.203813, 0, 0.97901, -0.333687, 0.177049, -0.79416)
 
-[node name="Flipper" parent="." instance=ExtResource("2_mgsmm")]
-transform = Transform3D(0.858396, 0, -0.512987, 0, 1, 0, 0.512987, 0, 0.858396, 0.0551498, 0.120645, 1.99275)
-
 [node name="Flipper2" parent="." instance=ExtResource("2_mgsmm")]
-transform = Transform3D(-0.840387, 0, -0.541987, 0, 1, 0, 0.541987, 0, -0.840387, 0.966365, 0.120645, 1.93037)
+transform = Transform3D(-0.840387, 0, -0.541987, 0, 1, 0, 0.541987, 0, -0.840387, 1.60565, 0.120645, 0.127435)
 flipper_side = "right"
+
+[node name="FlipperPair" parent="." instance=ExtResource("3_2ucad")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.346689, 0.120645, 1.89537)
+flipper_angle = 20.3
+flipper_gap = 0.98

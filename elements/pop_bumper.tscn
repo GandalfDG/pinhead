@@ -99,6 +99,7 @@ mesh = SubResource("CylinderMesh_it0wu")
 
 [node name="KickerCollider" type="CollisionShape3D" parent="Kicker"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.10352e-05, -0.749957, 0.000244141)
+visible = false
 shape = SubResource("SphereShape3D_bdlfr")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Kicker"]
