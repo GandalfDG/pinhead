@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://b6lutlv2hiprv"]
+[gd_scene load_steps=5 format=3 uid="uid://b6lutlv2hiprv"]
 
 [ext_resource type="Script" path="res://elements/drop_target.gd" id="1_5ov7w"]
 
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_hxogs"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_ars4x"]
+size = Vector3(0.3, 0.5, 0.1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_dkoiq"]
 size = Vector3(0.2, 0.3, 0.05)
@@ -10,23 +11,23 @@ size = Vector3(0.2, 0.3, 0.05)
 [sub_resource type="BoxShape3D" id="BoxShape3D_jfoxo"]
 size = Vector3(0.19, 0.3, 0.04)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_ars4x"]
-size = Vector3(0.3, 0.5, 0.1)
-
-[node name="DropTarget" type="AnimatableBody3D"]
-collision_layer = 2
-physics_material_override = SubResource("PhysicsMaterial_hxogs")
+[node name="DropTarget" type="Node3D"]
 script = ExtResource("1_5ov7w")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-mesh = SubResource("BoxMesh_dkoiq")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-shape = SubResource("BoxShape3D_jfoxo")
 
 [node name="TriggerArea" type="Area3D" parent="."]
 collision_layer = 2
-monitorable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="TriggerArea"]
 shape = SubResource("BoxShape3D_ars4x")
+
+[node name="AnimatableBody3D" type="AnimatableBody3D" parent="."]
+collision_layer = 2
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="AnimatableBody3D"]
+mesh = SubResource("BoxMesh_dkoiq")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="AnimatableBody3D"]
+shape = SubResource("BoxShape3D_jfoxo")
+
+[connection signal="body_entered" from="TriggerArea" to="." method="_on_trigger_area_body_entered"]
