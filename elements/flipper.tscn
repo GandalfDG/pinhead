@@ -10,11 +10,13 @@ points = PackedVector3Array(1.32487, 0.824197, -0.00113678, 0.999879, 1, -0.0004
 [node name="Flipper" type="RigidBody3D"]
 collision_layer = 2
 collision_mask = 0
+axis_lock_linear_x = true
+axis_lock_linear_y = true
+axis_lock_linear_z = true
+axis_lock_angular_x = true
+axis_lock_angular_z = true
 physics_material_override = ExtResource("1_egy2v")
 script = ExtResource("1_u3w10")
-flipper_side = null
-flip_duration = null
-flip_angle = null
 
 [node name="FlipperMesh" type="MeshInstance3D" parent="."]
 transform = Transform3D(-3.08799e-09, 0, -0.0706449, 0, 0.0706449, 0, 0.0706449, 0, -3.08799e-09, 0, 0, 0)

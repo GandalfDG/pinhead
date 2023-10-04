@@ -1,4 +1,4 @@
-extends Node3D
+extends RigidBody3D
 
 @export_enum("left", "right") var flipper_side: String = "left"
 @export var flip_duration: float = .035
@@ -16,23 +16,33 @@ func kill_current_tween():
 		current_tween = null
 		
 func flip():
+	apply_torque(Vector3(0,1,0))
+	
+func retract():
 	pass
-	
-func return():
-	
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	flipper_action = "left_flipper" if flipper_side == "left" else "right_flipper"
 	resting_transform = self.transform
 	resting_rotation = self.rotation
-#
-#	flipper_fire_tween = self.create_tween().set_trans(Tween.TRANS_CUBIC)
 
 func _input(event):
 	if Input.is_action_just_pressed(flipper_action):
-		pass
+		flip()
 	
 	if Input.is_action_just_released(flipper_action):
-		pass
+		retract()
+		
+#func _integrate_forces(state):
+#	if rotation.y >= flip_angle:
+#		apply_torque(Vector3(0,0,0))
+	
+#func _integrate_forces(state: PhysicsDirectBodyState3D):
+#	if rotation.y >= flip_angle:
+#		rotation.y = flip_angle
+#	integrate_forces
+#
+#	pass
 
