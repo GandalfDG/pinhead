@@ -8,19 +8,13 @@ var flipper_action: String = "left_flipper"
 var resting_transform: Transform3D
 var resting_rotation: Vector3
 
-var current_tween: Tween = null
-
-func kill_current_tween():
-	if current_tween:
-		current_tween.kill()
-		current_tween = null
+var flipping: bool = false
 		
 func flip():
-	apply_torque(Vector3(0,1,0))
+	flipping = true
 	
 func retract():
-	pass
-
+	flipping = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -35,14 +29,16 @@ func _input(event):
 	if Input.is_action_just_released(flipper_action):
 		retract()
 		
-#func _integrate_forces(state):
-#	if rotation.y >= flip_angle:
-#		apply_torque(Vector3(0,0,0))
-	
-#func _integrate_forces(state: PhysicsDirectBodyState3D):
-#	if rotation.y >= flip_angle:
-#		rotation.y = flip_angle
-#	integrate_forces
-#
-#	pass
 
+func _physics_process(delta):
+	if flipping:
+		apply_torque(transform.basis.y * 10)
+	else:
+		apply_torque(Vector3(0,0,0))
+
+func _integrate_forces(state):
+	# null out all force and torque that's not along the local y axis
+	state.get_constant_torque()
+	# and do something with the constant torque vector to get only the torque along the local y in global space
+	
+	state.integrate_forces()

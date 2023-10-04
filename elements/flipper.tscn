@@ -9,13 +9,13 @@ points = PackedVector3Array(1.32487, 0.824197, -0.00113678, 0.999879, 1, -0.0004
 
 [node name="Flipper" type="RigidBody3D"]
 collision_layer = 2
-collision_mask = 0
 axis_lock_linear_x = true
 axis_lock_linear_y = true
 axis_lock_linear_z = true
 axis_lock_angular_x = true
 axis_lock_angular_z = true
 physics_material_override = ExtResource("1_egy2v")
+can_sleep = false
 script = ExtResource("1_u3w10")
 
 [node name="FlipperMesh" type="MeshInstance3D" parent="."]
