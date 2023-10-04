@@ -1,8 +1,8 @@
 @tool
 extends Node3D
 
-var left_flipper: Node
-var right_flipper: Node
+@onready var left_flipper: Node = $FlipperLeft
+@onready var right_flipper: Node = $FlipperRight
 
 @export_range(0,90, 0.1, "degrees") var flipper_angle: float = 30:
 	set(value):
@@ -41,8 +41,6 @@ func place_flippers():
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	left_flipper = get_node("FlipperLeft")
-	right_flipper = get_node("FlipperRight")
 #	add_child(flipper_endpoint)
 #	flipper_endpoint.owner = self
 #	node_ready = true

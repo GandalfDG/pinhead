@@ -46,6 +46,6 @@ transform = Transform3D(-0.840387, 0, -0.541987, 0, 1, 0, 0.541987, 0, -0.840387
 flipper_side = "right"
 
 [node name="FlipperPair" parent="." instance=ExtResource("3_2ucad")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.346689, 0.120645, 1.89537)
-flipper_angle = 20.3
-flipper_gap = 0.98
+transform = Transform3D(0.969872, 0, 0.243615, 0, 1, 0, -0.243615, 0, 0.969872, 0.338427, 0.0948526, 1.92439)
+flipper_angle = 33.6
+flipper_gap = 1.0

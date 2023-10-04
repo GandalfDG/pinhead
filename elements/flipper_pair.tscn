@@ -5,12 +5,12 @@
 
 [node name="FlipperPair" type="Node3D"]
 script = ExtResource("1_hkja1")
-flipper_angle = 35.8
+flipper_angle = 23.6
 flipper_gap = 0.99
 
 [node name="FlipperLeft" parent="." instance=ExtResource("2_0vc0b")]
-transform = Transform3D(0.811064, 0, -0.584958, 0, 1, 0, 0.584958, 0, 0.811064, -0.495, 0, 0)
+transform = Transform3D(0.916363, 0, -0.400349, 0, 1, 0, 0.400349, 0, 0.916363, -0.495, 0, 0)
 
 [node name="FlipperRight" parent="." instance=ExtResource("2_0vc0b")]
-transform = Transform3D(-0.811064, 0, -0.584958, 0, 1, 0, 0.584958, 0, -0.811064, 0.495, 0, 0)
+transform = Transform3D(-0.916363, 0, -0.400349, 0, 1, 0, 0.400349, 0, -0.916363, 0.495, 0, 0)
 flipper_side = "right"
