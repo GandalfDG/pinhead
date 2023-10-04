@@ -12,11 +12,13 @@ collision_layer = 2
 axis_lock_linear_x = true
 axis_lock_linear_y = true
 axis_lock_linear_z = true
-axis_lock_angular_x = true
-axis_lock_angular_z = true
+mass = 0.01
 physics_material_override = ExtResource("1_egy2v")
 can_sleep = false
+angular_damp_mode = 1
 script = ExtResource("1_u3w10")
+flipper_torque = 10.0
+flip_angle = 45.0
 
 [node name="FlipperMesh" type="MeshInstance3D" parent="."]
 transform = Transform3D(-3.08799e-09, 0, -0.0706449, 0, 0.0706449, 0, 0.0706449, 0, -3.08799e-09, 0, 0, 0)
