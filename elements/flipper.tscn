@@ -1,30 +1,69 @@
-[gd_scene load_steps=5 format=3 uid="uid://dxy60i7pcq7a6"]
+[gd_scene load_steps=4 format=3 uid="uid://dxy60i7pcq7a6"]
 
-[ext_resource type="PhysicsMaterial" uid="uid://ydksrqsoe6i2" path="res://materials/rubber.tres" id="1_egy2v"]
-[ext_resource type="Script" path="res://elements/flipper.gd" id="1_u3w10"]
 [ext_resource type="ArrayMesh" uid="uid://djnwf3ovy7exr" path="res://meshes/flipper.obj" id="2_4hi6e"]
+
+[sub_resource type="GDScript" id="GDScript_d3vki"]
+script/source = "extends Node3D
+
+@export_enum(\"left\", \"right\") var flipper_side: String = \"left\"
+@export var flipper_torque: float = 100
+@export var flip_angle: float = 25.0
+@export var stop_margin: float = 1
+
+var flipper_action: String = \"left_flipper\"
+var resting_transform: Transform3D
+var resting_rotation: Vector3
+var default_damp: float
+
+var flipping: bool = false
+		
+func flip():
+#	constant_torque = Vector3()
+#	add_constant_torque(Vector3(0, flipper_torque, 0) * global_transform.basis)
+	$Flipper
+	
+func retract():
+#	constant_torque = Vector3()
+#	add_constant_torque(Vector3(0, -flipper_torque, 0) * global_transform.basis)
+	flipping = false
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	flipper_action = \"left_flipper\" if flipper_side == \"left\" else \"right_flipper\"
+
+	
+	
+
+"
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_1pi0l"]
 points = PackedVector3Array(1.32487, 0.824197, -0.00113678, 0.999879, 1, -0.00049448, 0.980685, 1, 0.194715, 1.29919, 0.824197, 0.258286, 1.32487, -0.824393, -0.00113678, 0.879271, 0.824197, -4.38692, 0.5452, 1, -4.46334, 0.923624, 1, 0.382218, 1.22398, 0.824197, 0.506793, 1.29919, -0.824393, 0.258286, 0.980685, -1, 0.194715, 0.999879, -1, -0.00049448, 0.879271, -0.824393, -4.38692, 0.863968, 0.824197, -4.52627, 0.81365, 0.824197, -4.69194, 0.513556, 1, -4.56736, 0.831287, 1, 0.554953, 1.10155, 0.824197, 0.736035, 1.22398, -0.824393, 0.506793, 0.923624, -1, 0.382218, 0.5452, -1, -4.46334, 0.863968, -0.824393, -4.52627, 0.462201, 1, -4.66368, 0.81365, -0.824393, -4.69194, 0.732466, 0.824197, -4.84412, 0.707048, 1, 0.706497, 1.10155, -0.824393, 0.736035, 0.936592, 0.824197, 0.936381, 0.831287, -1, 0.554953, 0.513556, -1, -4.56736, 0.393208, 1, -4.7478, 0.462201, -1, -4.66368, 0.732466, -0.824393, -4.84412, 0.622752, 0.824197, -4.97769, 0.555315, 1, 0.831071, 0.735838, 0.824197, 1.10141, 0.936592, -0.824393, 0.936381, 0.707048, -1, 0.706497, 0.308912, 1, -4.81715, 0.393208, -1, -4.7478, 0.622752, -0.824393, -4.97769, 0.489435, 0.824197, -5.08685, 0.382574, 1, 0.923538, 0.506813, 0.824197, 1.22342, 0.735838, -0.824393, 1.10141, 0.555315, -1, 0.831071, 0.336924, 0.824197, -5.1684, 0.212685, 1, -4.86852, 0.308912, -1, -4.81715, 0.489435, -0.824393, -5.08685, 0.195048, 1, 0.980689, 0.258335, 0.824197, 1.29919, 0.506813, -0.824393, 1.22342, 0.382574, -1, 0.923538, 0.336924, -0.824393, -5.1684, 0.171704, 0.824197, -5.21849, 0.108418, 1, -4.89999, 0.212685, -1, -4.86852, 0, 1, 0.999952, 0, 0.824197, 1.32487, 0.258335, -0.824393, 1.29919, 0.195048, -1, 0.980689, 0.171704, -0.824393, -5.21849, 0, 0.824197, -5.23518, 0, 1, -4.9109, 0.108418, -1, -4.89999, -0.195307, 1, 0.980689, 0, -0.824393, 1.32487, -0.258594, 0.824197, 1.29919, 0, -1, 0.999952, 0, -0.824393, -5.23518, 0, -1, -4.9109, -0.171964, 0.824197, -5.21849, -0.108677, 1, -4.89999, -0.382833, 1, 0.923538, -0.258594, -0.824393, 1.29919, -0.195307, -1, 0.980689, -0.507072, 0.824197, 1.22342, -0.171964, -0.824393, -5.21849, -0.108677, -1, -4.89999, -0.337184, 0.824197, -5.1684, -0.212944, 1, -4.86852, -0.555575, 1, 0.831071, -0.736098, 0.824197, 1.10141, -0.507072, -0.824393, 1.22342, -0.382833, -1, 0.923538, -0.212944, -1, -4.86852, -0.337184, -0.824393, -5.1684, -0.489694, 0.824197, -5.08685, -0.309171, 1, -4.81715, -0.707307, 1, 0.706497, -0.736098, -0.824393, 1.10141, -0.936852, 0.824197, 0.936381, -0.555575, -1, 0.831071, -0.309171, -1, -4.81715, -0.489694, -0.824393, -5.08685, -0.623011, 0.824197, -4.97769, -0.393467, 1, -4.7478, -0.831547, 1, 0.554953, -1.10181, 0.824197, 0.736035, -0.936852, -0.824393, 0.936381, -0.707307, -1, 0.706497, -0.393467, -1, -4.7478, -0.623011, -0.824393, -4.97769, -0.732726, 0.824197, -4.84412, -0.46246, 1, -4.66368, -0.923883, 1, 0.382218, -1.10181, -0.824393, 0.736035, -1.22424, 0.824197, 0.506793, -0.831547, -1, 0.554953, -0.732726, -0.824393, -4.84412, -0.46246, -1, -4.66368, -0.813909, 0.824197, -4.69194, -0.513816, 1, -4.56736, -0.980945, 1, 0.194715, -1.22424, -0.824393, 0.506793, -0.923883, -1, 0.382218, -1.29945, 0.824197, 0.258286, -0.813909, -0.824393, -4.69194, -0.513816, -1, -4.56736, -0.864227, 0.824197, -4.52627, -0.545459, 1, -4.46334, -1.00014, 1, -0.00049448, -1.29945, -0.824393, 0.258286, -0.980945, -1, 0.194715, -1.32487, 0.824197, -0.00113678, -0.545459, -1, -4.46334, -0.864227, -0.824393, -4.52627, -0.87953, 0.824197, -4.38692, -1.32487, -0.824393, -0.00113678, -1.00014, -1, -0.00049448, -0.87953, -0.824393, -4.38692)
 
-[node name="Flipper" type="RigidBody3D"]
-collision_layer = 2
-axis_lock_linear_x = true
-axis_lock_linear_y = true
-axis_lock_linear_z = true
-mass = 0.01
-physics_material_override = ExtResource("1_egy2v")
-can_sleep = false
-angular_damp_mode = 1
-script = ExtResource("1_u3w10")
+[node name="Flipper" type="Node3D"]
+script = SubResource("GDScript_d3vki")
 flipper_torque = 10.0
 flip_angle = 45.0
 
-[node name="FlipperMesh" type="MeshInstance3D" parent="."]
+[node name="HingeJoint3D" type="HingeJoint3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
+node_a = NodePath("../StaticBody3D")
+node_b = NodePath("../Flipper")
+angular_limit/upper = 0.523599
+angular_limit/lower = -0.349066
+motor/max_impulse = 200.8
+
+[node name="Flipper" type="RigidBody3D" parent="."]
+axis_lock_linear_x = true
+axis_lock_linear_y = true
+axis_lock_linear_z = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Flipper"]
+transform = Transform3D(-3.08799e-09, 0, -0.0706449, 0, 0.0706449, 0, 0.0706449, 0, -3.08799e-09, 0, 0, 0)
+shape = SubResource("ConvexPolygonShape3D_1pi0l")
+
+[node name="FlipperMesh" type="MeshInstance3D" parent="Flipper"]
 transform = Transform3D(-3.08799e-09, 0, -0.0706449, 0, 0.0706449, 0, 0.0706449, 0, -3.08799e-09, 0, 0, 0)
 mesh = ExtResource("2_4hi6e")
 skeleton = NodePath("")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(-3.08799e-09, 0, -0.0706449, 0, 0.0706449, 0, 0.0706449, 0, -3.08799e-09, 0, 0, 0)
-shape = SubResource("ConvexPolygonShape3D_1pi0l")
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
