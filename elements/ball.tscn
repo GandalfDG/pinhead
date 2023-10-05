@@ -11,7 +11,8 @@ height = 0.2
 radius = 0.1
 
 [node name="Ball" type="RigidBody3D"]
-collision_mask = 3
+collision_mask = 15
+mass = 0.05
 continuous_cd = true
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]

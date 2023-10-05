@@ -13,4 +13,3 @@ transform = Transform3D(0.916363, 0, -0.400349, 0, 1, 0, 0.400349, 0, 0.916363, 
 
 [node name="FlipperRight" parent="." instance=ExtResource("2_0vc0b")]
 transform = Transform3D(-0.916363, 0, -0.400349, 0, 1, 0, 0.400349, 0, -0.916363, 0, 0, 0)
-flipper_side = "right"

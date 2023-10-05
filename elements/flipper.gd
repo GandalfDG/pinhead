@@ -1,6 +1,7 @@
 extends Node3D
 
 signal flipping(pressed)
+signal enable
 
 @export_enum("left", "right") var flipper_side: String = "left"
 @export var flip_angle: float = 30.0
@@ -11,6 +12,7 @@ var flip_action: String
 
 func _ready():
 	flip_action = "left_flipper" if flipper_side == "left" else "right_flipper"
+	enable.emit()
 	
 func _physics_process(delta):
 	if Input.is_action_just_pressed(flip_action):
@@ -18,8 +20,3 @@ func _physics_process(delta):
 	if Input.is_action_just_released(flip_action):
 		flipping.emit(false)
 
-#func _input(event):
-#	if event.is_action_pressed(flip_action):
-#		flipping.emit(true)
-#	else:
-#		flipping.emit(false)
