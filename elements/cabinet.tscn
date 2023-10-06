@@ -1,6 +1,5 @@
-[gd_scene load_steps=8 format=3 uid="uid://dcvo5ah70qi2a"]
+[gd_scene load_steps=7 format=3 uid="uid://dcvo5ah70qi2a"]
 
-[ext_resource type="PackedScene" uid="uid://d1roo8csw0bth" path="res://elements/ball.tscn" id="1_i21t7"]
 [ext_resource type="Script" path="res://plugins/free_look_camera.gd" id="1_m442r"]
 [ext_resource type="PackedScene" uid="uid://bayeondowqkqd" path="res://elements/playfield.tscn" id="2_3snn6"]
 
@@ -32,6 +31,3 @@ default_velocity = 2.0
 
 [node name="Playfield" parent="." instance=ExtResource("2_3snn6")]
 transform = Transform3D(1, 0, 0, 0, 0.994521, -0.104528, 0, 0.104528, 0.994521, 0, 0, 0)
-
-[node name="Ball" parent="." instance=ExtResource("1_i21t7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.973599, 0.0261973, 1.27567)

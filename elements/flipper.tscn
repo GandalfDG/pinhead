@@ -12,8 +12,7 @@ points = PackedVector3Array(1.32487, 0.824197, -0.00113678, 0.999879, 1, -0.0004
 
 [node name="Flipper" type="Node3D"]
 script = ExtResource("1_sdvte")
-flip_torque = 20.0
-return_torque = 10.0
+flip_torque = 60.0
 
 [node name="Pivot" type="JoltHingeJoint3D" parent="."]
 limit_enabled = true
@@ -24,12 +23,12 @@ node_b = NodePath("../FlipperBody")
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
 
 [node name="FlipperBody" type="RigidBody3D" parent="."]
-mass = 0.1
+mass = 0.2
 physics_material_override = SubResource("PhysicsMaterial_dw0jd")
 continuous_cd = true
 can_sleep = false
 angular_damp_mode = 1
-angular_damp = 0.1
+angular_damp = 1.0
 script = ExtResource("1_b4giu")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="FlipperBody"]
