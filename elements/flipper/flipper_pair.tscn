@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://cbv0xr561pac4"]
 
-[ext_resource type="Script" path="res://elements/FlipperPair.gd" id="1_hkja1"]
-[ext_resource type="PackedScene" uid="uid://dxy60i7pcq7a6" path="res://elements/flipper.tscn" id="2_0vc0b"]
+[ext_resource type="Script" path="res://elements/flipper/FlipperPair.gd" id="1_hkja1"]
+[ext_resource type="PackedScene" uid="uid://dxy60i7pcq7a6" path="res://elements/flipper/flipper.tscn" id="2_0vc0b"]
 
 [node name="FlipperPair" type="Node3D"]
 script = ExtResource("1_hkja1")

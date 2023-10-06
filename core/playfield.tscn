@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://bayeondowqkqd"]
 
-[ext_resource type="PackedScene" uid="uid://cgdjulw3q7axd" path="res://elements/pop_bumper.tscn" id="1_f5eqv"]
-[ext_resource type="PackedScene" uid="uid://dxy60i7pcq7a6" path="res://elements/flipper.tscn" id="2_mgsmm"]
+[ext_resource type="PackedScene" uid="uid://cgdjulw3q7axd" path="res://elements/pop_bumper/pop_bumper.tscn" id="1_f5eqv"]
+[ext_resource type="PackedScene" uid="uid://dxy60i7pcq7a6" path="res://elements/flipper/flipper.tscn" id="2_mgsmm"]
 [ext_resource type="PackedScene" uid="uid://d1roo8csw0bth" path="res://elements/ball.tscn" id="3_41a5t"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_70fuv"]
@@ -32,15 +32,6 @@ mesh = SubResource("BoxMesh_gwcmk")
 [node name="SurfaceCollisionShape" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_mcn0f")
 
-[node name="PopBumper" parent="." instance=ExtResource("1_f5eqv")]
-transform = Transform3D(0.97901, 0, -0.203813, 0, 1, 0, 0.203813, 0, 0.97901, 1.26306, 0.177049, 1.14279)
-
-[node name="PopBumper2" parent="." instance=ExtResource("1_f5eqv")]
-transform = Transform3D(0.97901, 0, -0.203813, 0, 1, 0, 0.203813, 0, 0.97901, 1.88848, 0.166148, 1.2846)
-
-[node name="PopBumper3" parent="." instance=ExtResource("1_f5eqv")]
-transform = Transform3D(0.97901, 0, -0.203813, 0, 1, 0, 0.203813, 0, 0.97901, 1.68548, 0.177049, 0.512374)
-
 [node name="Flipper" parent="." instance=ExtResource("2_mgsmm")]
 transform = Transform3D(0.877791, 0, -0.479044, 0, 1, 0, 0.479044, 0, 0.877791, -1.33843, 0.15, 2.01108)
 
@@ -49,4 +40,7 @@ transform = Transform3D(-0.779338, 5.47795e-08, 0.626604, 0, -1, 8.74227e-08, 0.
 flipper_side = "right"
 
 [node name="Ball" parent="." instance=ExtResource("3_41a5t")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.13006, 0.16, 1.54923)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.893907, 0.16, -0.0263604)
+
+[node name="PopBumper" parent="." instance=ExtResource("1_f5eqv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0.2, 1)
