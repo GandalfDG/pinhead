@@ -8,11 +8,11 @@ var flipping: bool = false
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	rest_position = global_position
-	freeze =  true
-#	constant_torque = Vector3(0,-flipper_node.return_torque,0) * global_transform.basis
+#	freeze =  true
+	constant_torque = Vector3(0,-flipper_node.return_torque,0) * global_transform.basis
 
 func _on_flipper_enable():
-	freeze = false
+#	freeze = false
 	constant_torque = Vector3(0,-flipper_node.return_torque,0) * global_transform.basis
 	
 func _on_flipper_flipping(pressed):

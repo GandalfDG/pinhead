@@ -42,4 +42,3 @@ transform = Transform3D(0.97901, 0, -0.203813, 0, 1, 0, 0.203813, 0, 0.97901, 2.
 
 [node name="Flipper" parent="." instance=ExtResource("2_mgsmm")]
 transform = Transform3D(0.877791, 0, -0.479044, 0, 1, 0, 0.479044, 0, 0.877791, -1.33843, 0.15, 2.01108)
-return_torque = 10.0

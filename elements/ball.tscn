@@ -4,11 +4,11 @@
 
 [sub_resource type="SphereMesh" id="SphereMesh_jfb4u"]
 material = ExtResource("1_s7q3g")
-radius = 0.1
-height = 0.2
+radius = 0.11
+height = 0.22
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_wppk0"]
-radius = 0.1
+radius = 0.11
 
 [node name="Ball" type="RigidBody3D"]
 collision_mask = 15
