@@ -12,7 +12,6 @@ var flip_action: String
 
 func _ready():
 	flip_action = "left_flipper" if flipper_side == "left" else "right_flipper"
-#	enable.emit()
 	
 func _physics_process(delta):
 	if Input.is_action_just_pressed(flip_action):

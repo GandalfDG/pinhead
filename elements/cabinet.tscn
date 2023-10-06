@@ -34,4 +34,4 @@ default_velocity = 2.0
 transform = Transform3D(1, 0, 0, 0, 0.994521, -0.104528, 0, 0.104528, 0.994521, 0, 0, 0)
 
 [node name="Ball" parent="." instance=ExtResource("1_i21t7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.977663, 0.300002, -1.42456)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.973599, 0.0261973, 1.27567)

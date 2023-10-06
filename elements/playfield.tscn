@@ -42,3 +42,7 @@ transform = Transform3D(0.97901, 0, -0.203813, 0, 1, 0, 0.203813, 0, 0.97901, 2.
 
 [node name="Flipper" parent="." instance=ExtResource("2_mgsmm")]
 transform = Transform3D(0.877791, 0, -0.479044, 0, 1, 0, 0.479044, 0, 0.877791, -1.33843, 0.15, 2.01108)
+
+[node name="Flipper2" parent="." instance=ExtResource("2_mgsmm")]
+transform = Transform3D(-0.779075, 0, -0.62693, 0, 1, 0, 0.62693, 0, -0.779075, -0.135163, 0.13, 1.96456)
+flipper_side = "right"
