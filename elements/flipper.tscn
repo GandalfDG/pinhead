@@ -19,6 +19,7 @@ limit_enabled = true
 limit_upper = 0.698132
 limit_spring_enabled = true
 limit_spring_frequency = 100.0
+limit_spring_damping = 0.1
 node_b = NodePath("../FlipperBody")
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
 
