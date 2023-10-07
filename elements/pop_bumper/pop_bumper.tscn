@@ -74,7 +74,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.065191, 0)
 
 [node name="JoltSliderJoint3D" type="JoltSliderJoint3D" parent="Kicker"]
 limit_enabled = true
-limit_lower = -0.1
+limit_lower = -0.15
 limit_spring_frequency = 100.0
 limit_spring_damping = 0.1
 node_b = NodePath("../Kicker")
@@ -89,9 +89,10 @@ linear_damp = 6.063
 script = ExtResource("2_8lq0t")
 
 [node name="LinearSolenoidSpring" parent="Kicker/Kicker" instance=ExtResource("3_6ga7p")]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
-solenoid_force = 0.5
-resting_spring_extension = 0.001
+transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0)
+solenoid_force = 0.8
+spring_stiffness = 30.0
+resting_spring_extension = 0.2
 
 [node name="KickerMesh" type="MeshInstance3D" parent="Kicker/Kicker"]
 mesh = SubResource("CylinderMesh_it0wu")

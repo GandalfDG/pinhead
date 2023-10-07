@@ -9,6 +9,7 @@ var connected_signals: Array[StringName]
 
 var parent_rest_position: Vector3
 var parent_rest_rotation: Vector3
+var parent_rest_quaternion: Quaternion
 
 func _enter_tree():
 	parent_node = $'..'
@@ -31,7 +32,7 @@ func _get_configuration_warnings():
 	if not parent_node is RigidBody3D:
 		warnings.append("Parent node must be derived from RigidBody3D")
 	
-	if not connected_signals:
+	if not "PhysicsProcessEntered" in connected_signals or not "IntegrateForcesEntered" in connected_signals:
 		warnings.append("Parent must emit PhysicsProcessEntered and/or IntegrateForcesEntered signals")
 
 	return warnings
@@ -46,6 +47,7 @@ func _ready():
 
 	parent_rest_position = parent_body.position
 	parent_rest_rotation = parent_body.rotation
+	parent_rest_quaternion = parent_body.quaternion
 
 func _process_physics_behavior(_delta: float):
 	pass

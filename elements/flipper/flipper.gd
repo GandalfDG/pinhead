@@ -4,14 +4,13 @@ signal flipping(pressed)
 signal enable
 
 @export_enum("left", "right") var flipper_side: String = "left"
-@export var flip_angle: float = 30.0
-@export var flip_torque: float = 60
-@export var return_torque: float = 15
 
 var flip_action: String
+@onready var actuator: SolenoidSpring = $FlipperBody/SolenoidSpring
 
 func _ready():
 	flip_action = "left_flipper" if flipper_side == "left" else "right_flipper"
+	actuator.reverse_force = flipper_side == "right"
 	
 func _physics_process(delta):
 	if Input.is_action_just_pressed(flip_action):
