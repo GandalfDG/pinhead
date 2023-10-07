@@ -1,11 +1,11 @@
-extends Node3D
+extends "res://utilities/PhysicsBehavior.gd"
 
 signal flipping(pressed)
 signal enable
 
 @export_enum("left", "right") var flipper_side: String = "left"
 @export var flip_angle: float = 30.0
-@export var flip_torque: float = 30.0
+@export var flip_torque: float = 60
 @export var return_torque: float = 15
 
 var flip_action: String

@@ -14,9 +14,9 @@ func _process(delta):
 	pass
 
 func _integrate_forces(state):
-	rotation = Vector3()
-	position.x = 0
-	position.z = 0
+#	rotation = Vector3()
+#	position.x = 0
+#	position.z = 0
 	
 	state.integrate_forces()
 

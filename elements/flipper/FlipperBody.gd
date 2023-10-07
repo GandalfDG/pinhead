@@ -1,5 +1,7 @@
 extends RigidBody3D
 
+signal IntegrateForcesEntered(state)
+
 var rest_position: Vector3
 var flipping: bool = false
 
@@ -9,24 +11,16 @@ var flipping: bool = false
 func _ready():
 	rest_position = global_position
 #	freeze =  true
-	constant_torque = Vector3(0,-flipper_node.return_torque,0) * global_transform.basis
-
-func _on_flipper_enable():
-#	freeze = false
-	constant_torque = Vector3(0,-flipper_node.return_torque,0) * global_transform.basis
 	
 func _on_flipper_flipping(pressed):
 	flipping = pressed
 	
 func _physics_process(delta):
+	apply_torque(Vector3(0,-flipper_node.return_torque,0) * global_transform.basis)
 	if flipping:
 		apply_torque(Vector3(0,flipper_node.flip_torque,0) * global_transform.basis)
 	
 func _integrate_forces(state):
-	rotation.x = 0
-	rotation.z = 0
-	
-	global_position = rest_position
-	
+	emit_signal("IntegrateForcesEntered", state)
 	state.integrate_forces()
 
