@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dm3kn01moydlq"]
+
+[ext_resource type="Script" path="res://utilities/LocalAxisLock.gd" id="1_tt5i4"]
+
+[node name="LocalAxisLock" type="Node"]
+script = ExtResource("1_tt5i4")
