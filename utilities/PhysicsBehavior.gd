@@ -1,17 +1,19 @@
 @tool
-extends Node
+extends Node3D
 
 class_name PhysicsBehavior
 
 var parent_node: Node
-var parent_body: PhysicsBody3D
+var parent_body: RigidBody3D
 var connected_signals: Array[StringName]
 
+var parent_rest_position: Vector3
+var parent_rest_rotation: Vector3
+
 func _enter_tree():
-	print('enter')
 	parent_node = $'..'
 
-	parent_node.script_changed.connect(update_configuration_warnings)
+	parent_node.script_changed.connect(update_configuration_warnings, ConnectFlags.CONNECT_DEFERRED)
 	if parent_node.has_signal("PhysicsProcessEntered"):
 		connected_signals.append("PhysicsProcessEntered")
 
@@ -23,15 +25,15 @@ func _enter_tree():
 func _exit_tree():
 	parent_node.script_changed.disconnect(update_configuration_warnings)
 
-# ensure the parent is derived from PhysicsBody3D
+# ensure the parent is derived from RigidBody3D
 func _get_configuration_warnings():
 	var warnings: Array = []
-	if not parent_node is PhysicsBody3D:
-		warnings.append("Parent node must be derived from PhysicsBody3D")
+	if not parent_node is RigidBody3D:
+		warnings.append("Parent node must be derived from RigidBody3D")
 	
 	if not connected_signals:
 		warnings.append("Parent must emit PhysicsProcessEntered and/or IntegrateForcesEntered signals")
-	
+
 	return warnings
 
 func _ready():
@@ -40,8 +42,14 @@ func _ready():
 	if "IntegrateForcesEntered" in connected_signals:
 		parent_node.IntegrateForcesEntered.connect(_integrate_forces_behavior)
 
+	parent_body = parent_node
+
+	parent_rest_position = parent_body.position
+	parent_rest_rotation = parent_body.rotation
+
 func _process_physics_behavior(_delta: float):
 	pass
 
 func _integrate_forces_behavior(_state: PhysicsDirectBodyState3D):
 	pass
+

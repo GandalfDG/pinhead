@@ -1,14 +1,27 @@
-extends PhysicsBehavior
+@tool
+extends ActivatedPhysicsBehavior
 
-@export var solenoid_force: float = 10
-@export var spring_stiffness: float = 5
-@export var resting_spring_extension: float = 1
+@export var solenoid_force: float = 1
+@export var spring_stiffness: float = 500
+@export var resting_spring_extension: float = 10:
+	set(value):
+		spring_extension_vector = Vector3(0,0,value) * transform.basis
+		resting_spring_extension = value
+		
 
-# Called when the node enters the scene tree for the first time.
+var spring_extension_vector
+
 func _ready():
-	pass # Replace with function body.
+	super._ready()
+	activation_type = ActivationType.IMPULSE
+	
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
+# apply impulse in positive Z direction of our Node3D
+func _process_physics_behavior(_delta):
+	# spring force is a function of the stiffness and the distance from the rest position
+	var spring_force = spring_stiffness * (parent_body.position * transform.basis - parent_rest_position * transform.basis + spring_extension_vector)
+	parent_body.apply_force(spring_force)
+	if activated:
+		parent_body.apply_impulse(-Vector3(0,0,solenoid_force) * transform.basis)
+		
+	super._process_physics_behavior(_delta)
