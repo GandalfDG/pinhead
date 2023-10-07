@@ -18,15 +18,20 @@ var rest_position: Vector3
 var rest_rotation: Vector3
 
 func _enter_tree():
+	print('enter')
 	parent_node = $'..'
+
 	parent_node.script_changed.connect(update_configuration_warnings)
 	if parent_node.has_signal("PhysicsProcessEntered"):
 		connected_signals.append("PhysicsProcessEntered")
-		parent_node.PhysicsProcessEntered.connect(physics_process)
+
 	if parent_node.has_signal("IntegrateForcesEntered"):
 		connected_signals.append("IntegrateForcesEntered")
-		parent_node.IntegrateForcesEntered.connect(integrate_forces)
+
 	update_configuration_warnings()
+	
+func _exit_tree():
+	parent_node.script_changed.disconnect(update_configuration_warnings)
 
 # ensure the parent is derived from PhysicsBody3D
 func _get_configuration_warnings():
@@ -43,6 +48,10 @@ func _get_configuration_warnings():
 func _ready():
 	rest_position = parent_node.position
 	rest_rotation = parent_node.rotation
+	if "PhysicsProcessEntered" in connected_signals:
+		parent_node.PhysicsProcessEntered.connect(physics_process)
+	if "IntegrateForcesEntered" in connected_signals:
+		parent_node.IntegrateForcesEntered.connect(integrate_forces)
 	
 func physics_process(delta: float):
 	lock_axes()
