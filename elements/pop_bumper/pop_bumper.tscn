@@ -1,10 +1,9 @@
-[gd_scene load_steps=14 format=3 uid="uid://cgdjulw3q7axd"]
+[gd_scene load_steps=13 format=3 uid="uid://cgdjulw3q7axd"]
 
 [ext_resource type="Script" path="res://elements/pop_bumper/pop_bumper.gd" id="1_hvtx7"]
 [ext_resource type="Script" path="res://elements/pop_bumper/Kicker.gd" id="2_8lq0t"]
-[ext_resource type="PackedScene" uid="uid://brj6pblp2w8hj" path="res://utilities/LinearSolenoidSpring.tscn" id="3_6ga7p"]
+[ext_resource type="PackedScene" uid="uid://brj6pblp2w8hj" path="res://utilities/SolenoidSpring.tscn" id="3_6ga7p"]
 [ext_resource type="Material" uid="uid://b43rlaqm12whx" path="res://materials/ball.tres" id="3_y3ayh"]
-[ext_resource type="PackedScene" uid="uid://dm3kn01moydlq" path="res://utilities/LocalAxisLock.tscn" id="5_vun6y"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_42nhi"]
 albedo_color = Color(1, 0.160784, 0.160784, 1)
@@ -92,15 +91,7 @@ script = ExtResource("2_8lq0t")
 [node name="LinearSolenoidSpring" parent="Kicker/Kicker" instance=ExtResource("3_6ga7p")]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
 solenoid_force = 0.5
-spring_stiffness = 500.0
 resting_spring_extension = 0.001
-
-[node name="LocalAxisLock" parent="Kicker/Kicker" instance=ExtResource("5_vun6y")]
-lock_translation_x = true
-lock_translation_z = true
-lock_rotation_x = true
-lock_rotation_y = true
-lock_rotation_z = true
 
 [node name="KickerMesh" type="MeshInstance3D" parent="Kicker/Kicker"]
 mesh = SubResource("CylinderMesh_it0wu")
