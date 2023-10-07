@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://dcvo5ah70qi2a"]
 
 [ext_resource type="Script" path="res://plugins/free_look_camera.gd" id="1_7mt0k"]
-[ext_resource type="PackedScene" uid="uid://bayeondowqkqd" path="res://core/playfield.tscn" id="2_ldfcp"]
+[ext_resource type="PackedScene" uid="uid://b4l26e3ptkis1" path="res://elements/playfield.tscn" id="2_ldfcp"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_yc56g"]
 
@@ -25,7 +25,7 @@ camera_attributes = SubResource("CameraAttributesPractical_rw54l")
 transform = Transform3D(0.964465, -0.0801747, 0.251751, 0, 0.952847, 0.303451, -0.26421, -0.292668, 0.918988, 0, 1.95647, 0)
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(0.239417, -0.0204077, 0.970702, 0, 0.999779, 0.021019, -0.970917, -0.0050323, 0.239364, 1.71658, 0.227073, 0.784989)
+transform = Transform3D(0.997117, 0.0489862, -0.0579584, 0, 0.763747, 0.645516, 0.075887, -0.643655, 0.761544, -0.808831, 0.949882, 2.87574)
 script = ExtResource("1_7mt0k")
 default_velocity = 2.0
 

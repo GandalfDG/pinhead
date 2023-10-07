@@ -51,11 +51,6 @@ script = ExtResource("1_hvtx7")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.191129, 0)
 mesh = SubResource("CylinderMesh_xa0o1")
 
-[node name="OmniLight3D" type="OmniLight3D" parent="BumperCapMesh"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0391312, 0)
-light_color = Color(1, 0.0117647, 0.0117647, 1)
-omni_range = 0.730948
-
 [node name="BumperBodyMesh" type="MeshInstance3D" parent="."]
 mesh = SubResource("CylinderMesh_eqae3")
 

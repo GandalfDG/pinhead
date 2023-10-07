@@ -16,7 +16,7 @@ radius = 0.11
 [node name="Ball" type="RigidBody3D"]
 collision_layer = 8
 collision_mask = 15
-mass = 0.05
+mass = 0.1
 physics_material_override = SubResource("PhysicsMaterial_agitc")
 continuous_cd = true
 can_sleep = false
