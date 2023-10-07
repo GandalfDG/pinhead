@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://brj6pblp2w8hj"]
+
+[ext_resource type="Script" path="res://utilities/LinearSolenoidSpring.gd" id="1_5tb0h"]
+
+[node name="LinearSolenoidSpring" type="Node"]
+script = ExtResource("1_5tb0h")
