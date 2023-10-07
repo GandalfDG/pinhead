@@ -24,6 +24,10 @@ window/size/always_on_top=true
 
 movie_writer/movie_file="/home/jackc/Videos/pinhead.avi"
 
+[filesystem]
+
+import/blender/enabled=false
+
 [input]
 
 left_flipper={
@@ -69,6 +73,8 @@ start={
 common/physics_ticks_per_second=120
 common/max_physics_steps_per_frame=16
 3d/physics_engine="JoltPhysics3D"
+3d/default_linear_damp=0.0
+3d/default_angular_damp=0.0
 jolt_3d/sleep/velocity_threshold=0.002
 
 [rendering]
