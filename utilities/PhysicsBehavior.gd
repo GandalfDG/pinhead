@@ -9,6 +9,7 @@ var connected_signals: Array[StringName]
 
 var parent_rest_position: Vector3
 var parent_rest_rotation: Vector3
+@onready var parent_rest_transform: Transform3D = parent_node.global_transform
 var parent_rest_quaternion: Quaternion
 
 func _enter_tree():

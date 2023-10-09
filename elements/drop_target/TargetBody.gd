@@ -8,7 +8,7 @@ func _ready():
 
 
 func _physics_process(_delta):
-	if rotation.x < deg_to_rad(-0.05):
+	if rotation.x < deg_to_rad(-0.08):
 		BehaviorActivated.emit(true)
 		print("drop hit")
 		

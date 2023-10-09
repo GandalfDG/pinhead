@@ -151,4 +151,4 @@ shape = SubResource("BoxShape3D_v4p8v")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.28458, 0.267728, 0.0818031)
 
 [node name="DropTarget" parent="." instance=ExtResource("7_8xye6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.784124, 0.25, 1.45579)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.784124, 0.05, 1.45579)
