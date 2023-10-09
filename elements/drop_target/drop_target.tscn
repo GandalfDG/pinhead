@@ -14,12 +14,13 @@ size = Vector3(0.3, 0.4, 0.03)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.200091, 0)
 script = ExtResource("1_po035")
 
-[node name="Pivot" type="JoltHingeJoint3D" parent="."]
-limit_enabled = true
-limit_upper = 0.00174533
-motor_target_velocity = 0.0872665
+[node name="TiltAndSlideJoint" type="JoltGeneric6DOFJoint3D" parent="."]
+linear_limit_y/lower = -0.1
+angular_limit_x/lower = -0.00872665
+angular_motor_x/enabled = true
+angular_motor_x/target_velocity = 0.0349066
 node_a = NodePath("../TargetBody")
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.468382, 0)
+transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, 0, -0.454895, 0)
 
 [node name="TargetBody" type="RigidBody3D" parent="."]
 collision_layer = 4
