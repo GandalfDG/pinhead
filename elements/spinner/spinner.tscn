@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://elements/spinner/spinner.gd" id="1_dowlw"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_xw0ia"]
-size = Vector3(0.3, 0.4, 0.02)
+size = Vector3(1.5, 1.8, 0.1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_7d7yo"]
 size = Vector3(0.3, 0.4, 0.02)
