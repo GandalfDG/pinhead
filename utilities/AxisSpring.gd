@@ -23,7 +23,7 @@ func _physics_process(_delta):
 		parent_body.apply_force(spring_force_vector)
 
 	elif force_type == ForceType.ROTATIONAL:
-		var spring_displacement = rad_to_deg(parent_body.rotation.z - parent_rest_rotation.z)
+		var spring_displacement = rad_to_deg((parent_body.transform.basis * force_vector).dot(parent_rest_transform.basis * force_vector))
 		spring_force_vector = spring_stiffness * (spring_displacement + spring_preload) * force_vector
 		parent_body.apply_torque(spring_force_vector * parent_body.global_transform.basis)
 

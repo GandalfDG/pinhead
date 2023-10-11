@@ -20,15 +20,19 @@ func _ready():
 	super._ready()
 	var force_sign = -1 if reverse_force else 1
 	force_vector = force_sign * Vector3(0,1,0) * global_transform.basis
+	force_vector = force_sign * Vector3(0,1,0) * global_transform.basis
+	print(force_vector)
+		
+	force_vector = force_sign * Vector3(0,1,0) * global_transform.basis		
 	print(force_vector)
 		
 
 # apply impulse in positive Z direction of our Node3D
-func _process_physics_behavior(_delta):
+func _physics_process(_delta):
 	# spring force is a function of the stiffness and the distance from the rest position
 
 	if force_type == ForceType.LINEAR:
-		var spring_displacement = (parent_body.position + (resting_spring_extension * force_vector) - parent_rest_position) * transform.basis
+		var spring_displacement = (parent_body.position + (resting_spring_extension * force_vector) - parent_rest_transform.origin) * transform.basis
 		var spring_force = spring_stiffness * spring_displacement
 		parent_body.apply_force(spring_force)
 		if activated:
@@ -37,7 +41,7 @@ func _process_physics_behavior(_delta):
 			else: 
 				parent_body.apply_force(solenoid_force * force_vector)
 	else:
-		var spring_displacement = rad_to_deg(quaternion.angle_to(parent_rest_quaternion)) + resting_spring_extension
+		var spring_displacement = rad_to_deg(Quaternion(parent_body.transform.basis).angle_to(Quaternion(parent_rest_transform.basis))) + resting_spring_extension
 		var spring_force = -force_vector * spring_stiffness * spring_displacement / 100
 		parent_body.apply_torque(spring_force)
 		if activated:
