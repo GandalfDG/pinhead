@@ -105,7 +105,7 @@ shape = SubResource("CylinderShape3D_jlmpe")
 transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0)
 solenoid_force = 5.0
 spring_stiffness = 25.0
-resting_spring_extension = 1.0
+resting_spring_extension = 0.4
 
 [connection signal="body_entered" from="BumperBodyMesh/PopTrigger" to="." method="_on_pop_trigger_body_entered"]
 [connection signal="body_entered" from="BumperBodyMesh/PopTrigger" to="Kicker/Kicker" method="_on_pop_trigger_body_entered"]
