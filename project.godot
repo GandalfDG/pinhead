@@ -72,10 +72,11 @@ start={
 [physics]
 
 3d/run_on_separate_thread=true
-common/physics_ticks_per_second=120
+common/physics_ticks_per_second=240
 common/max_physics_steps_per_frame=16
 3d/physics_engine="JoltPhysics3D"
-3d/default_gravity=98.0
+3d/default_gravity=159.0
 3d/default_linear_damp=0.0
 3d/default_angular_damp=0.0
 jolt_3d/sleep/velocity_threshold=0.002
+jolt_3d/collisions/use_shape_margins=false
