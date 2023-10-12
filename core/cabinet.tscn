@@ -22,12 +22,17 @@ environment = SubResource("Environment_cupc5")
 camera_attributes = SubResource("CameraAttributesPractical_rw54l")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(0.964465, -0.0801747, 0.251751, 0, 0.952847, 0.303451, -0.26421, -0.292668, 0.918988, 0, 1.95647, 0)
+transform = Transform3D(0.964465, -0.233861, 0.122947, 3.72529e-09, 0.465336, 0.885134, -0.26421, -0.853681, 0.448801, 11.9036, 9.2405, 27.6133)
+shadow_enabled = true
+
+[node name="DirectionalLight3D2" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.636536, 0.687226, -0.35006, 0.331503, 0.653615, 0.680362, 0.696368, 0.317029, -0.643867, -14.7454, 18.1532, -21.8679)
+light_energy = 0.5
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(0.999477, 0.0137649, -0.029246, 0, 0.904794, 0.425849, 0.0323234, -0.425627, 0.904322, -0.788921, 1.00871, 3.45766)
+transform = Transform3D(0.999533, -0.0182679, 0.0244635, 0, 0.801252, 0.598326, -0.0305316, -0.598047, 0.800879, -0.789459, 7.75366, 21.8719)
 script = ExtResource("1_7mt0k")
-default_velocity = 2.0
+speed_scale = 10.0
 
 [node name="Playfield" parent="." instance=ExtResource("2_mx5vv")]
 transform = Transform3D(1, 0, 0, 0, 0.994522, -0.104528, 0, 0.104528, 0.994522, 0, 0, 0)
