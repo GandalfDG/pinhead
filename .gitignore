@@ -3,3 +3,5 @@
 
 # Blender autosave files
 *.blend1
+
+*.import
