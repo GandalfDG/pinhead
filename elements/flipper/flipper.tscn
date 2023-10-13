@@ -48,7 +48,7 @@ script = ExtResource("4_8wtpa")
 force_type = 1
 solenoid_force = 2000.0
 spring_stiffness = 25.0
-resting_spring_extension = 0.5
+resting_spring_extension = 1.0
 activation_type = 1
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="FlipperBody"]

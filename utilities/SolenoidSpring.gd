@@ -41,8 +41,10 @@ func _physics_process(_delta):
 			else: 
 				parent_body.apply_force(solenoid_force * force_vector)
 	else:
-		var spring_displacement = rad_to_deg(Quaternion(parent_body.transform.basis).angle_to(Quaternion(parent_rest_transform.basis))) + resting_spring_extension
-		var spring_force = -force_vector * spring_stiffness * spring_displacement / 100
+		var resting_angle: Vector3 = Vector3.RIGHT * parent_rest_transform.basis
+		var current_angle: Vector3 = Vector3.RIGHT * parent_body.global_transform.basis
+		var spring_displacement = rad_to_deg(current_angle.angle_to(resting_angle)) + resting_spring_extension
+		var spring_force = -force_vector * spring_stiffness * spring_displacement
 		parent_body.apply_torque(spring_force)
 		if activated:
 			if activation_type == ActivationType.IMPULSE:
