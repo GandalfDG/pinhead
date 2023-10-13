@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://dcvo5ah70qi2a"]
+[gd_scene load_steps=8 format=3 uid="uid://dcvo5ah70qi2a"]
 
 [ext_resource type="Script" path="res://plugins/free_look_camera.gd" id="1_7mt0k"]
 [ext_resource type="PackedScene" uid="uid://bayeondowqkqd" path="res://core/playfield.tscn" id="2_mx5vv"]
+[ext_resource type="PackedScene" uid="uid://bw4hhnrj7m1jh" path="res://utilities/debug_tools/debug_ball_spawner.tscn" id="3_64lxw"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_yc56g"]
 
@@ -36,3 +37,5 @@ speed_scale = 10.0
 
 [node name="Playfield" parent="." instance=ExtResource("2_mx5vv")]
 transform = Transform3D(1, 0, 0, 0, 0.994522, -0.104528, 0, 0.104528, 0.994522, 0, 0, 0)
+
+[node name="DebugBallSpawner" parent="Playfield" instance=ExtResource("3_64lxw")]
