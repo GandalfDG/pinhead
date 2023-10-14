@@ -1,10 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://bw4hhnrj7m1jh"]
+[gd_scene load_steps=2 format=3 uid="uid://bw4hhnrj7m1jh"]
 
 [ext_resource type="Script" path="res://utilities/debug_tools/DebugBallSpawner.gd" id="1_ghapd"]
-[ext_resource type="Script" path="res://utilities/debug_tools/DebugBallPreset.gd" id="2_1blne"]
 
 [node name="DebugBallSpawner" type="Node3D"]
 script = ExtResource("1_ghapd")
-
-[node name="Preset" type="Marker3D" parent="."]
-script = ExtResource("2_1blne")

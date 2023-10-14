@@ -21,7 +21,6 @@ func _ready():
 
 
 func handle_playfield_click(_camera, event, click_point, _normal, _shape_idx):
-	
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
 		var click = event as InputEventMouseButton
 		if click.is_pressed():
@@ -43,3 +42,4 @@ func place_ball_with_velocity(origin: Vector3, velocity: Vector3):
 	
 	# give the ball an initial velocity
 	ball_node.set_linear_velocity(velocity)
+
