@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://elements/flipper/flipper.gd" id="1_p24pt"]
 [ext_resource type="Script" path="res://elements/flipper/FlipperBody.gd" id="2_4le5i"]
-[ext_resource type="Script" path="res://utilities/SolenoidSpring.gd" id="4_8wtpa"]
+[ext_resource type="Script" path="res://utilities/physics_components/SolenoidSpring.gd" id="3_mm2rr"]
 [ext_resource type="ArrayMesh" uid="uid://bbv7b1e83raqq" path="res://meshes/flipper3.obj" id="4_d7sv0"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ar7xr"]
@@ -38,7 +38,7 @@ script = ExtResource("2_4le5i")
 
 [node name="SolenoidSpring" type="Node3D" parent="FlipperBody"]
 rotation_edit_mode = 1
-script = ExtResource("4_8wtpa")
+script = ExtResource("3_mm2rr")
 force_type = 1
 solenoid_force = 300.0
 spring_stiffness = 100.0

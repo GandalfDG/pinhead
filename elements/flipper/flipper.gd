@@ -1,4 +1,4 @@
-extends "res://utilities/PhysicsBehavior.gd"
+extends PhysicsBehavior
 
 signal flipping(pressed)
 signal enable
