@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://bxw7ll8xbtbw"]
 
-[ext_resource type="Script" path="res://utilities/AxisSpring.gd" id="1_uyopk"]
+[ext_resource type="Script" path="res://utilities/physics_components/AxisSpring.gd" id="1_uyopk"]
 
 [node name="AxisSpring" type="Node3D"]
 script = ExtResource("1_uyopk")

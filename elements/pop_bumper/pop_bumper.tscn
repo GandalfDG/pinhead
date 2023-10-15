@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://elements/pop_bumper/pop_bumper.gd" id="1_hvtx7"]
 [ext_resource type="Script" path="res://elements/pop_bumper/Kicker.gd" id="2_8lq0t"]
-[ext_resource type="PackedScene" uid="uid://brj6pblp2w8hj" path="res://utilities/SolenoidSpring.tscn" id="3_6ga7p"]
+[ext_resource type="PackedScene" uid="uid://brj6pblp2w8hj" path="res://utilities/physics_components/SolenoidSpring.tscn" id="3_6ga7p"]
 [ext_resource type="Material" uid="uid://b43rlaqm12whx" path="res://materials/ball.tres" id="3_y3ayh"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_42nhi"]

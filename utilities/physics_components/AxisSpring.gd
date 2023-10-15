@@ -1,9 +1,8 @@
 @tool
 extends PhysicsBehavior
 
-enum ForceType {LINEAR, ROTATIONAL} 
 
-@export var force_type: ForceType = ForceType.LINEAR
+@export var force_type: PhysicsTypes.ForceType = PhysicsTypes.ForceType.LINEAR
 @export var reverse_force: bool = false:
 	set(value):
 		reverse_force = value
@@ -17,12 +16,12 @@ var force_vector: Vector3 = Vector3.FORWARD
 
 func _physics_process(_delta):
 	var spring_force_vector = force_vector
-	if force_type == ForceType.LINEAR:
+	if force_type == PhysicsTypes.ForceType.LINEAR:
 		var spring_displacement = ((parent_body.global_transform.origin - parent_rest_transform.origin) * parent_body.global_transform.basis.inverse() * force_vector).length()
 		spring_force_vector = spring_stiffness * (spring_displacement + spring_preload) * force_vector * global_transform.basis
 		parent_body.apply_force(spring_force_vector)
 
-	elif force_type == ForceType.ROTATIONAL:
+	elif force_type == PhysicsTypes.ForceType.ROTATIONAL:
 		var spring_displacement = rad_to_deg((parent_body.transform.basis * force_vector).dot(parent_rest_transform.basis * force_vector))
 		spring_force_vector = spring_stiffness * (spring_displacement + spring_preload) * force_vector
 		parent_body.apply_torque(spring_force_vector * parent_body.global_transform.basis)

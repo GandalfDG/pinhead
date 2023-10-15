@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://ckqrvn5hsj5kv"]
+
+[ext_resource type="Script" path="res://utilities/physics_components/Solenoid.gd" id="1_flabq"]
+
+[node name="Solenoid" type="Node3D"]
+script = ExtResource("1_flabq")
