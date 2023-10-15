@@ -20,11 +20,6 @@ func _ready():
 	super._ready()
 	var force_sign = -1 if reverse_force else 1
 	force_vector = force_sign * Vector3(0,1,0) * global_transform.basis
-	force_vector = force_sign * Vector3(0,1,0) * global_transform.basis
-	print(force_vector)
-		
-	force_vector = force_sign * Vector3(0,1,0) * global_transform.basis		
-	print(force_vector)
 		
 
 # apply impulse in positive Z direction of our Node3D
@@ -43,14 +38,16 @@ func _physics_process(_delta):
 	else:
 		var resting_angle: Vector3 = Vector3.RIGHT * parent_rest_transform.basis
 		var current_angle: Vector3 = Vector3.RIGHT * parent_body.global_transform.basis
-		var spring_displacement = rad_to_deg(current_angle.angle_to(resting_angle)) + resting_spring_extension
+		var spring_displacement = current_angle.angle_to(resting_angle)
+#		print(spring_displacement)
 		var spring_force = -force_vector * spring_stiffness * spring_displacement
 		parent_body.apply_torque(spring_force)
 		if activated:
 			if activation_type == ActivationType.IMPULSE:
 				parent_body.apply_torque_impulse(solenoid_force * force_vector)
 			else:
-				parent_body.apply_torque(solenoid_force * force_vector * 1000)
+				var force = solenoid_force * force_vector
+				parent_body.apply_torque(force)
 
 		
 	super._process_physics_behavior(_delta)
