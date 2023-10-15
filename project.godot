@@ -78,4 +78,5 @@ common/max_physics_steps_per_frame=16
 3d/default_linear_damp=0.0
 3d/default_angular_damp=0.0
 jolt_3d/sleep/velocity_threshold=0.002
+jolt_3d/continuous_cd/max_penetration=10.0
 jolt_3d/solver/bounce_velocity_threshold=10.0

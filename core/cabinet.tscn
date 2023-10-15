@@ -32,6 +32,7 @@ light_energy = 0.5
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(0.999533, -0.0182679, 0.0244635, 0, 0.801252, 0.598326, -0.0305316, -0.598047, 0.800879, -0.789459, 7.75366, 21.8719)
+current = true
 script = ExtResource("1_7mt0k")
 speed_scale = 10.0
 

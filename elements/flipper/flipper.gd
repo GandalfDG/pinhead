@@ -24,7 +24,7 @@ func _physics_process(_delta):
 	if Input.is_action_just_released(flip_action):
 		flipping.emit(false)
 	
-	debug_flipper_velocity(body.angular_velocity)
+#	debug_flipper_velocity(body.angular_velocity)
 
 
 ###### Debugging stuff #######
