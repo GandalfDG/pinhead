@@ -1,8 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://b6lutlv2hiprv"]
+[gd_scene load_steps=5 format=3 uid="uid://b6lutlv2hiprv"]
 
-[ext_resource type="Script" path="res://elements/drop_target/drop_target.gd" id="1_po035"]
 [ext_resource type="Script" path="res://elements/drop_target/TargetBody.gd" id="2_200gm"]
-[ext_resource type="PackedScene" uid="uid://bxw7ll8xbtbw" path="res://utilities/AxisSpring.tscn" id="4_it7ll"]
+[ext_resource type="PackedScene" uid="uid://bxw7ll8xbtbw" path="res://utilities/physics_components/AxisSpring.tscn" id="4_it7ll"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_1xxcr"]
 size = Vector3(1.1, 1.5, 0.1)
@@ -11,7 +10,6 @@ size = Vector3(1.1, 1.5, 0.1)
 size = Vector3(1.1, 1.5, 0.1)
 
 [node name="DropTarget" type="Node3D"]
-script = ExtResource("1_po035")
 
 [node name="TiltAndSlideJoint" type="JoltGeneric6DOFJoint3D" parent="."]
 linear_limit_y/upper = 1.5
