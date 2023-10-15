@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://b0t40leiarlgs"]
+
+[ext_resource type="Script" path="res://utilities/code_components/ScoringElement.gd" id="1_oxyl0"]
+
+[node name="ScoringElement" type="Node"]
+script = ExtResource("1_oxyl0")
