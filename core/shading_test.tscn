@@ -12,7 +12,7 @@
 environment = ExtResource("1_7i4jd")
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(0.999991, -0.0021486, 0.00379763, 0, 0.870356, 0.492424, -0.00436331, -0.492419, 0.870347, 0.0151905, 1.96969, 3.48139)
+transform = Transform3D(0.777146, -0.529284, 0.340444, 0, 0.540971, 0.841041, -0.629321, -0.653612, 0.420414, 0.706839, 1.00077, 0.804074)
 script = ExtResource("3_ysbhx")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]

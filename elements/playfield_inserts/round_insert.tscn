@@ -1,160 +1,23 @@
-[gd_scene load_steps=20 format=3 uid="uid://g20s2ow4bih3"]
+[gd_scene load_steps=10 format=3 uid="uid://g20s2ow4bih3"]
 
-[ext_resource type="Material" uid="uid://cps66svejqa86" path="res://elements/playfield_inserts/round_insert.tres" id="1_nhdux"]
+[ext_resource type="Environment" uid="uid://c3uhtoawenwlm" path="res://materials/hdri_environment.tres" id="1_7udda"]
+[ext_resource type="Material" uid="uid://vkhnrcfh3d5e" path="res://elements/playfield_inserts/insert_shader.material" id="2_56et1"]
 
-[sub_resource type="VisualShaderNodeFloatParameter" id="VisualShaderNodeFloatParameter_nbi21"]
-parameter_name = "EmissionMultiplier"
-hint = 1
-default_value_enabled = true
-default_value = 0.1
-
-[sub_resource type="VisualShaderNodeVectorOp" id="VisualShaderNodeVectorOp_cn4id"]
-operator = 2
-
-[sub_resource type="VisualShaderNodeFloatConstant" id="VisualShaderNodeFloatConstant_itm2t"]
-constant = 1.0
-
-[sub_resource type="VisualShaderNodeTexture2DParameter" id="VisualShaderNodeTexture2DParameter_ojtf4"]
-parameter_name = "LensPatternNormal"
-texture_type = 2
-texture_filter = 4
-
-[sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_yaihk"]
-expanded_output_ports = [0]
-source = 5
-
-[sub_resource type="VisualShaderNodeColorParameter" id="VisualShaderNodeColorParameter_0y67w"]
-expanded_output_ports = [0]
-parameter_name = "BaseColor"
-default_value_enabled = true
-default_value = Color(0.109229, 0.650593, 5.77569e-07, 1)
-
-[sub_resource type="VisualShaderNodeFloatParameter" id="VisualShaderNodeFloatParameter_14hqe"]
-parameter_name = "Transparency"
-hint = 1
-default_value_enabled = true
-default_value = 0.95
-
-[sub_resource type="VisualShaderNodeFloatParameter" id="VisualShaderNodeFloatParameter_nyfum"]
-parameter_name = "Metallic"
-hint = 1
-default_value_enabled = true
-default_value = 1.0
-
-[sub_resource type="VisualShaderNodeFloatParameter" id="VisualShaderNodeFloatParameter_so80s"]
-parameter_name = "NormalDepth"
-hint = 1
-max = 5.0
-
-[sub_resource type="VisualShaderNodeFloatParameter" id="VisualShaderNodeFloatParameter_5y0kv"]
-parameter_name = "Clearcoat"
-hint = 1
-max = 10.0
-
-[sub_resource type="VisualShader" id="VisualShader_caj2j"]
-code = "shader_type spatial;
-render_mode blend_mix, depth_draw_opaque, cull_back, diffuse_lambert, specular_schlick_ggx;
-
-uniform vec4 BaseColor : source_color = vec4(0.109229, 0.650593, 0.000001, 1.000000);
-uniform float Transparency : hint_range(0, 1) = 0.94999998807907;
-uniform float Metallic : hint_range(0, 1) = 1;
-uniform float EmissionMultiplier : hint_range(0, 1) = 0.10000000149012;
-uniform sampler2D LensPatternNormal : hint_normal, filter_linear_mipmap;
-uniform float NormalDepth : hint_range(0, 5);
-uniform float Clearcoat : hint_range(0, 10);
-
-
-
-void fragment() {
-// ColorParameter:4
-	vec4 n_out4p0 = BaseColor;
-
-
-// FloatParameter:5
-	float n_out5p0 = Transparency;
-
-
-// FloatParameter:6
-	float n_out6p0 = Metallic;
-
-
-// FloatConstant:12
-	float n_out12p0 = 1.000000;
-
-
-// FloatParameter:10
-	float n_out10p0 = EmissionMultiplier;
-
-
-// VectorOp:11
-	vec3 n_out11p0 = vec3(n_out4p0.xyz) * vec3(n_out10p0);
-
-
-	vec4 n_out3p0;
-// Texture2D:3
-	n_out3p0 = texture(LensPatternNormal, UV);
-
-
-// FloatParameter:7
-	float n_out7p0 = NormalDepth;
-
-
-// FloatParameter:8
-	float n_out8p0 = Clearcoat;
-
-
-// Output:0
-	ALBEDO = vec3(n_out4p0.xyz);
-	ALPHA = n_out5p0;
-	METALLIC = n_out6p0;
-	SPECULAR = n_out12p0;
-	EMISSION = n_out11p0;
-	NORMAL_MAP = vec3(n_out3p0.xyz);
-	NORMAL_MAP_DEPTH = n_out7p0;
-	CLEARCOAT = n_out8p0;
-
-
-}
-"
-graph_offset = Vector2(-396.111, -377.583)
-nodes/fragment/0/position = Vector2(220, -140)
-nodes/fragment/2/node = SubResource("VisualShaderNodeTexture2DParameter_ojtf4")
-nodes/fragment/2/position = Vector2(-720, 120)
-nodes/fragment/3/node = SubResource("VisualShaderNodeTexture_yaihk")
-nodes/fragment/3/position = Vector2(-380, 200)
-nodes/fragment/4/node = SubResource("VisualShaderNodeColorParameter_0y67w")
-nodes/fragment/4/position = Vector2(-680, -460)
-nodes/fragment/5/node = SubResource("VisualShaderNodeFloatParameter_14hqe")
-nodes/fragment/5/position = Vector2(-120, -580)
-nodes/fragment/6/node = SubResource("VisualShaderNodeFloatParameter_nyfum")
-nodes/fragment/6/position = Vector2(-400, -580)
-nodes/fragment/7/node = SubResource("VisualShaderNodeFloatParameter_so80s")
-nodes/fragment/7/position = Vector2(-680, 440)
-nodes/fragment/8/node = SubResource("VisualShaderNodeFloatParameter_5y0kv")
-nodes/fragment/8/position = Vector2(-660, 740)
-nodes/fragment/10/node = SubResource("VisualShaderNodeFloatParameter_nbi21")
-nodes/fragment/10/position = Vector2(-680, -160)
-nodes/fragment/11/node = SubResource("VisualShaderNodeVectorOp_cn4id")
-nodes/fragment/11/position = Vector2(-380, -240)
-nodes/fragment/12/node = SubResource("VisualShaderNodeFloatConstant_itm2t")
-nodes/fragment/12/position = Vector2(-280, 0)
-nodes/fragment/connections = PackedInt32Array(2, 0, 3, 2, 4, 0, 0, 0, 5, 0, 0, 1, 6, 0, 0, 2, 3, 0, 0, 9, 7, 0, 0, 10, 8, 0, 0, 13, 10, 0, 11, 1, 4, 0, 11, 0, 11, 0, 0, 5, 12, 0, 0, 4)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_14tpb"]
-render_priority = 0
-shader = SubResource("VisualShader_caj2j")
-shader_parameter/BaseColor = Color(0, 0.14902, 0.223529, 1)
-shader_parameter/Transparency = 0.442
-shader_parameter/Metallic = 0.0
-shader_parameter/EmissionMultiplier = 0.049
-shader_parameter/NormalDepth = 1.512
-shader_parameter/Clearcoat = 7.753
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_13ydc"]
+transparency = 1
+albedo_color = Color(0, 0.262745, 0.4, 0.839216)
+metallic = 0.33
+metallic_specular = 0.1
+roughness = 0.08
+clearcoat = 0.06
+clearcoat_roughness = 0.15
+refraction_scale = 0.11
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_embt3"]
-material = SubResource("ShaderMaterial_14tpb")
+material = SubResource("StandardMaterial3D_13ydc")
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_ed8on"]
-material = ExtResource("1_nhdux")
+material = ExtResource("2_56et1")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_efuyw"]
 albedo_color = Color(0.988235, 0.960784, 0.815686, 1)
@@ -168,7 +31,8 @@ radius = 0.905
 height = 0.335
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rsacn"]
-albedo_color = Color(0.0431373, 0.258824, 0.584314, 1)
+specular_mode = 2
+albedo_color = Color(0.00392157, 0.109804, 0.176471, 1)
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_oj8r7"]
 material = SubResource("StandardMaterial3D_rsacn")
@@ -180,21 +44,25 @@ cap_top = false
 
 [node name="round_insert" type="Node3D"]
 
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource("1_7udda")
+
 [node name="FlatSurface" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0706366, 0)
+visible = false
 mesh = SubResource("PlaneMesh_embt3")
 
 [node name="PatternedSurface" type="MeshInstance3D" parent="."]
+transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, 0, -0.0658136, 0)
 cast_shadow = 0
 mesh = SubResource("PlaneMesh_ed8on")
 
 [node name="InsertBulb" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.182165, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.31787, 0)
 visible = false
 mesh = SubResource("SphereMesh_rgab4")
 
 [node name="InsertCup" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0206712, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, 0)
 cast_shadow = 0
 mesh = SubResource("CylinderMesh_oj8r7")
 skeleton = NodePath("../PatternedSurface")
