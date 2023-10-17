@@ -1,0 +1,26 @@
+[gd_scene load_steps=7 format=3 uid="uid://bbsqcxwfm51vu"]
+
+[ext_resource type="Texture2D" uid="uid://xfowglxvdi48" path="res://image_assets/neon_photostudio_4k.hdr" id="1_407ac"]
+[ext_resource type="PackedScene" uid="uid://g20s2ow4bih3" path="res://elements/playfield_inserts/round_insert.tscn" id="2_b0lho"]
+[ext_resource type="Script" path="res://plugins/free_look_camera.gd" id="3_ysbhx"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_ulp3p"]
+panorama = ExtResource("1_407ac")
+
+[sub_resource type="Sky" id="Sky_wacxx"]
+sky_material = SubResource("PanoramaSkyMaterial_ulp3p")
+
+[sub_resource type="Environment" id="Environment_kec2d"]
+background_mode = 2
+sky = SubResource("Sky_wacxx")
+
+[node name="shading_test" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_kec2d")
+
+[node name="round_insert" parent="." instance=ExtResource("2_b0lho")]
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(0.999991, -0.0021486, 0.00379763, 0, 0.870356, 0.492424, -0.00436331, -0.492419, 0.870347, 0.0151905, 1.96969, 3.48139)
+script = ExtResource("3_ysbhx")
