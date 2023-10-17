@@ -1,0 +1,13 @@
+[gd_resource type="Environment" load_steps=4 format=3 uid="uid://cm4l8b4dpx8ro"]
+
+[ext_resource type="Texture2D" uid="uid://xfowglxvdi48" path="res://image_assets/neon_photostudio_4k.hdr" id="1_7kpyi"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_ulp3p"]
+panorama = ExtResource("1_7kpyi")
+
+[sub_resource type="Sky" id="Sky_wacxx"]
+sky_material = SubResource("PanoramaSkyMaterial_ulp3p")
+
+[resource]
+background_mode = 2
+sky = SubResource("Sky_wacxx")

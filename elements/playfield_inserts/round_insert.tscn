@@ -7,7 +7,6 @@ material = ExtResource("1_m1n6x")
 top_radius = 1.0
 bottom_radius = 1.0
 height = 0.1
-cap_bottom = false
 
 [node name="round_insert" type="Node3D"]
 
@@ -16,10 +15,7 @@ cast_shadow = 0
 mesh = SubResource("CylinderMesh_cproe")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0825132, 0)
-light_color = Color(0.470588, 0.0784314, 0.129412, 1)
-light_energy = 0.398
-light_size = 0.2
-light_specular = 4.662
-omni_range = 2.0
-omni_attenuation = 2.99293
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.636164, 0)
+light_color = Color(1, 0, 0.0156863, 1)
+omni_range = 2.625
+omni_attenuation = 0.435277
