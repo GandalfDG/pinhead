@@ -1,0 +1,15 @@
+[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://cps66svejqa86"]
+
+[ext_resource type="Shader" uid="uid://cm7g63fqwraj5" path="res://elements/playfield_inserts/starbust_insert_shader.tres" id="1_7nktv"]
+[ext_resource type="Texture2D" uid="uid://b0xrvv8hjhc62" path="res://image_assets/playfield_insert_textures/starburst_normal_4k.png" id="2_r4ymt"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_7nktv")
+shader_parameter/BaseColor = Color(0, 0.345098, 0.498039, 1)
+shader_parameter/Transparency = 0.995
+shader_parameter/Metallic = 0.21
+shader_parameter/EmissionMultiplier = 0.999
+shader_parameter/NormalDepth = 4.581
+shader_parameter/Clearcoat = 0.0
+shader_parameter/LensPatternNormal = ExtResource("2_r4ymt")

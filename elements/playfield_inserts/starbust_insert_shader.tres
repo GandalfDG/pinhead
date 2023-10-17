@@ -1,67 +1,133 @@
-[gd_resource type="VisualShader" load_steps=6 format=3 uid="uid://cm7g63fqwraj5"]
+[gd_resource type="VisualShader" load_steps=10 format=3 uid="uid://cm7g63fqwraj5"]
 
-[ext_resource type="Texture2D" uid="uid://b0xrvv8hjhc62" path="res://image_assets/playfield_insert_textures/starburst_normal_4k.png" id="1_khvuk"]
-
-[sub_resource type="VisualShaderNodeColorConstant" id="VisualShaderNodeColorConstant_fd0xc"]
-constant = Color(0.648613, 5.53504e-06, 0.422332, 1)
-
-[sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_fs57t"]
-texture = ExtResource("1_khvuk")
-texture_type = 2
-
-[sub_resource type="VisualShaderNodeFloatParameter" id="VisualShaderNodeFloatParameter_yebw3"]
-parameter_name = "Normal_Depth"
-qualifier = 2
+[sub_resource type="VisualShaderNodeFloatParameter" id="VisualShaderNodeFloatParameter_626jx"]
+parameter_name = "EmissionMultiplier"
+hint = 1
 default_value_enabled = true
-default_value = 0.5
+default_value = 0.1
 
-[sub_resource type="VisualShaderNodeFloatConstant" id="VisualShaderNodeFloatConstant_vyn5b"]
-constant = 0.8
+[sub_resource type="VisualShaderNodeVectorOp" id="VisualShaderNodeVectorOp_rnywt"]
+operator = 2
+
+[sub_resource type="VisualShaderNodeTexture2DParameter" id="VisualShaderNodeTexture2DParameter_y42um"]
+parameter_name = "LensPatternNormal"
+texture_type = 2
+texture_filter = 4
+
+[sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_m5f2x"]
+expanded_output_ports = [0]
+source = 5
+
+[sub_resource type="VisualShaderNodeColorParameter" id="VisualShaderNodeColorParameter_610uf"]
+expanded_output_ports = [0]
+parameter_name = "BaseColor"
+default_value_enabled = true
+default_value = Color(0.109229, 0.650593, 5.77569e-07, 1)
+
+[sub_resource type="VisualShaderNodeFloatParameter" id="VisualShaderNodeFloatParameter_bx7qb"]
+parameter_name = "Transparency"
+hint = 1
+min = 0.9
+default_value_enabled = true
+default_value = 0.95
+
+[sub_resource type="VisualShaderNodeFloatParameter" id="VisualShaderNodeFloatParameter_tt4ma"]
+parameter_name = "Metallic"
+hint = 1
+default_value_enabled = true
+default_value = 1.0
+
+[sub_resource type="VisualShaderNodeFloatParameter" id="VisualShaderNodeFloatParameter_m6gnb"]
+parameter_name = "NormalDepth"
+hint = 1
+max = 5.0
+
+[sub_resource type="VisualShaderNodeFloatParameter" id="VisualShaderNodeFloatParameter_2v8j7"]
+parameter_name = "Clearcoat"
+hint = 1
+max = 10.0
 
 [resource]
 code = "shader_type spatial;
 render_mode blend_mix, depth_draw_opaque, cull_back, diffuse_lambert, specular_schlick_ggx;
 
-uniform sampler2D tex_frg_3 : hint_normal;
-instance uniform float Normal_Depth = 0.5;
+uniform vec4 BaseColor : source_color = vec4(0.109229, 0.650593, 0.000001, 1.000000);
+uniform float Transparency : hint_range(0.89999997615814, 1) = 0.94999998807907;
+uniform float Metallic : hint_range(0, 1) = 1;
+uniform float EmissionMultiplier : hint_range(0, 1) = 0.10000000149012;
+uniform sampler2D LensPatternNormal : hint_normal, filter_linear_mipmap;
+uniform float NormalDepth : hint_range(0, 5);
+uniform float Clearcoat : hint_range(0, 10);
 
 
 
 void fragment() {
-// ColorConstant:2
-	vec4 n_out2p0 = vec4(0.648613, 0.000006, 0.422332, 1.000000);
+// ColorParameter:4
+	vec4 n_out4p0 = BaseColor;
+	float n_out4p1 = n_out4p0.r;
+	float n_out4p2 = n_out4p0.g;
+	float n_out4p3 = n_out4p0.b;
 
 
-// FloatConstant:5
-	float n_out5p0 = 0.800000;
+// FloatParameter:5
+	float n_out5p0 = Transparency;
 
 
+// FloatParameter:6
+	float n_out6p0 = Metallic;
+
+
+// FloatParameter:10
+	float n_out10p0 = EmissionMultiplier;
+
+
+// VectorOp:11
+	vec3 n_out11p0 = vec3(n_out4p0.xyz) * vec3(n_out10p0);
+
+
+	vec4 n_out3p0;
 // Texture2D:3
-	vec4 n_out3p0 = texture(tex_frg_3, UV);
+	n_out3p0 = texture(LensPatternNormal, UV);
 
 
-// FloatParameter:4
-	float n_out4p0 = Normal_Depth;
+// FloatParameter:7
+	float n_out7p0 = NormalDepth;
+
+
+// FloatParameter:8
+	float n_out8p0 = Clearcoat;
 
 
 // Output:0
-	ALBEDO = vec3(n_out2p0.xyz);
+	ALBEDO = vec3(n_out4p0.xyz);
 	ALPHA = n_out5p0;
-	EMISSION = vec3(n_out2p0.xyz);
-	NORMAL = vec3(n_out3p0.xyz);
-	NORMAL_MAP_DEPTH = n_out4p0;
+	METALLIC = n_out6p0;
+	EMISSION = n_out11p0;
+	NORMAL_MAP = vec3(n_out3p0.xyz);
+	NORMAL_MAP_DEPTH = n_out7p0;
+	CLEARCOAT = n_out8p0;
 
 
 }
 "
-graph_offset = Vector2(-447.445, -145.183)
-nodes/fragment/0/position = Vector2(400, 120)
-nodes/fragment/2/node = SubResource("VisualShaderNodeColorConstant_fd0xc")
-nodes/fragment/2/position = Vector2(120, -100)
-nodes/fragment/3/node = SubResource("VisualShaderNodeTexture_fs57t")
-nodes/fragment/3/position = Vector2(80, 220)
-nodes/fragment/4/node = SubResource("VisualShaderNodeFloatParameter_yebw3")
-nodes/fragment/4/position = Vector2(40, 480)
-nodes/fragment/5/node = SubResource("VisualShaderNodeFloatConstant_vyn5b")
-nodes/fragment/5/position = Vector2(60, 80)
-nodes/fragment/connections = PackedInt32Array(2, 0, 0, 0, 3, 0, 0, 8, 4, 0, 0, 10, 5, 0, 0, 1, 2, 0, 0, 5)
+graph_offset = Vector2(-555.904, -429.348)
+nodes/fragment/0/position = Vector2(220, -140)
+nodes/fragment/2/node = SubResource("VisualShaderNodeTexture2DParameter_y42um")
+nodes/fragment/2/position = Vector2(-720, 120)
+nodes/fragment/3/node = SubResource("VisualShaderNodeTexture_m5f2x")
+nodes/fragment/3/position = Vector2(-380, 200)
+nodes/fragment/4/node = SubResource("VisualShaderNodeColorParameter_610uf")
+nodes/fragment/4/position = Vector2(-680, -460)
+nodes/fragment/5/node = SubResource("VisualShaderNodeFloatParameter_bx7qb")
+nodes/fragment/5/position = Vector2(-120, -580)
+nodes/fragment/6/node = SubResource("VisualShaderNodeFloatParameter_tt4ma")
+nodes/fragment/6/position = Vector2(-400, -580)
+nodes/fragment/7/node = SubResource("VisualShaderNodeFloatParameter_m6gnb")
+nodes/fragment/7/position = Vector2(-680, 440)
+nodes/fragment/8/node = SubResource("VisualShaderNodeFloatParameter_2v8j7")
+nodes/fragment/8/position = Vector2(-660, 740)
+nodes/fragment/10/node = SubResource("VisualShaderNodeFloatParameter_626jx")
+nodes/fragment/10/position = Vector2(-680, -160)
+nodes/fragment/11/node = SubResource("VisualShaderNodeVectorOp_rnywt")
+nodes/fragment/11/position = Vector2(-380, -240)
+nodes/fragment/connections = PackedInt32Array(2, 0, 3, 2, 4, 0, 0, 0, 5, 0, 0, 1, 6, 0, 0, 2, 3, 0, 0, 9, 7, 0, 0, 10, 8, 0, 0, 13, 10, 0, 11, 1, 4, 0, 11, 0, 11, 0, 0, 5)

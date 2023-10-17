@@ -11,8 +11,6 @@
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource("1_7i4jd")
 
-[node name="round_insert" parent="." instance=ExtResource("2_b0lho")]
-
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(0.999991, -0.0021486, 0.00379763, 0, 0.870356, 0.492424, -0.00436331, -0.492419, 0.870347, 0.0151905, 1.96969, 3.48139)
 script = ExtResource("3_ysbhx")
@@ -21,3 +19,8 @@ script = ExtResource("3_ysbhx")
 transform = Transform3D(0.999991, -0.0021486, 0.00379763, 0, 0.870356, 0.492424, -0.00436331, -0.492419, 0.870347, 0.0151905, 1.34318, -2.27991)
 mesh = SubResource("BoxMesh_iirxi")
 skeleton = NodePath("../Camera3D")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.98668, -0.0854744, 0.138406, 1.79276e-08, 0.850829, 0.525442, -0.162671, -0.518443, 0.839497, -4.23043, 1.65838, 3.05549)
+
+[node name="round_insert" parent="." instance=ExtResource("2_b0lho")]
