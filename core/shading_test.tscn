@@ -1,6 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://bbsqcxwfm51vu"]
+[gd_scene load_steps=5 format=3 uid="uid://dy7kepbffgono"]
 
-[ext_resource type="Environment" uid="uid://cm4l8b4dpx8ro" path="res://materials/hdri_environment.tres" id="1_7i4jd"]
+[ext_resource type="Environment" uid="uid://c3uhtoawenwlm" path="res://materials/hdri_environment.tres" id="1_7i4jd"]
 [ext_resource type="PackedScene" uid="uid://g20s2ow4bih3" path="res://elements/playfield_inserts/round_insert.tscn" id="2_b0lho"]
 [ext_resource type="Script" path="res://plugins/free_look_camera.gd" id="3_ysbhx"]
 

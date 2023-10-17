@@ -1,21 +1,52 @@
-[gd_scene load_steps=3 format=3 uid="uid://g20s2ow4bih3"]
+[gd_scene load_steps=8 format=3 uid="uid://g20s2ow4bih3"]
 
-[ext_resource type="Material" uid="uid://dp50gv1xk0sl3" path="res://materials/clear_insert.material" id="1_m1n6x"]
+[ext_resource type="Shader" uid="uid://cm7g63fqwraj5" path="res://elements/playfield_inserts/starbust_insert_shader.tres" id="1_vqus5"]
 
-[sub_resource type="CylinderMesh" id="CylinderMesh_cproe"]
-material = ExtResource("1_m1n6x")
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3axcg"]
+render_priority = 0
+shader = ExtResource("1_vqus5")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_3amyx"]
+material = SubResource("ShaderMaterial_3axcg")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_efuyw"]
+albedo_color = Color(0.956863, 0.956863, 0.956863, 1)
+emission_enabled = true
+emission = Color(0.768627, 0.768627, 0.768627, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_rgab4"]
+material = SubResource("StandardMaterial3D_efuyw")
+radius = 1.0
+height = 0.4
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rsacn"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_oj8r7"]
+material = SubResource("StandardMaterial3D_rsacn")
+flip_faces = true
 top_radius = 1.0
 bottom_radius = 1.0
-height = 0.1
+height = 0.2
+cap_top = false
 
 [node name="round_insert" type="Node3D"]
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+[node name="InsertSurface" type="MeshInstance3D" parent="."]
 cast_shadow = 0
-mesh = SubResource("CylinderMesh_cproe")
+mesh = SubResource("PlaneMesh_3amyx")
+
+[node name="InsertBulb" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.305672, 0)
+mesh = SubResource("SphereMesh_rgab4")
+
+[node name="InsertCup" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, 0)
+mesh = SubResource("CylinderMesh_oj8r7")
+skeleton = NodePath("../InsertSurface")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.636164, 0)
-light_color = Color(1, 0, 0.0156863, 1)
-omni_range = 2.625
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.215933, 0)
+light_color = Color(0.230629, 0.615754, 0.314157, 1)
+omni_range = 3.433
 omni_attenuation = 0.435277

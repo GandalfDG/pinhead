@@ -1,0 +1,67 @@
+[gd_resource type="VisualShader" load_steps=6 format=3 uid="uid://cm7g63fqwraj5"]
+
+[ext_resource type="Texture2D" uid="uid://b0xrvv8hjhc62" path="res://image_assets/playfield_insert_textures/starburst_normal_4k.png" id="1_khvuk"]
+
+[sub_resource type="VisualShaderNodeColorConstant" id="VisualShaderNodeColorConstant_fd0xc"]
+constant = Color(0.648613, 5.53504e-06, 0.422332, 1)
+
+[sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_fs57t"]
+texture = ExtResource("1_khvuk")
+texture_type = 2
+
+[sub_resource type="VisualShaderNodeFloatParameter" id="VisualShaderNodeFloatParameter_yebw3"]
+parameter_name = "Normal_Depth"
+qualifier = 2
+default_value_enabled = true
+default_value = 0.5
+
+[sub_resource type="VisualShaderNodeFloatConstant" id="VisualShaderNodeFloatConstant_vyn5b"]
+constant = 0.8
+
+[resource]
+code = "shader_type spatial;
+render_mode blend_mix, depth_draw_opaque, cull_back, diffuse_lambert, specular_schlick_ggx;
+
+uniform sampler2D tex_frg_3 : hint_normal;
+instance uniform float Normal_Depth = 0.5;
+
+
+
+void fragment() {
+// ColorConstant:2
+	vec4 n_out2p0 = vec4(0.648613, 0.000006, 0.422332, 1.000000);
+
+
+// FloatConstant:5
+	float n_out5p0 = 0.800000;
+
+
+// Texture2D:3
+	vec4 n_out3p0 = texture(tex_frg_3, UV);
+
+
+// FloatParameter:4
+	float n_out4p0 = Normal_Depth;
+
+
+// Output:0
+	ALBEDO = vec3(n_out2p0.xyz);
+	ALPHA = n_out5p0;
+	EMISSION = vec3(n_out2p0.xyz);
+	NORMAL = vec3(n_out3p0.xyz);
+	NORMAL_MAP_DEPTH = n_out4p0;
+
+
+}
+"
+graph_offset = Vector2(-447.445, -145.183)
+nodes/fragment/0/position = Vector2(400, 120)
+nodes/fragment/2/node = SubResource("VisualShaderNodeColorConstant_fd0xc")
+nodes/fragment/2/position = Vector2(120, -100)
+nodes/fragment/3/node = SubResource("VisualShaderNodeTexture_fs57t")
+nodes/fragment/3/position = Vector2(80, 220)
+nodes/fragment/4/node = SubResource("VisualShaderNodeFloatParameter_yebw3")
+nodes/fragment/4/position = Vector2(40, 480)
+nodes/fragment/5/node = SubResource("VisualShaderNodeFloatConstant_vyn5b")
+nodes/fragment/5/position = Vector2(60, 80)
+nodes/fragment/connections = PackedInt32Array(2, 0, 0, 0, 3, 0, 0, 8, 4, 0, 0, 10, 5, 0, 0, 1, 2, 0, 0, 5)
