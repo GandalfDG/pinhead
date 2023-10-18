@@ -12,4 +12,5 @@ sky_material = SubResource("PanoramaSkyMaterial_ulp3p")
 background_mode = 2
 sky = SubResource("Sky_wacxx")
 ambient_light_source = 3
+ambient_light_sky_contribution = 0.1
 tonemap_mode = 2

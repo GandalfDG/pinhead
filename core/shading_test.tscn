@@ -1,10 +1,12 @@
-[gd_scene load_steps=5 format=3 uid="uid://dy7kepbffgono"]
+[gd_scene load_steps=6 format=3 uid="uid://dy7kepbffgono"]
 
 [ext_resource type="Environment" uid="uid://c3uhtoawenwlm" path="res://materials/hdri_environment.tres" id="1_7i4jd"]
 [ext_resource type="PackedScene" uid="uid://g20s2ow4bih3" path="res://elements/playfield_inserts/round_insert.tscn" id="2_b0lho"]
 [ext_resource type="Script" path="res://plugins/free_look_camera.gd" id="3_ysbhx"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_iirxi"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_6er1x"]
 
 [node name="shading_test" type="Node3D"]
 
@@ -16,11 +18,22 @@ transform = Transform3D(0.777146, -0.529284, 0.340444, 0, 0.540971, 0.841041, -0
 script = ExtResource("3_ysbhx")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.999991, -0.0021486, 0.00379763, 0, 0.870356, 0.492424, -0.00436331, -0.492419, 0.870347, 0.0151905, 1.34318, -2.27991)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.08534, 0.278518, -0.037353)
 mesh = SubResource("BoxMesh_iirxi")
 skeleton = NodePath("../Camera3D")
 
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.209511, 0)
+cast_shadow = 0
+mesh = SubResource("PlaneMesh_6er1x")
+
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(0.98668, -0.0854744, 0.138406, 1.79276e-08, 0.850829, 0.525442, -0.162671, -0.518443, 0.839497, -4.23043, 1.65838, 3.05549)
+transform = Transform3D(0.98668, -0.0854742, 0.138405, 7.75539e-09, 0.850829, 0.525442, -0.162671, -0.518443, 0.839497, -4.23043, 1.65838, 3.05549)
+visible = false
 
 [node name="round_insert" parent="." instance=ExtResource("2_b0lho")]
+
+[node name="Bulb" parent="round_insert" index="3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00730991, -0.164845, 0)
+
+[editable path="round_insert"]
