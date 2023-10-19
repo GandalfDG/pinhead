@@ -19,13 +19,11 @@ script = ExtResource("3_ysbhx")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.08534, 0.278518, -0.037353)
-visible = false
 mesh = SubResource("BoxMesh_iirxi")
 skeleton = NodePath("../Camera3D")
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.209511, 0)
-visible = false
 cast_shadow = 0
 mesh = SubResource("PlaneMesh_6er1x")
 
@@ -36,11 +34,10 @@ visible = false
 [node name="round_insert" parent="." instance=ExtResource("2_b0lho")]
 base_color = Color(0.890196, 0, 0.482353, 1)
 
-[node name="Bulb" parent="round_insert" index="3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00730991, -0.229291, 0)
-visible = false
-
-[node name="OmniLight3D" parent="round_insert/Bulb" index="0"]
-visible = false
+[node name="OmniLight3D" parent="round_insert" index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0252169, -0.154828, -0.068031)
+light_color = Color(0.644583, 0.271518, 0.569525, 1)
+light_energy = 0.29
+omni_attenuation = 5.46415
 
 [editable path="round_insert"]

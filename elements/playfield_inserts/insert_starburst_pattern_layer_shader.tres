@@ -1,0 +1,110 @@
+[gd_resource type="Shader" format=3 uid="uid://4tgfnkedtii7"]
+
+[resource]
+code = "shader_type spatial;
+render_mode blend_mix, depth_draw_opaque, cull_back, diffuse_lambert, specular_schlick_ggx;
+
+uniform vec4 BaseColor : source_color = vec4(0.109229, 0.650593, 0.000001, 1.000000);
+uniform sampler2D tex_frg_19;
+uniform float Transparency = 1;
+uniform float Metallic : hint_range(0, 1) = 1;
+uniform float Roughness;
+uniform float Specular;
+uniform float EmissionMultiplier : hint_range(0, 10) = 0.10000000149012;
+uniform sampler2D PatternHeight;
+uniform sampler2D LensPatternNormal : hint_normal, filter_linear_mipmap;
+uniform float NormalDepth : hint_range(0, 5);
+uniform float Clearcoat : hint_range(0, 10);
+
+
+
+void fragment() {
+// ColorParameter:4
+	vec4 n_out4p0 = BaseColor;
+
+
+// Texture2D:19
+	vec4 n_out19p0 = texture(tex_frg_19, UV);
+	float n_out19p1 = n_out19p0.r;
+
+
+// Compare:21
+	float n_in21p1 = 0.50000;
+	bool n_out21p0 = n_out19p1 >= n_in21p1;
+
+
+// FloatParameter:18
+	float n_out18p0 = Transparency;
+
+
+	float n_out20p0;
+// Switch:20
+	float n_in20p2 = 0.00000;
+	n_out20p0 = mix(n_in20p2, n_out18p0, float(n_out21p0));
+
+
+// FloatParameter:6
+	float n_out6p0 = Metallic;
+
+
+// FloatParameter:13
+	float n_out13p0 = Roughness;
+
+
+// FloatParameter:12
+	float n_out12p0 = Specular;
+
+
+// FloatParameter:10
+	float n_out10p0 = EmissionMultiplier;
+
+
+// VectorOp:11
+	vec3 n_out11p0 = vec3(n_out4p0.xyz) * vec3(n_out10p0);
+
+
+// FloatConstant:26
+	float n_out26p0 = 0.100000;
+
+
+	vec4 n_out24p0;
+// Texture2D:24
+	n_out24p0 = texture(PatternHeight, UV);
+	float n_out24p1 = n_out24p0.r;
+
+
+// FloatOp:28
+	float n_out28p0 = n_out26p0 + n_out24p1;
+
+
+// VectorOp:27
+	vec3 n_out27p0 = n_out11p0 * vec3(n_out28p0);
+
+
+	vec4 n_out3p0;
+// Texture2D:3
+	n_out3p0 = texture(LensPatternNormal, UV);
+
+
+// FloatParameter:7
+	float n_out7p0 = NormalDepth;
+
+
+// FloatParameter:8
+	float n_out8p0 = Clearcoat;
+
+
+// Output:0
+	ALBEDO = vec3(n_out4p0.xyz);
+	ALPHA = n_out20p0;
+	METALLIC = n_out6p0;
+	ROUGHNESS = n_out13p0;
+	SPECULAR = n_out12p0;
+	EMISSION = n_out27p0;
+	NORMAL_MAP = vec3(n_out3p0.xyz);
+	NORMAL_MAP_DEPTH = n_out7p0;
+	CLEARCOAT = n_out8p0;
+
+
+}
+"
