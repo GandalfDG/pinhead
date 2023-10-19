@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://d0spl613h8ksn"]
+
+[node name="CSGPlayfield" type="CSGCombiner3D"]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+size = Vector3(25, 1, 54.25)
