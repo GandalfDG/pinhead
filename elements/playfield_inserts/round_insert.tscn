@@ -1,34 +1,28 @@
-[gd_scene load_steps=10 format=3 uid="uid://g20s2ow4bih3"]
+[gd_scene load_steps=11 format=3 uid="uid://g20s2ow4bih3"]
 
 [ext_resource type="Environment" uid="uid://c3uhtoawenwlm" path="res://materials/hdri_environment.tres" id="1_7udda"]
+[ext_resource type="Script" path="res://elements/playfield_inserts/insert.gd" id="1_m3dhu"]
 [ext_resource type="Material" uid="uid://vkhnrcfh3d5e" path="res://elements/playfield_inserts/insert_shader.material" id="2_56et1"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_13ydc"]
-transparency = 1
-albedo_color = Color(0, 0.262745, 0.4, 0.839216)
-metallic = 0.33
-metallic_specular = 0.1
-roughness = 0.08
-clearcoat = 0.06
-clearcoat_roughness = 0.15
-refraction_scale = 0.11
+[ext_resource type="Material" uid="uid://cuu6pjlw4av75" path="res://elements/playfield_inserts/insert_top_layer_material.tres" id="4_utevv"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_embt3"]
-material = SubResource("StandardMaterial3D_13ydc")
+material = ExtResource("4_utevv")
+size = Vector2(1, 1)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_ed8on"]
 material = ExtResource("2_56et1")
+size = Vector2(1, 1)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_efuyw"]
-albedo_color = Color(0.988235, 0.960784, 0.815686, 1)
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ysn3m"]
+albedo_color = Color(0, 0, 0, 1)
 emission_enabled = true
-emission = Color(0.768627, 0.768627, 0.768627, 1)
-emission_energy_multiplier = 14.71
+emission = Color(0.87451, 0.541176, 0.0901961, 1)
+emission_energy_multiplier = 0.27
 
-[sub_resource type="SphereMesh" id="SphereMesh_rgab4"]
-material = SubResource("StandardMaterial3D_efuyw")
-radius = 0.905
-height = 0.335
+[sub_resource type="SphereMesh" id="SphereMesh_islmt"]
+material = SubResource("StandardMaterial3D_ysn3m")
+radius = 0.202
+height = 0.3
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rsacn"]
 specular_mode = 2
@@ -37,38 +31,36 @@ albedo_color = Color(0.00392157, 0.109804, 0.176471, 1)
 [sub_resource type="CylinderMesh" id="CylinderMesh_oj8r7"]
 material = SubResource("StandardMaterial3D_rsacn")
 flip_faces = true
-top_radius = 1.0
-bottom_radius = 1.0
 height = 0.2
 cap_top = false
 
 [node name="round_insert" type="Node3D"]
+script = ExtResource("1_m3dhu")
+base_color = Color(0.964706, 0.203922, 0.415686, 1)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource("1_7udda")
 
 [node name="FlatSurface" type="MeshInstance3D" parent="."]
-visible = false
+cast_shadow = 0
 mesh = SubResource("PlaneMesh_embt3")
 
 [node name="PatternedSurface" type="MeshInstance3D" parent="."]
-transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, 0, -0.0658136, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0545464, 0)
 cast_shadow = 0
 mesh = SubResource("PlaneMesh_ed8on")
 
-[node name="InsertBulb" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.31787, 0)
-visible = false
-mesh = SubResource("SphereMesh_rgab4")
+[node name="Bulb" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0901601, -0.288688, 0)
+mesh = SubResource("SphereMesh_islmt")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Bulb"]
+light_color = Color(0.219608, 0.541176, 0.847059, 1)
+omni_range = 3.433
+omni_attenuation = 0.435277
 
 [node name="InsertCup" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, 0)
 cast_shadow = 0
 mesh = SubResource("CylinderMesh_oj8r7")
 skeleton = NodePath("../PatternedSurface")
-
-[node name="OmniLight3D" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.215933, 0)
-light_color = Color(0.230629, 0.615754, 0.314157, 1)
-omni_range = 3.433
-omni_attenuation = 0.435277
