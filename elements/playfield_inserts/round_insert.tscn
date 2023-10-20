@@ -1,21 +1,21 @@
 [gd_scene load_steps=9 format=3 uid="uid://ct547iacw40w3"]
 
 [ext_resource type="Script" path="res://elements/playfield_inserts/insert.gd" id="1_m3dhu"]
-[ext_resource type="Material" uid="uid://cuu6pjlw4av75" path="res://elements/playfield_inserts/materials/insert_top_layer_material.tres" id="2_84qv2"]
-[ext_resource type="Material" uid="uid://vkhnrcfh3d5e" path="res://elements/playfield_inserts/materials/insert_shader.material" id="3_0ytgt"]
+[ext_resource type="Material" uid="uid://vkhnrcfh3d5e" path="res://elements/playfield_inserts/materials/insert_pattern.material" id="2_44fqa"]
+[ext_resource type="Material" uid="uid://bht7a7ytejwud" path="res://elements/playfield_inserts/materials/insert_top_layer.material" id="3_2h5e7"]
 [ext_resource type="PackedScene" uid="uid://km6cl6f1o78m" path="res://utilities/playfield_cutout/PlayfieldCutout.tscn" id="4_a38tw"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_embt3"]
-material = ExtResource("2_84qv2")
+material = ExtResource("3_2h5e7")
 size = Vector2(1, 1)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_ed8on"]
-material = ExtResource("3_0ytgt")
+material = ExtResource("2_44fqa")
 size = Vector2(1, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rsacn"]
 specular_mode = 2
-albedo_color = Color(0.333333, 0.333333, 0.333333, 1)
+albedo_color = Color(0.239216, 0.239216, 0.239216, 1)
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_oj8r7"]
 material = SubResource("StandardMaterial3D_rsacn")
@@ -25,7 +25,7 @@ cap_top = false
 
 [node name="round_insert" type="Node3D"]
 script = ExtResource("1_m3dhu")
-base_color = Color(0.698039, 0, 0.290196, 1)
+base_color = Color(0.152941, 0.152941, 0.152941, 1)
 
 [node name="FlatSurface" type="MeshInstance3D" parent="."]
 cast_shadow = 0
@@ -38,8 +38,7 @@ mesh = SubResource("PlaneMesh_ed8on")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.115629, 0)
-visible = false
-light_color = Color(0.572549, 0.388235, 0.231373, 1)
+light_color = Color(0, 0.501961, 0.478431, 1)
 light_energy = 1.305
 light_size = 0.1
 omni_attenuation = 4.28709
@@ -55,4 +54,5 @@ skeleton = NodePath("../PatternedSurface")
 visible = false
 
 [node name="CSGCylinder3D" type="CSGCylinder3D" parent="PlayfieldCutout"]
+height = 1.0
 sides = 32

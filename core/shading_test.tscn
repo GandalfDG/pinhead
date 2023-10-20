@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://dy7kepbffgono"]
+[gd_scene load_steps=7 format=3 uid="uid://dy7kepbffgono"]
 
 [ext_resource type="Environment" uid="uid://c3uhtoawenwlm" path="res://materials/hdri_environment.tres" id="1_7i4jd"]
-[ext_resource type="PackedScene" uid="uid://g20s2ow4bih3" path="res://elements/playfield_inserts/round_insert.tscn" id="2_b0lho"]
+[ext_resource type="PackedScene" uid="uid://ct547iacw40w3" path="res://elements/playfield_inserts/round_insert.tscn" id="2_b0lho"]
 [ext_resource type="Script" path="res://plugins/free_look_camera.gd" id="3_ysbhx"]
+[ext_resource type="PackedScene" uid="uid://d1roo8csw0bth" path="res://elements/ball.tscn" id="4_0h4wf"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_iirxi"]
 
@@ -32,12 +33,13 @@ transform = Transform3D(0.98668, -0.0854742, 0.138405, 7.75539e-09, 0.850829, 0.
 visible = false
 
 [node name="round_insert" parent="." instance=ExtResource("2_b0lho")]
-base_color = Color(0.890196, 0, 0.482353, 1)
+base_color = Color(0.678431, 0.00392157, 0, 1)
 
 [node name="OmniLight3D" parent="round_insert" index="2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0252169, -0.154828, -0.068031)
-light_color = Color(0.644583, 0.271518, 0.569525, 1)
-light_energy = 0.29
-omni_attenuation = 5.46415
+light_color = Color(0.615686, 0.266667, 0.137255, 1)
+omni_range = 0.845
+
+[node name="Ball" parent="." instance=ExtResource("4_0h4wf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.511133, 0.451702, -0.895605)
 
 [editable path="round_insert"]
