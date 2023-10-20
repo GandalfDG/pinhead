@@ -1,7 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://f8wiwsq65etm"]
-
-[ext_resource type="Script" path="res://elements/playfield_inserts/insert.gd" id="1_yp5gy"]
-
-[node name="insert" type="Node3D"]
-script = ExtResource("1_yp5gy")
-base_color = Color(0.894118, 0.678431, 0, 1)
