@@ -1,6 +1,13 @@
-[gd_scene format=3 uid="uid://d0spl613h8ksn"]
+[gd_scene load_steps=2 format=3 uid="uid://d0spl613h8ksn"]
+
+[ext_resource type="Script" path="res://utilities/playfield_cutout/CSGPlayfield.gd" id="1_8iao2"]
 
 [node name="CSGPlayfield" type="CSGCombiner3D"]
+script = ExtResource("1_8iao2")
 
 [node name="CSGBox3D" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
 size = Vector3(25, 1, 54.25)
+
+[connection signal="child_entered_tree" from="." to="." method="_on_child_entered_tree"]
+[connection signal="child_exiting_tree" from="." to="." method="_on_child_exiting_tree"]

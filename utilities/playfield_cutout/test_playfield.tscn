@@ -1,14 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://bd88gqyajis8u"]
+[gd_scene load_steps=2 format=3 uid="uid://bd88gqyajis8u"]
 
 [ext_resource type="PackedScene" uid="uid://d0spl613h8ksn" path="res://utilities/playfield_cutout/CSGPlayfield.tscn" id="1_kv3pa"]
-[ext_resource type="PackedScene" uid="uid://km6cl6f1o78m" path="res://utilities/playfield_cutout/PlayfieldCutout.tscn" id="2_saikt"]
 
 [node name="test_playfield" type="Node3D"]
 
 [node name="CSGPlayfield" parent="." instance=ExtResource("1_kv3pa")]
-
-[node name="PlayfieldCutout" parent="CSGPlayfield" instance=ExtResource("2_saikt")]
-
-[node name="CSGCylinder3D" type="CSGCylinder3D" parent="CSGPlayfield/PlayfieldCutout"]
-radius = 2.0
-height = 4.0

@@ -1,4 +1,5 @@
 extends CSGCombiner3D
+class_name PlayfieldCutout
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
