@@ -5,7 +5,7 @@
 [resource]
 render_priority = 0
 shader = ExtResource("1_pw8m5")
-shader_parameter/BaseColor = Color(0.964706, 0.203922, 0.415686, 1)
+shader_parameter/BaseColor = Color(0.890196, 0, 0.482353, 1)
 shader_parameter/Transparency = 0.1
 shader_parameter/Metallic = 0.2
 shader_parameter/Roughness = 0.71
