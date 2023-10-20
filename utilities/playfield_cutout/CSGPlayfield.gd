@@ -16,10 +16,13 @@ func _process(delta):
 func _on_child_entered_tree(node: Node):
 	await node.ready
 	var cutouts = node.find_children("*", "PlayfieldCutout")
-	if cutouts:
-		cutout_nodes[node.name] = cutouts
+	if cutouts and cutouts.size() < 2:
 		for cutout in cutouts:
+			cutout_nodes[node.name] = cutout
 			cutout.reparent(self)
+			node.reparent(cutout)
+	else:
+		print("weewoo")
 			
 	print(cutout_nodes)
 
