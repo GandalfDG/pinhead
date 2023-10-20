@@ -12,7 +12,7 @@ var scoring_nodes: Array[Node] = []
 func _get_configuration_warnings():
 	var warnings = []
 	if scoring_nodes.size() < 1:
-		warnings.append("No sibling nodes emit a score signal")
+		warnings.append("No sibling nodes emit a trigger_score signal")
 
 	return warnings
 

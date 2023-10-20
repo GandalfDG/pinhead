@@ -1,6 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://b6lutlv2hiprv"]
+[gd_scene load_steps=7 format=3 uid="uid://b6lutlv2hiprv"]
 
 [ext_resource type="Script" path="res://elements/drop_target/TargetBody.gd" id="2_200gm"]
+[ext_resource type="PackedScene" uid="uid://cuvli1al3jibs" path="res://utilities/code_components/TriggerableElement.tscn" id="3_73kfd"]
+[ext_resource type="PackedScene" uid="uid://b0t40leiarlgs" path="res://utilities/code_components/ScoringElement.tscn" id="4_5rpd8"]
 [ext_resource type="PackedScene" uid="uid://bxw7ll8xbtbw" path="res://utilities/physics_components/AxisSpring.tscn" id="4_it7ll"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_1xxcr"]
@@ -37,3 +39,9 @@ shape = SubResource("BoxShape3D_f8gd0")
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
 spring_stiffness = 30.0
 spring_preload = 2.0
+
+[node name="TriggerableElement" parent="." instance=ExtResource("3_73kfd")]
+
+[node name="ScoringElement" parent="." instance=ExtResource("4_5rpd8")]
+
+[connection signal="trigger" from="TriggerableElement" to="TargetBody" method="_on_triggerable_element_trigger"]

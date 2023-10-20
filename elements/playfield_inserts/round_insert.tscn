@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://g20s2ow4bih3"]
+[gd_scene load_steps=9 format=3 uid="uid://ct547iacw40w3"]
 
 [ext_resource type="Script" path="res://elements/playfield_inserts/insert.gd" id="1_m3dhu"]
 [ext_resource type="Material" uid="uid://cuu6pjlw4av75" path="res://elements/playfield_inserts/materials/insert_top_layer_material.tres" id="2_84qv2"]
-[ext_resource type="Material" uid="uid://vkhnrcfh3d5e" path="res://elements/playfield_inserts/materials/insert_shader.material" id="3_u0a0b"]
+[ext_resource type="Material" uid="uid://vkhnrcfh3d5e" path="res://elements/playfield_inserts/insert_shader.material" id="3_u0a0b"]
+[ext_resource type="PackedScene" uid="uid://km6cl6f1o78m" path="res://utilities/playfield_cutout/PlayfieldCutout.tscn" id="4_a38tw"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_embt3"]
 material = ExtResource("2_84qv2")
@@ -48,3 +49,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, 0)
 cast_shadow = 0
 mesh = SubResource("CylinderMesh_oj8r7")
 skeleton = NodePath("../PatternedSurface")
+
+[node name="PlayfieldCutout" parent="." instance=ExtResource("4_a38tw")]
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="PlayfieldCutout"]
+sides = 32

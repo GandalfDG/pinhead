@@ -8,8 +8,8 @@ class_name InsertBase
 		top_layer_material.set_shader_parameter("BaseColor", color)
 		base_color = color
 
-@export var pattern_layer_material: ShaderMaterial = preload("res://elements/playfield_inserts/insert_shader.material")
-@export var top_layer_material: ShaderMaterial = preload("res://elements/playfield_inserts/insert_top_layer_material.tres")
+@export var pattern_layer_material: ShaderMaterial = preload("res://elements/playfield_inserts/materials/insert_shader.material")
+@export var top_layer_material: ShaderMaterial = preload("res://elements/playfield_inserts/materials/insert_top_layer_material.tres")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

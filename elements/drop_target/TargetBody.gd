@@ -1,9 +1,10 @@
 extends RigidBody3D
 
 signal BehaviorActivated(active)
+signal trigger_score
 
 @onready var joint: JoltGeneric6DOFJoint3D = $"../TiltAndSlideJoint"
-@onready var reset_solenoid = $ResetSolenoid
+
 
 var dropped: bool = false
 
@@ -25,8 +26,10 @@ func _physics_process(_delta):
 	
 	if not dropped and position.y < -0.5:
 		dropped =  true
+		trigger_score.emit()
 		
 	if  dropped and position.y > -0.5:
 		dropped = false
 
-	
+func _on_triggerable_element_trigger():
+	reset()

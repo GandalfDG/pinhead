@@ -1,25 +1,17 @@
-[gd_scene load_steps=8 format=3 uid="uid://dcvo5ah70qi2a"]
+[gd_scene load_steps=7 format=3 uid="uid://dcvo5ah70qi2a"]
 
 [ext_resource type="Script" path="res://plugins/free_look_camera.gd" id="1_7mt0k"]
+[ext_resource type="Environment" uid="uid://c3uhtoawenwlm" path="res://materials/hdri_environment.tres" id="1_7rx4a"]
 [ext_resource type="PackedScene" uid="uid://bayeondowqkqd" path="res://core/playfield.tscn" id="2_mx5vv"]
 [ext_resource type="PackedScene" uid="uid://bw4hhnrj7m1jh" path="res://utilities/debug_tools/debug_ball_spawner.tscn" id="3_64lxw"]
-
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_yc56g"]
-
-[sub_resource type="Sky" id="Sky_r0yw6"]
-sky_material = SubResource("ProceduralSkyMaterial_yc56g")
-
-[sub_resource type="Environment" id="Environment_cupc5"]
-background_mode = 2
-background_energy_multiplier = 2.9
-sky = SubResource("Sky_r0yw6")
+[ext_resource type="PackedScene" uid="uid://6oin2mw1xy1l" path="res://utilities/code_components/GameController.tscn" id="4_3iuw8"]
 
 [sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_rw54l"]
 
 [node name="Cabinet" type="Node3D"]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_cupc5")
+environment = ExtResource("1_7rx4a")
 camera_attributes = SubResource("CameraAttributesPractical_rw54l")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
@@ -40,3 +32,5 @@ speed_scale = 10.0
 transform = Transform3D(1, 0, 0, 0, 0.994522, -0.104528, 0, 0.104528, 0.994522, 0, 0, 0)
 
 [node name="DebugBallSpawner" parent="Playfield" instance=ExtResource("3_64lxw")]
+
+[node name="GameController" parent="." instance=ExtResource("4_3iuw8")]
