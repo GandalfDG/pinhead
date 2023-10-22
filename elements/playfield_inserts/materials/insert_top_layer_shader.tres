@@ -1,9 +1,10 @@
 [gd_resource type="VisualShader" load_steps=13 format=3 uid="uid://b5xcbg3y6vnj4"]
 
-[ext_resource type="Texture2D" uid="uid://bna6tv7ojqb0q" path="res://image_assets/playfield_insert_textures/insert_mask.png" id="1_27nwa"]
+[ext_resource type="Texture2D" uid="uid://mhksbdthsk0a" path="res://image_assets/playfield_insert_textures/insert_mask.png" id="1_27nwa"]
 
 [sub_resource type="VisualShaderNodeFloatParameter" id="VisualShaderNodeFloatParameter_626jx"]
 parameter_name = "EmissionMultiplier"
+qualifier = 2
 hint = 1
 max = 10.0
 default_value_enabled = true
@@ -41,6 +42,7 @@ function = 3
 [sub_resource type="VisualShaderNodeColorParameter" id="VisualShaderNodeColorParameter_610uf"]
 expanded_output_ports = [0]
 parameter_name = "BaseColor"
+qualifier = 2
 default_value_enabled = true
 default_value = Color(0.109229, 0.650593, 5.77569e-07, 1)
 
@@ -59,13 +61,13 @@ max = 10.0
 code = "shader_type spatial;
 render_mode blend_mix, depth_draw_opaque, cull_back, diffuse_lambert, specular_schlick_ggx;
 
-uniform vec4 BaseColor : source_color = vec4(0.109229, 0.650593, 0.000001, 1.000000);
+instance uniform vec4 BaseColor : source_color = vec4(0.109229, 0.650593, 0.000001, 1.000000);
 uniform sampler2D tex_frg_19;
 uniform float Transparency = 1;
 uniform float Metallic : hint_range(0, 1) = 1;
 uniform float Roughness;
 uniform float Specular;
-uniform float EmissionMultiplier : hint_range(0, 10) = 0.10000000149012;
+instance uniform float EmissionMultiplier : hint_range(0, 10) = 0.10000000149012;
 uniform float Clearcoat : hint_range(0, 10);
 
 
@@ -131,6 +133,7 @@ void fragment() {
 
 }
 "
+graph_offset = Vector2(-190.54, -1001.06)
 nodes/fragment/0/position = Vector2(1740, -160)
 nodes/fragment/4/node = SubResource("VisualShaderNodeColorParameter_610uf")
 nodes/fragment/4/position = Vector2(-60, -820)
