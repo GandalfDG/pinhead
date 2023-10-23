@@ -1,58 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://ct547iacw40w3"]
+[gd_scene load_steps=2 format=3 uid="uid://ct547iacw40w3"]
 
-[ext_resource type="Script" path="res://elements/playfield_inserts/insert.gd" id="1_m3dhu"]
-[ext_resource type="Material" uid="uid://vkhnrcfh3d5e" path="res://elements/playfield_inserts/materials/insert_pattern.material" id="2_44fqa"]
-[ext_resource type="Material" uid="uid://bht7a7ytejwud" path="res://elements/playfield_inserts/materials/insert_top_layer.material" id="3_2h5e7"]
-[ext_resource type="PackedScene" uid="uid://km6cl6f1o78m" path="res://utilities/playfield_cutout/PlayfieldCutout.tscn" id="4_a38tw"]
+[ext_resource type="PackedScene" uid="uid://f8wiwsq65etm" path="res://elements/playfield_inserts/PlayfieldInsert.tscn" id="1_w5uxu"]
 
-[sub_resource type="PlaneMesh" id="PlaneMesh_embt3"]
-material = ExtResource("3_2h5e7")
-size = Vector2(1, 1)
+[node name="PlayfieldInsert" instance=ExtResource("1_w5uxu")]
 
-[sub_resource type="PlaneMesh" id="PlaneMesh_ed8on"]
-material = ExtResource("2_44fqa")
-size = Vector2(1, 1)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rsacn"]
-specular_mode = 2
-albedo_color = Color(0.239216, 0.239216, 0.239216, 1)
-
-[sub_resource type="CylinderMesh" id="CylinderMesh_oj8r7"]
-material = SubResource("StandardMaterial3D_rsacn")
-flip_faces = true
-height = 0.2
-cap_top = false
-
-[node name="round_insert" type="Node3D"]
-script = ExtResource("1_m3dhu")
-base_color = Color(0.152941, 0.152941, 0.152941, 1)
-
-[node name="FlatSurface" type="MeshInstance3D" parent="."]
-cast_shadow = 0
-mesh = SubResource("PlaneMesh_embt3")
-
-[node name="PatternedSurface" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0545464, 0)
-cast_shadow = 0
-mesh = SubResource("PlaneMesh_ed8on")
-
-[node name="OmniLight3D" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.115629, 0)
-light_color = Color(0, 0.501961, 0.478431, 1)
-light_energy = 1.305
-light_size = 0.1
-omni_attenuation = 4.28709
-omni_shadow_mode = 0
-
-[node name="InsertCup" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, 0)
-cast_shadow = 0
-mesh = SubResource("CylinderMesh_oj8r7")
-skeleton = NodePath("../PatternedSurface")
-
-[node name="PlayfieldCutout" parent="." instance=ExtResource("4_a38tw")]
-visible = false
-
-[node name="CSGCylinder3D" type="CSGCylinder3D" parent="PlayfieldCutout"]
-height = 1.0
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="InsertCutout" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.103531, 0)
+height = 0.244388
 sides = 32
