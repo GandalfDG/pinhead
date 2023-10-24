@@ -8,15 +8,15 @@ class_name PlayfieldInsert
 @export_group("Color")
 @export_color_no_alpha var base_color: Color:
 	set(color):
-		pattern_layer_material.set_shader_parameter("BaseColor", color)
-		top_layer_material.set_shader_parameter("BaseColor", color)
+		pattern_layer_mesh.set_instance_shader_parameter("BaseColor", color)
+		top_layer_mesh.set_instance_shader_parameter("BaseColor", color)
 		base_color = color
 		
 @export_group("Lighting")
 @export var material_emission_multiplier: float = 1:
 	set(multiplier):
-		pattern_layer_material.set_shader_parameter("EmissionMultiplier", multiplier)
-#		top_layer_material.set_shader_parameter("EmissionMultiplier", multiplier)
+		pattern_layer_mesh.set_instance_shader_parameter("EmissionMultiplier", multiplier)
+		top_layer_mesh.set_instance_shader_parameter("EmissionMultiplier", multiplier)
 		material_emission_multiplier = multiplier
 
 @export var pattern_layer_material: ShaderMaterial = preload("res://elements/playfield_inserts/materials/insert_pattern.material")
@@ -30,6 +30,8 @@ class_name PlayfieldInsert
 func _ready():
 	pattern_layer_mesh.mesh.surface_set_material(0, pattern_layer_material)
 	top_layer_mesh.mesh.surface_set_material(0, top_layer_material)
+	
+	set_editable_instance(bulb_light, true)
 
 
 
