@@ -16,19 +16,22 @@ size = Vector2(1, 1)
 
 [node name="PlayfieldInsert" type="Node3D"]
 script = ExtResource("1_yp5gy")
-base_color = Color(0.898039, 0.0666667, 0, 1)
-material_emission_multiplier = 30.0
+base_color = Color(0, 0.541176, 0.619608, 1)
 
 [node name="Meshes" type="Node3D" parent="."]
 
 [node name="TopSurface" type="MeshInstance3D" parent="Meshes"]
 editor_description = "The smooth top surface of the insert"
+instance_shader_parameters/BaseColor = Color(0, 0.541176, 0.619608, 1)
+instance_shader_parameters/EmissionMultiplier = 1.0
 mesh = SubResource("PlaneMesh_66xet")
 skeleton = NodePath("../..")
 
 [node name="PatternedSurface" type="MeshInstance3D" parent="Meshes"]
 editor_description = "The lower surface of the insert which may have a pattern applied with its material"
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0719448, 0)
+instance_shader_parameters/BaseColor = Color(0, 0.541176, 0.619608, 1)
+instance_shader_parameters/EmissionMultiplier = 1.0
 mesh = SubResource("PlaneMesh_iby21")
 skeleton = NodePath("../..")
 
@@ -42,6 +45,7 @@ skeleton = NodePath("../..")
 
 [node name="BulbLight" type="OmniLight3D" parent="Lighting"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.164976, 0)
+visible = false
 light_color = Color(0.937255, 0.0627451, 0, 1)
 light_energy = 2.895
 omni_range = 1.0
