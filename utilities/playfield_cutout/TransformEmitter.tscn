@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://c7e1permc7nm7"]
+
+[ext_resource type="Script" path="res://utilities/playfield_cutout/TransformEmitter.gd" id="1_5oak3"]
+
+[node name="TransformEmitter" type="Node3D"]
+script = ExtResource("1_5oak3")
