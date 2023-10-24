@@ -25,6 +25,7 @@ func _on_child_entered_tree(node: Node):
 			cutout.set_owner(get_tree().edited_scene_root)
 			var transform_emitter = TransformEmitter.new()
 			node.add_child(transform_emitter)
+			transform_emitter.set_owner(get_tree().edited_scene_root)
 			transform_emitter.connect("transform_changed", update_cutout_transform.bind(node.name))
 			
 	else:
@@ -36,7 +37,7 @@ func _on_child_exiting_tree(node):
 	var cutouts = cutout_nodes.get(node.name)
 	if cutouts:
 		for cutout in cutouts:
-			cutout.queue_free()
+			cutout.reparent(node)
 
 func update_cutout_transform(new_transform: Transform3D, node_name: StringName):
 	for cutout in cutout_nodes[node_name]:
