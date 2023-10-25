@@ -11,11 +11,17 @@ func _ready():
 	acquire_child_cutouts()
 
 func _exit_tree():
+
 	pass
 
-func acquire_child_cutouts():
+func acquire_child_cutouts(new_node=null):
 	# get every child PlayfieldCutout node recursively
-	var cutout_child_nodes = find_children("*", "PlayfieldCutout")
+	var cutout_child_nodes
+	if new_node:
+		cutout_child_nodes = new_node.find_children("*", "PlayfieldCutout")
+	else:
+		cutout_child_nodes = find_children("*", "PlayfieldCutout")
+
 	print(cutout_child_nodes)
 
 	for node in cutout_child_nodes:
@@ -52,7 +58,8 @@ func reparent_and_replace(cutout_node: Node, parent_node: Node):
 	
 func _on_child_entered_tree(node: Node):
 	await node.ready
-	acquire_child_cutouts()
+	print(node.name + " ready")
+	acquire_child_cutouts(node)
 	
 
 func _on_child_exiting_tree(node):
