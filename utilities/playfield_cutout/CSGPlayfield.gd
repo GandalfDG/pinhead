@@ -8,36 +8,55 @@ var cutout_nodes: Dictionary
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	acquire_child_cutouts()
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _exit_tree():
 	pass
+
+func acquire_child_cutouts():
+	# get every child PlayfieldCutout node recursively
+	var cutout_child_nodes = find_children("*", "PlayfieldCutout")
+	print(cutout_child_nodes)
+
+	for node in cutout_child_nodes:
+		var parent_node = node.find_parent("*")
+	
+		if !cutout_nodes.has(parent_node.name):
+			cutout_nodes[parent_node.name] = []
+		
+		cutout_nodes[parent_node.name].append(node)
+
+		reparent_and_replace(node, parent_node)
+
+	print(cutout_nodes)
+
+func return_child_cutouts(parent_node: Node):
+	if cutout_nodes.has(parent_node.name):
+		# remove transform emitters
+		var emitters = parent_node.find_children("*", "TransformEmitter", false)
+		for emitter in emitters:
+			emitter.queue_free()
+
+		# return the cutout to its owner
+		for node in cutout_nodes[parent_node.name]:
+			node.reparent(parent_node)
+
+		cutout_nodes.erase(parent_node.name)
+
+
+func reparent_and_replace(cutout_node: Node, parent_node: Node):
+	var transform_emitter = TransformEmitter.new()
+	parent_node.add_child(transform_emitter)
+	transform_emitter.connect("transform_changed", update_cutout_transform.bind(parent_node.name))
+	cutout_node.reparent(self)
 	
 func _on_child_entered_tree(node: Node):
 	await node.ready
-	var cutouts = node.find_children("*", "PlayfieldCutout")
-	if cutouts:
-		cutout_nodes[node.name] = []
-		for cutout in cutouts:
-			cutout_nodes[node.name].append(cutout)
-			cutout.reparent(self)
-			cutout.set_owner(get_tree().edited_scene_root)
-			var transform_emitter = TransformEmitter.new()
-			node.add_child(transform_emitter)
-			transform_emitter.set_owner(get_tree().edited_scene_root)
-			transform_emitter.connect("transform_changed", update_cutout_transform.bind(node.name))
-			
-	else:
-		print("weewoo")
-			
-	print(cutout_nodes)
+	acquire_child_cutouts()
+	
 
 func _on_child_exiting_tree(node):
-	var cutouts = cutout_nodes.get(node.name)
-	if cutouts:
-		for cutout in cutouts:
-			cutout.reparent(node)
+	return_child_cutouts(node)
 
 func update_cutout_transform(new_transform: Transform3D, node_name: StringName):
 	for cutout in cutout_nodes[node_name]:
