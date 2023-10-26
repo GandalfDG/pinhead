@@ -21,6 +21,7 @@ func _on_tree_exiting():
 func _on_tree_entered():
 	print(name + " entered tree")
 	print(find_children("*"))
+	print(cutout_nodes)
 	pass # Replace with function body.
 
 
@@ -47,22 +48,30 @@ func acquire_child_cutouts(_new_node=null):
 
 	# reparent each cutout node to ourself
 	# and put a TransformEmitter in the cutout's place
-	for parent_node_name in cutout_nodes:
-		var parent_node = find_child(parent_node_name, true, false)
-		for cutout in cutout_nodes[parent_node_name]:
-			# var transform_emitter = TransformEmitter.new()
-			# transform_emitter.global_transform = cutout.global_transform
-			# parent_node.add_child(transform_emitter)
-			# transform_emitter.transform_changed.connect(update_cutout_transform.bind(cutout.name))
-			cutout.reparent(self)
-			# cutout.set_owner(get_tree().edited_scene_root)
-			# for child in cutout.find_children("*", "", true, false):
-			# 	child.set_owner(get_tree().edited_scene_root)
-
-			print("reparented " + str(cutout))
+	reparent_cutouts()
 
 	print(cutout_nodes)
 	print(find_children("*"))
+
+func reparent_cutouts():
+	for parent_node_name in cutout_nodes:
+		var parent_node = find_child(parent_node_name, true, false)
+		print("found child " + str(parent_node))
+		# reparent the cutout nodes and own them
+		for cutout in cutout_nodes[parent_node_name]:
+			cutout.reparent(self)
+			cutout.set_owner(self)
+
+			# make sure the cutout owns all of its children as well
+			for child in cutout.find_children("*", "", true, false):
+				child.set_owner(cutout)
+
+			# put a transform emitter where the cutout used to be
+			var transform_emitter = TransformEmitter.new()
+			transform_emitter.global_transform = cutout.global_transform
+			transform_emitter.transform_changed.connect(update_cutout_transform.bind(cutout))
+			parent_node.add_child(transform_emitter)
+			transform_emitter.set_owner(parent_node)
 
 
 # func return_child_cutouts(parent_node: Node):
@@ -104,9 +113,8 @@ func _on_child_entered_tree(node: Node):
 # 	print(cutout_nodes)
 
 
-func update_cutout_transform(new_transform: Transform3D, node_name: StringName):
-	for cutout in cutout_nodes[node_name]:
-		cutout.global_transform = new_transform
+func update_cutout_transform(new_transform: Transform3D, node: Node):
+		node.global_transform = new_transform
 
 
 
