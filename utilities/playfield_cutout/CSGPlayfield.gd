@@ -10,9 +10,6 @@ var cutout_nodes: Dictionary
 func _ready():
 	acquire_child_cutouts()
 
-func _exit_tree():
-
-	pass
 
 func acquire_child_cutouts(new_node=null):
 	# get every child PlayfieldCutout node recursively
@@ -45,7 +42,7 @@ func return_child_cutouts(parent_node: Node):
 
 		# return the cutout to its owner
 		for node in cutout_nodes[parent_node.name]:
-			node.reparent(parent_node)
+			node.queue_free()
 
 		cutout_nodes.erase(parent_node.name)
 
@@ -54,7 +51,9 @@ func reparent_and_replace(cutout_node: Node, parent_node: Node):
 	var transform_emitter = TransformEmitter.new()
 	parent_node.add_child(transform_emitter)
 	transform_emitter.connect("transform_changed", update_cutout_transform.bind(parent_node.name))
+	transform_emitter.set_owner(get_tree().edited_scene_root)
 	cutout_node.reparent(self)
+	cutout_node.set_owner(get_tree().edited_scene_root)
 	
 func _on_child_entered_tree(node: Node):
 	await node.ready
@@ -68,3 +67,9 @@ func _on_child_exiting_tree(node):
 func update_cutout_transform(new_transform: Transform3D, node_name: StringName):
 	for cutout in cutout_nodes[node_name]:
 		cutout.global_transform = new_transform
+
+
+func _on_tree_exiting():
+	for parent_node in cutout_nodes.keys():
+		for node in cutout_nodes[parent_node.name]:
+			node.reparent(parent_node)
