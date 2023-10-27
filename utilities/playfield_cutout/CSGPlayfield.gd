@@ -40,20 +40,20 @@ func reparent_cutouts(parent_node):
 	for node in cutout_child_nodes:
 		if not cutout_nodes.has(parent_node.name):
 			cutout_nodes[parent_node.name] = {"parent": parent_node, "children": []}
-			cutout_nodes[parent_node.name]["children"].append(node)
-			print(cutout_nodes)
-			var cutout_dupe = node.duplicate()
-			self.add_child(cutout_dupe)
-			cutout_dupe.set_owner(self)
-			for child in cutout_dupe.find_children("*"):
-				child.set_owner(cutout_dupe)
+		cutout_nodes[parent_node.name]["children"].append(node)
+		print(cutout_nodes)
+		node.reparent(self)
+		node.set_owner(self)
 
-		# var transform_emitter = TransformEmitter.new()
-		# transform_emitter.global_position = node.global_position
-		# parent_node.add_child(transform_emitter)
-		# transform_emitter.set_owner(parent_node)
+		for child in node.find_children("*", "", false, false):
+			child.set_owner(node)
 
-		# transform_emitter.transform_changed.connect(update_cutout_transform.bind(node))
+		var transform_emitter = TransformEmitter.new()
+		transform_emitter.global_position = node.global_position
+		parent_node.add_child(transform_emitter)
+		transform_emitter.set_owner(parent_node)
+
+		transform_emitter.transform_changed.connect(update_cutout_transform.bind(node))
 
 	
 
@@ -66,4 +66,5 @@ func _on_child_entered_tree(node: Node):
 
 func update_cutout_transform(new_transform: Transform3D, node: Node):
 		node.global_transform = new_transform
+
 
