@@ -3,16 +3,15 @@ extends CSGCombiner3D
 class_name CSGPlayfield
 
 # Pull up all PlayfieldCutout nodes out of child nodes to become direct children of us
-# this is a dictionary with node.name keys and array of cutout node values
+# this is a dictionary with parent_node.name keys and array of cutout node values
 var cutout_nodes: Dictionary
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	print(name + " ready")
-	# acquire_child_cutouts()
+	acquire_child_cutouts()
 
 func _on_tree_entered():
-	pass # Replace with function body.
+	acquire_child_cutouts.call_deferred()
 
 
 func acquire_child_cutouts():
@@ -55,16 +54,34 @@ func reparent_cutouts(parent_node):
 
 		transform_emitter.transform_changed.connect(update_cutout_transform.bind(node))
 
+func return_cutouts_to_parent(parent_node: Node):
 	
+	if cutout_nodes.has(parent_node.name):
+		var cutouts_of_parent = cutout_nodes[parent_node.name]["children"]
+		for cutout_node in cutouts_of_parent:
+			cutout_node.reparent(parent_node)
+			cutout_node.set_owner(parent_node)
 
-func _on_child_entered_tree(node: Node):
-	await node.ready
-	# print(node.name + " ready")
-	# print(str(node.find_children("*")))
-	acquire_child_cutouts()
+		var transform_emitters_of_parent = parent_node.find_children("*", "TransformEmitter", true, false)
+		for emitter in transform_emitters_of_parent:
+			parent_node.remove_child(emitter)
+			emitter.queue_free()
 
+		cutout_nodes.erase(parent_node.name)
+	
 
 func update_cutout_transform(new_transform: Transform3D, node: Node):
 		node.global_transform = new_transform
 
 
+func _on_child_entered_tree(node: Node):
+	await node.ready
+	acquire_child_cutouts()
+
+
+func _on_child_exiting_tree(node):
+	return_cutouts_to_parent.call_deferred(node)
+
+
+func _on_child_order_changed():
+	acquire_child_cutouts.call_deferred()
