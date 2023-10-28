@@ -46,6 +46,7 @@ spring_preload = 2.0
 [node name="ScoringElement" parent="." instance=ExtResource("4_5rpd8")]
 
 [node name="PlayfieldCutout" parent="." instance=ExtResource("5_f01x4")]
+visible = false
 
 [node name="CSGBox3D" type="CSGBox3D" parent="PlayfieldCutout"]
 size = Vector3(1.19694, 0.838139, 0.210178)

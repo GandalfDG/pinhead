@@ -60,6 +60,11 @@ start={
 "deadzone": 0.5,
 "events": []
 }
+debug_reset={
+"deadzone": 0.5,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":4194309,"key_label":0,"unicode":0,"echo":false,"script":null)
+]
+}
 
 [layer_names]
 
@@ -74,12 +79,14 @@ start={
 common/physics_ticks_per_second=240
 common/max_physics_steps_per_frame=16
 3d/physics_engine="JoltPhysics3D"
-3d/default_gravity=130.0
+3d/default_gravity=200.0
 3d/default_linear_damp=0.0
 3d/default_angular_damp=0.0
 jolt_3d/sleep/velocity_threshold=0.002
 jolt_3d/continuous_cd/max_penetration=10.0
 jolt_3d/solver/bounce_velocity_threshold=10.0
+jolt_3d/limits/max_linear_velocity=5000.0
+jolt_3d/limits/max_angular_velocity=27000.0
 
 [rendering]
 
