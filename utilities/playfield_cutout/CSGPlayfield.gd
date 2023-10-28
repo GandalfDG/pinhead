@@ -8,7 +8,7 @@ var cutout_nodes: Dictionary
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	acquire_child_cutouts()
+	acquire_child_cutouts.call_deferred()
 
 func _on_tree_entered():
 	acquire_child_cutouts.call_deferred()
@@ -20,6 +20,8 @@ func acquire_child_cutouts():
 
 	for parent in cutout_parents:
 		reparent_cutouts(parent)
+
+	ping_emitters()
 
 
 func find_parents_of_cutouts():
@@ -73,10 +75,13 @@ func return_cutouts_to_parent(parent_node: Node):
 func update_cutout_transform(new_transform: Transform3D, node: Node):
 		node.global_transform = new_transform
 
+func ping_emitters():
+	for emitter in find_children("*", "TransformEmitter", true, false):
+		emitter.transform_changed.emit(emitter.global_transform)
+
 
 func _on_child_entered_tree(node: Node):
-	await node.ready
-	acquire_child_cutouts()
+	acquire_child_cutouts.call_deferred()
 
 
 func _on_child_exiting_tree(node):
