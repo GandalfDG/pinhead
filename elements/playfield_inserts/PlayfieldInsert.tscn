@@ -16,7 +16,6 @@ size = Vector2(1, 1)
 
 [node name="PlayfieldInsert" type="Node3D"]
 script = ExtResource("1_yp5gy")
-base_color = Color(0, 0.541176, 0.619608, 1)
 
 [node name="Meshes" type="Node3D" parent="."]
 
@@ -45,7 +44,6 @@ skeleton = NodePath("../..")
 
 [node name="BulbLight" type="OmniLight3D" parent="Lighting"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.164976, 0)
-visible = false
 light_color = Color(0.937255, 0.0627451, 0, 1)
 light_energy = 2.895
 omni_range = 1.0

@@ -1,6 +1,6 @@
 [gd_resource type="VisualShader" load_steps=21 format=3 uid="uid://cm7g63fqwraj5"]
 
-[ext_resource type="Texture2D" uid="uid://mhksbdthsk0a" path="res://image_assets/playfield_insert_textures/insert_mask.png" id="1_4jrgg"]
+[ext_resource type="Texture2D" uid="uid://bna6tv7ojqb0q" path="res://image_assets/playfield_insert_textures/insert_mask.png" id="1_4jrgg"]
 
 [sub_resource type="VisualShaderNodeFloatParameter" id="VisualShaderNodeFloatParameter_626jx"]
 parameter_name = "EmissionMultiplier"
@@ -194,7 +194,6 @@ void fragment() {
 
 }
 "
-graph_offset = Vector2(-342.062, -536.067)
 nodes/fragment/0/position = Vector2(1740, -160)
 nodes/fragment/2/node = SubResource("VisualShaderNodeTexture2DParameter_y42um")
 nodes/fragment/2/position = Vector2(-80, -120)
