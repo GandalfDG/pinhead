@@ -6,12 +6,10 @@
 [ext_resource type="ArrayMesh" uid="uid://bbv7b1e83raqq" path="res://meshes/flipper3.obj" id="4_d7sv0"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ar7xr"]
-friction = 0.8
-bounce = 0.1
 absorbent = true
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_iwewj"]
-size = Vector3(3.76508, 0.001, 0.765284)
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_o8dnr"]
+points = PackedVector3Array(-0.371667, 0.170128, -0.161996, 3.15405, 0.8828, -0.0472247, 3.14576, -0.0226182, 0.24362, -0.171111, 0.747317, 0.480566, -0.230487, 0.747317, -0.467218, 2.67187, -0.0226182, -0.289462, -0.106026, 0.012946, 0.390168, 2.49411, 0.925166, 0.30281, -0.126834, 0.007, -0.382022, 2.67187, 0.925166, -0.289462, -0.244087, 0.8828, 0.222437, 3.26414, 0.155138, -0.230272, 0.243405, 0.155138, 0.480566, -0.0822225, 0.8828, -0.370869, 3.14576, 0.925166, 0.24362, -0.230487, 0.155138, -0.467218, 2.96801, 0.747317, -0.289462, -0.293481, 0.007, 0.228811, 2.79025, 0.747317, 0.30281, -0.36486, 0.731269, 0.174706, 3.26414, 0.747317, -0.230272, -0.0822225, 0.8828, 0.384217, 0.243405, 0.747317, 0.480566, 2.79025, 0.155138, 0.30281, 3.20477, 0.155138, 0.24362, -0.171111, 0.155138, 0.480566, 2.96801, 0.155138, -0.289462, 2.49411, -0.0226182, 0.30281, -0.371667, 0.732332, -0.161996, 3.14938, 0.007, -0.159885, -0.293481, 0.007, -0.215463, -0.244087, 0.8828, -0.209089)
 
 [node name="Flipper" type="Node3D"]
 script = ExtResource("1_p24pt")
@@ -37,7 +35,7 @@ script = ExtResource("2_4le5i")
 rotation_edit_mode = 1
 script = ExtResource("3_mm2rr")
 force_type = 1
-solenoid_force = 800.0
+solenoid_force = 500.0
 spring_stiffness = 10.0
 resting_spring_extension = 1.0
 activation_type = 1
@@ -48,8 +46,8 @@ mesh = ExtResource("4_d7sv0")
 skeleton = NodePath("../..")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="FlipperBody"]
-transform = Transform3D(0.997812, 0, -0.0661172, 0, 1, 0, 0.0661172, 0, 0.997812, 1.42655, 0, 0.0478174)
-shape = SubResource("BoxShape3D_iwewj")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.449877, 0)
+shape = SubResource("ConvexPolygonShape3D_o8dnr")
 
 [connection signal="enable" from="." to="FlipperBody" method="_on_flipper_enable"]
 [connection signal="flipping" from="." to="FlipperBody" method="_on_flipper_flipping"]

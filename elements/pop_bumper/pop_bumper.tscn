@@ -104,9 +104,9 @@ shape = SubResource("CylinderShape3D_jlmpe")
 
 [node name="LinearSolenoidSpring" parent="Kicker/Kicker" instance=ExtResource("3_6ga7p")]
 transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0)
-solenoid_force = 15.0
+solenoid_force = 30.0
 spring_stiffness = 8.0
-resting_spring_extension = 0.4
+resting_spring_extension = 1.0
 
 [node name="ScoringElement" parent="." instance=ExtResource("2_an5yb")]
 

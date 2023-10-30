@@ -14,10 +14,10 @@ axis_offset = 1.0
 
 [node name="Axis" type="JoltHingeJoint3D" parent="."]
 node_a = NodePath("../SpinnerBody")
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0.957605, 0)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 1.0462, 0)
 
 [node name="SpinnerBody" type="RigidBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.942605, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0312, 0)
 collision_layer = 4
 collision_mask = 8
 mass = 0.01
