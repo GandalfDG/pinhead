@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://b6lutlv2hiprv"]
+[gd_scene load_steps=6 format=3 uid="uid://b6lutlv2hiprv"]
 
 [ext_resource type="Script" path="res://elements/drop_target/TargetBody.gd" id="1_k8ujt"]
 [ext_resource type="PackedScene" uid="uid://dm3kn01moydlq" path="res://utilities/LocalAxisLock.tscn" id="1_tk6k7"]
+[ext_resource type="PackedScene" uid="uid://b0t40leiarlgs" path="res://utilities/code_components/ScoringElement.tscn" id="3_xdmag"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_1xxcr"]
 size = Vector3(1.1, 1.5, 0.1)
@@ -37,3 +38,5 @@ lock_rotation_z = true
 angular_limit_x/upper = 0.0174533
 node_a = NodePath("../TargetBody")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.83529, 0)
+
+[node name="ScoringElement" parent="." instance=ExtResource("3_xdmag")]
