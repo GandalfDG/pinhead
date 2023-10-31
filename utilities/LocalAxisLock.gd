@@ -1,5 +1,3 @@
-@tool
-
 extends PhysicsBehavior
 class_name LocalAxisLock
 
@@ -18,11 +16,7 @@ func _ready():
 	rest_position = parent_node.position
 	rest_rotation = parent_node.rotation
 	
-	
-func _process_physics_behavior(_delta: float):
-	lock_axes()
-	
-func _integrate_forces_behavior(_state: PhysicsDirectBodyState3D):
+func _physics_process(_delta):
 	lock_axes()
 	
 func lock_axes():
