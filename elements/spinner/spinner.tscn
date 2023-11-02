@@ -13,9 +13,9 @@ size = Vector3(1.5, 1.8, 0.1)
 script = ExtResource("1_dowlw")
 axis_offset = 1.0
 
-[node name="Axis" type="JoltHingeJoint3D" parent="."]
-node_a = NodePath("../SpinnerBody")
+[node name="Axis" type="HingeJoint3D" parent="."]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 1.0462, 0)
+node_a = NodePath("../SpinnerBody")
 
 [node name="SpinnerBody" type="RigidBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0312, 0)

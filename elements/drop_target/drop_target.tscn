@@ -34,9 +34,10 @@ shape = SubResource("BoxShape3D_f8gd0")
 lock_rotation_y = true
 lock_rotation_z = true
 
-[node name="TiltAndSlideJoint" type="JoltGeneric6DOFJoint3D" parent="."]
-angular_limit_x/upper = 0.0174533
-node_a = NodePath("../TargetBody")
+[node name="TiltAndSlideJoint" type="Generic6DOFJoint3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.83529, 0)
+node_a = NodePath("../TargetBody")
+angular_limit_x/upper_angle = 0.0174533
+angular_limit_x/lower_angle = -0.0174533
 
 [node name="ScoringElement" parent="." instance=ExtResource("3_xdmag")]
