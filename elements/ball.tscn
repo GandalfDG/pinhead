@@ -4,6 +4,7 @@
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_we231"]
 friction = 0.9
+bounce = 0.2
 
 [sub_resource type="SphereMesh" id="SphereMesh_jfb4u"]
 material = ExtResource("1_s7q3g")
@@ -13,7 +14,6 @@ material = ExtResource("1_s7q3g")
 [node name="Ball" type="RigidBody3D"]
 collision_layer = 8
 collision_mask = 15
-mass = 10.0
 physics_material_override = SubResource("PhysicsMaterial_we231")
 continuous_cd = true
 can_sleep = false

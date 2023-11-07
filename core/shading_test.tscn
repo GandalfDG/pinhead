@@ -35,11 +35,8 @@ visible = false
 [node name="round_insert" parent="." instance=ExtResource("2_b0lho")]
 base_color = Color(0.678431, 0.00392157, 0, 1)
 
-[node name="OmniLight3D" parent="round_insert" index="2"]
-light_color = Color(0.615686, 0.266667, 0.137255, 1)
-omni_range = 0.845
-
 [node name="Ball" parent="." instance=ExtResource("4_0h4wf")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.511133, 0.451702, -0.895605)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.385976, 0.58462, -0.459196)
+freeze = true
 
 [editable path="round_insert"]
