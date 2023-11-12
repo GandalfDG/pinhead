@@ -34,9 +34,9 @@ mesh = SubResource("CylinderMesh_ywot2")
 shape = SubResource("CylinderShape3D_n8loe")
 
 [node name="AxisSpring" parent="RolloverBody" instance=ExtResource("1_akerp")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0)
-spring_stiffness = 300.0
-spring_preload = 1.0
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
+spring_stiffness = 40.0
+spring_preload = 0.6
 
 [node name="LocalAxisLock" parent="RolloverBody" instance=ExtResource("2_6cjnx")]
 lock_translation_x = true

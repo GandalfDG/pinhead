@@ -1,4 +1,3 @@
-@tool
 extends PhysicsBehavior
 
 
@@ -7,20 +6,27 @@ extends PhysicsBehavior
 @export var spring_stiffness: float = 500
 @export var spring_preload: float = 10
 
-var force_vector: Vector3 = Vector3.BACK
+var force_vector: Vector3 = Vector3.UP
+
+func _ready():
+	force_vector *= global_transform.basis
+	var debug_arrow_resource = preload("res://utilities/debug_tools/debug_arrow.tscn")
+	var debug_arrow_node = debug_arrow_resource.instantiate()
+	add_child(debug_arrow_node)
+	debug_arrow_node.transform.basis = global_transform.basis
 
 func _physics_process(_delta):
-	var spring_force_vector = force_vector * transform.basis * parent_body.transform.basis
+
 	var basis = global_transform.basis
 	if force_type == PhysicsTypes.ForceType.LINEAR:
-		var spring_displacement = abs((parent_body.global_transform.origin - parent_rest_transform.origin).length())
-		spring_force_vector = spring_stiffness * (spring_displacement + spring_preload) * spring_force_vector
-		parent_body.apply_force(spring_force_vector)
+		var spring_displacement = abs((parent_node.global_transform.origin - parent_rest_transform.origin).length())
+		var spring_force_vector = spring_stiffness * (spring_displacement + spring_preload) * force_vector
+		parent_node.apply_force(spring_force_vector)
 
-	elif force_type == PhysicsTypes.ForceType.ROTATIONAL:
-		var resting_vector = parent_rest_transform.basis * Vector3.UP
-		var current_vector = parent_body.global_transform.basis * Vector3.UP
-		var spring_displacement = current_vector.angle_to(resting_vector)
-		spring_force_vector = spring_stiffness * (spring_displacement + spring_preload) * force_vector * global_transform.basis
-		parent_body.apply_torque(spring_force_vector * parent_body.global_transform.basis)
+	# elif force_type == PhysicsTypes.ForceType.ROTATIONAL:
+	# 	var resting_vector = parent_rest_transform.basis * Vector3.UP
+	# 	var current_vector = parent_node.global_transform.basis * Vector3.UP
+	# 	var spring_displacement = current_vector.angle_to(resting_vector)
+	# 	var spring_force_vector = spring_stiffness * (spring_displacement + spring_preload) * force_vector * global_transform.basis
+	# 	parent_node.apply_torque(spring_force_vector * parent_node.global_transform.basis)
 
