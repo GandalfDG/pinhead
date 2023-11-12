@@ -25,6 +25,7 @@ transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, -0.
 collision_layer = 4
 collision_mask = 8
 mass = 0.1
+center_of_mass_mode = 1
 
 [node name="RolloverMesh" type="MeshInstance3D" parent="RolloverBody"]
 mesh = SubResource("CylinderMesh_ywot2")
@@ -34,7 +35,7 @@ shape = SubResource("CylinderShape3D_n8loe")
 
 [node name="AxisSpring" parent="RolloverBody" instance=ExtResource("1_akerp")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0)
-spring_stiffness = 200.0
+spring_stiffness = 300.0
 spring_preload = 1.0
 
 [node name="LocalAxisLock" parent="RolloverBody" instance=ExtResource("2_6cjnx")]

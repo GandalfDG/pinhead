@@ -10,12 +10,12 @@ extends PhysicsBehavior
 var force_vector: Vector3 = Vector3.BACK
 
 func _physics_process(_delta):
-	var spring_force_vector = force_vector
+	var spring_force_vector = force_vector * transform.basis * parent_body.transform.basis
+	var basis = global_transform.basis
 	if force_type == PhysicsTypes.ForceType.LINEAR:
 		var spring_displacement = abs((parent_body.global_transform.origin - parent_rest_transform.origin).length())
-		spring_force_vector = spring_stiffness * (spring_displacement + spring_preload) * force_vector
-		var force = spring_force_vector * parent_body.global_transform.basis
-		parent_body.apply_force(spring_force_vector * parent_body.global_transform.basis)
+		spring_force_vector = spring_stiffness * (spring_displacement + spring_preload) * spring_force_vector
+		parent_body.apply_force(spring_force_vector)
 
 	elif force_type == PhysicsTypes.ForceType.ROTATIONAL:
 		var resting_vector = parent_rest_transform.basis * Vector3.UP
