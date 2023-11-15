@@ -1,9 +1,10 @@
-[gd_scene load_steps=12 format=3 uid="uid://bayeondowqkqd"]
+[gd_scene load_steps=13 format=3 uid="uid://bayeondowqkqd"]
 
 [ext_resource type="Texture2D" uid="uid://c80lm5dpbvxcq" path="res://image_assets/addams_family_playfield/addams_family_playfield_corrected.png" id="1_37nnh"]
 [ext_resource type="PackedScene" uid="uid://cgdjulw3q7axd" path="res://elements/pop_bumper/pop_bumper.tscn" id="1_f5eqv"]
 [ext_resource type="PackedScene" uid="uid://b6lutlv2hiprv" path="res://elements/drop_target/drop_target.tscn" id="5_nt322"]
 [ext_resource type="PackedScene" uid="uid://dxy60i7pcq7a6" path="res://elements/flipper/flipper.tscn" id="6_7ejc7"]
+[ext_resource type="PackedScene" uid="uid://brxotrgb6e6cd" path="res://elements/rollover/rollover.tscn" id="6_k6b13"]
 [ext_resource type="PackedScene" uid="uid://c1js3s3yg7oda" path="res://elements/spinner/spinner.tscn" id="6_xf1jd"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_bttc1"]
@@ -157,3 +158,12 @@ shape = SubResource("BoxShape3D_uul41")
 
 [node name="PopBumper" parent="." instance=ExtResource("1_f5eqv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.65944, 0, -0.661049)
+
+[node name="Rollover" parent="." instance=ExtResource("6_k6b13")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.44239, 0, 12.27)
+
+[node name="Rollover2" parent="." instance=ExtResource("6_k6b13")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.7702, 0, 12.3479)
+
+[node name="Rollover3" parent="." instance=ExtResource("6_k6b13")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.53654, 0, 13.1415)
