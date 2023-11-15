@@ -1,7 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://brxotrgb6e6cd"]
+[gd_scene load_steps=7 format=3 uid="uid://brxotrgb6e6cd"]
 
 [ext_resource type="PackedScene" uid="uid://bxw7ll8xbtbw" path="res://utilities/physics_components/AxisSpring.tscn" id="1_akerp"]
+[ext_resource type="Script" path="res://elements/rollover/rollover.gd" id="1_xmqg8"]
 [ext_resource type="PackedScene" uid="uid://dm3kn01moydlq" path="res://utilities/LocalAxisLock.tscn" id="2_6cjnx"]
+[ext_resource type="PackedScene" uid="uid://b0t40leiarlgs" path="res://utilities/code_components/ScoringElement.tscn" id="4_728mu"]
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_ywot2"]
 height = 0.1
@@ -10,6 +12,7 @@ height = 0.1
 height = 0.1
 
 [node name="Rollover" type="Node3D"]
+script = ExtResource("1_xmqg8")
 
 [node name="SliderJoint3D" type="SliderJoint3D" parent="."]
 transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
@@ -38,3 +41,5 @@ spring_preload = 0.5
 
 [node name="LocalAxisLock" parent="RolloverBody" instance=ExtResource("2_6cjnx")]
 lock_rotation_y = true
+
+[node name="ScoringElement" parent="." instance=ExtResource("4_728mu")]
