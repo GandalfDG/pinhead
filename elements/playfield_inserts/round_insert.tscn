@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://ct547iacw40w3"]
+
+[ext_resource type="PackedScene" uid="uid://f8wiwsq65etm" path="res://elements/playfield_inserts/PlayfieldInsert.tscn" id="1_w5uxu"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h8q7k"]
+
+[node name="PlayfieldInsert" instance=ExtResource("1_w5uxu")]
+base_color = Color(0.803922, 0, 0.145098, 1)
+
+[node name="TopSurface" parent="Meshes" index="0"]
+instance_shader_parameters/BaseColor = Color(0.803922, 0, 0.145098, 1)
+
+[node name="PatternedSurface" parent="Meshes" index="1"]
+instance_shader_parameters/BaseColor = Color(0.803922, 0, 0.145098, 1)
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="InsertCutout" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.103531, 0)
+material_override = SubResource("StandardMaterial3D_h8q7k")
+flip_faces = true
+height = 0.244388
+sides = 32

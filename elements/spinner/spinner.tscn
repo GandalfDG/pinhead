@@ -1,30 +1,35 @@
-[gd_scene load_steps=4 format=3 uid="uid://c1js3s3yg7oda"]
+[gd_scene load_steps=5 format=3 uid="uid://c1js3s3yg7oda"]
 
 [ext_resource type="Script" path="res://elements/spinner/spinner.gd" id="1_dowlw"]
+[ext_resource type="PackedScene" uid="uid://b0t40leiarlgs" path="res://utilities/code_components/ScoringElement.tscn" id="2_x640u"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_xw0ia"]
-size = Vector3(0.3, 0.4, 0.02)
+size = Vector3(1.5, 1.8, 0.1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_7d7yo"]
-size = Vector3(0.3, 0.4, 0.02)
+size = Vector3(1.5, 1.8, 0.1)
 
 [node name="Spinner" type="Node3D"]
 script = ExtResource("1_dowlw")
 axis_offset = 1.0
 
-[node name="Axis" type="JoltHingeJoint3D" parent="."]
+[node name="Axis" type="HingeJoint3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 1.0462, 0)
 node_a = NodePath("../SpinnerBody")
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0.015, 0)
 
 [node name="SpinnerBody" type="RigidBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0312, 0)
 collision_layer = 4
 collision_mask = 8
 mass = 0.01
 angular_damp_mode = 1
-angular_damp = 1.8
+angular_damp = 1.0
 
 [node name="SpinnerMesh" type="MeshInstance3D" parent="SpinnerBody"]
+transform = Transform3D(1, 0, 0, 0, -0.999162, -0.040934, 0, 0.040934, -0.999162, 0, 0, 0)
 mesh = SubResource("BoxMesh_xw0ia")
 
 [node name="SpinnerCollider" type="CollisionShape3D" parent="SpinnerBody"]
 shape = SubResource("BoxShape3D_7d7yo")
+
+[node name="ScoringElement" parent="." instance=ExtResource("2_x640u")]

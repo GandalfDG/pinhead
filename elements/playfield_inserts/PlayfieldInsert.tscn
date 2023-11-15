@@ -1,0 +1,54 @@
+[gd_scene load_steps=8 format=3 uid="uid://f8wiwsq65etm"]
+
+[ext_resource type="Script" path="res://elements/playfield_inserts/insert.gd" id="1_yp5gy"]
+[ext_resource type="Material" uid="uid://bht7a7ytejwud" path="res://elements/playfield_inserts/materials/insert_top_layer.material" id="2_j37co"]
+[ext_resource type="PackedScene" uid="uid://km6cl6f1o78m" path="res://utilities/playfield_cutout/PlayfieldCutout.tscn" id="2_mk7pk"]
+[ext_resource type="Material" uid="uid://vkhnrcfh3d5e" path="res://elements/playfield_inserts/materials/insert_pattern.material" id="2_n8edr"]
+[ext_resource type="CylinderMesh" uid="uid://hdtm3ta0xcfy" path="res://elements/playfield_inserts/meshes/default_insert_cup.tres" id="2_qlchl"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_66xet"]
+material = ExtResource("2_j37co")
+size = Vector2(1, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_iby21"]
+material = ExtResource("2_n8edr")
+size = Vector2(1, 1)
+
+[node name="PlayfieldInsert" type="Node3D"]
+script = ExtResource("1_yp5gy")
+base_color = Color(0, 0.541176, 0.619608, 1)
+
+[node name="Meshes" type="Node3D" parent="."]
+
+[node name="TopSurface" type="MeshInstance3D" parent="Meshes"]
+editor_description = "The smooth top surface of the insert"
+instance_shader_parameters/BaseColor = Color(0, 0.541176, 0.619608, 1)
+instance_shader_parameters/EmissionMultiplier = 1.0
+mesh = SubResource("PlaneMesh_66xet")
+skeleton = NodePath("../..")
+
+[node name="PatternedSurface" type="MeshInstance3D" parent="Meshes"]
+editor_description = "The lower surface of the insert which may have a pattern applied with its material"
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0719448, 0)
+instance_shader_parameters/BaseColor = Color(0, 0.541176, 0.619608, 1)
+instance_shader_parameters/EmissionMultiplier = 1.0
+mesh = SubResource("PlaneMesh_iby21")
+skeleton = NodePath("../..")
+
+[node name="InsertCup" type="MeshInstance3D" parent="Meshes"]
+editor_description = "The cup defines the overall shape of the insert and is responsible for reflecting light up through the surface layers"
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, 0)
+mesh = ExtResource("2_qlchl")
+skeleton = NodePath("../..")
+
+[node name="Lighting" type="Node3D" parent="."]
+
+[node name="BulbLight" type="OmniLight3D" parent="Lighting"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.164976, 0)
+visible = false
+light_color = Color(0.937255, 0.0627451, 0, 1)
+light_energy = 2.895
+omni_range = 1.0
+omni_attenuation = 4.43828
+
+[node name="InsertCutout" parent="." instance=ExtResource("2_mk7pk")]

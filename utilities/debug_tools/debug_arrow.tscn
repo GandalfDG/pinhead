@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://d3sh18fpyc8nw"]
+
+[ext_resource type="Material" uid="uid://b6ron0507bhir" path="res://materials/debug.material" id="1_5incl"]
+
+[sub_resource type="PrismMesh" id="PrismMesh_7jnkn"]
+material = ExtResource("1_5incl")
+size = Vector3(0.5, 1, 0.2)
+
+[sub_resource type="BoxMesh" id="BoxMesh_2k74g"]
+material = ExtResource("1_5incl")
+size = Vector3(0.2, 2, 0.2)
+
+[node name="DebugArrow" type="Node3D"]
+top_level = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 0)
+mesh = SubResource("PrismMesh_7jnkn")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+mesh = SubResource("BoxMesh_2k74g")

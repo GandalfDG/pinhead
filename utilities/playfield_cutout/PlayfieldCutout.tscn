@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://km6cl6f1o78m"]
+
+[ext_resource type="Script" path="res://utilities/playfield_cutout/PlayfieldCutout.gd" id="1_cniih"]
+
+[node name="PlayfieldCutout" type="CSGCombiner3D"]
+operation = 2
+script = ExtResource("1_cniih")

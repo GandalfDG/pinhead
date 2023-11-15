@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dte5glkgwan6n"]
+
+[ext_resource type="Script" path="res://utilities/physics_components/SpringReset.gd" id="1_hcypn"]
+
+[node name="SpringReset" type="Node3D"]
+script = ExtResource("1_hcypn")

@@ -2,22 +2,19 @@
 
 [ext_resource type="Material" uid="uid://b43rlaqm12whx" path="res://materials/ball.tres" id="1_s7q3g"]
 
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_agitc"]
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_we231"]
 friction = 0.9
+bounce = 0.2
 
 [sub_resource type="SphereMesh" id="SphereMesh_jfb4u"]
 material = ExtResource("1_s7q3g")
-radius = 0.11
-height = 0.22
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_wppk0"]
-radius = 0.11
 
 [node name="Ball" type="RigidBody3D"]
 collision_layer = 8
 collision_mask = 15
-mass = 0.1
-physics_material_override = SubResource("PhysicsMaterial_agitc")
+physics_material_override = SubResource("PhysicsMaterial_we231")
 continuous_cd = true
 can_sleep = false
 

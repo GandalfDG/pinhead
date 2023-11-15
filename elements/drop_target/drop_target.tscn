@@ -1,35 +1,43 @@
 [gd_scene load_steps=6 format=3 uid="uid://b6lutlv2hiprv"]
 
-[ext_resource type="Script" path="res://elements/drop_target/drop_target.gd" id="1_po035"]
-[ext_resource type="Script" path="res://elements/drop_target/TargetBody.gd" id="2_200gm"]
-[ext_resource type="PackedScene" uid="uid://dte5glkgwan6n" path="res://utilities/SpringReset.tscn" id="2_c2gb0"]
+[ext_resource type="Script" path="res://elements/drop_target/TargetBody.gd" id="1_k8ujt"]
+[ext_resource type="PackedScene" uid="uid://dm3kn01moydlq" path="res://utilities/LocalAxisLock.tscn" id="1_tk6k7"]
+[ext_resource type="PackedScene" uid="uid://b0t40leiarlgs" path="res://utilities/code_components/ScoringElement.tscn" id="3_xdmag"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_1xxcr"]
-size = Vector3(0.3, 0.4, 0.03)
+size = Vector3(1.1, 1.5, 0.1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_f8gd0"]
-size = Vector3(0.3, 0.4, 0.03)
+margin = 0.0
+size = Vector3(1.1, 1.5, 0.1)
 
 [node name="DropTarget" type="Node3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.200091, 0)
-script = ExtResource("1_po035")
-
-[node name="Pivot" type="JoltHingeJoint3D" parent="."]
-limit_enabled = true
-limit_upper = 0.00174533
-motor_target_velocity = 0.0872665
-node_a = NodePath("../TargetBody")
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.468382, 0)
 
 [node name="TargetBody" type="RigidBody3D" parent="."]
 collision_layer = 4
 collision_mask = 8
-script = ExtResource("2_200gm")
+center_of_mass_mode = 1
+center_of_mass = Vector3(0, -1, 0)
+continuous_cd = true
+linear_damp = 2.0
+script = ExtResource("1_k8ujt")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="TargetBody"]
+[node name="TargetMesh" type="MeshInstance3D" parent="TargetBody"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, 0)
 mesh = SubResource("BoxMesh_1xxcr")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="TargetBody"]
+[node name="TargetCollider" type="CollisionShape3D" parent="TargetBody"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, 0)
 shape = SubResource("BoxShape3D_f8gd0")
 
-[node name="SpringReset" parent="TargetBody" instance=ExtResource("2_c2gb0")]
+[node name="LocalAxisLock" parent="TargetBody" instance=ExtResource("1_tk6k7")]
+lock_rotation_y = true
+lock_rotation_z = true
+
+[node name="TiltAndSlideJoint" type="Generic6DOFJoint3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.83529, 0)
+node_a = NodePath("../TargetBody")
+angular_limit_x/upper_angle = 0.0174533
+angular_limit_x/lower_angle = -0.0174533
+
+[node name="ScoringElement" parent="." instance=ExtResource("3_xdmag")]

@@ -60,6 +60,11 @@ start={
 "deadzone": 0.5,
 "events": []
 }
+debug_reset={
+"deadzone": 0.5,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":4194309,"key_label":0,"unicode":0,"echo":false,"script":null)
+]
+}
 
 [layer_names]
 
@@ -70,13 +75,15 @@ start={
 
 [physics]
 
-common/physics_ticks_per_second=120
-common/max_physics_steps_per_frame=16
-3d/physics_engine="JoltPhysics3D"
-3d/default_linear_damp=0.0
-3d/default_angular_damp=0.0
+common/physics_ticks_per_second=240
+common/max_physics_steps_per_frame=32
+3d/physics_engine="GodotPhysics3D"
+3d/default_gravity=200.0
 jolt_3d/sleep/velocity_threshold=0.002
+jolt_3d/continuous_cd/max_penetration=0.0
+jolt_3d/solver/bounce_velocity_threshold=10.0
 
 [rendering]
 
-renderer/rendering_method="mobile"
+anti_aliasing/quality/msaa_3d=2
+anti_aliasing/quality/screen_space_aa=1

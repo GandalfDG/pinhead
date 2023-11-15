@@ -1,33 +1,44 @@
-[gd_scene load_steps=7 format=3 uid="uid://dcvo5ah70qi2a"]
+[gd_scene load_steps=9 format=3 uid="uid://dcvo5ah70qi2a"]
 
 [ext_resource type="Script" path="res://plugins/free_look_camera.gd" id="1_7mt0k"]
+[ext_resource type="Environment" uid="uid://c3uhtoawenwlm" path="res://materials/hdri_environment.tres" id="1_7rx4a"]
 [ext_resource type="PackedScene" uid="uid://bayeondowqkqd" path="res://core/playfield.tscn" id="2_mx5vv"]
-
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_yc56g"]
-
-[sub_resource type="Sky" id="Sky_r0yw6"]
-sky_material = SubResource("ProceduralSkyMaterial_yc56g")
-
-[sub_resource type="Environment" id="Environment_cupc5"]
-background_mode = 2
-background_energy_multiplier = 2.9
-sky = SubResource("Sky_r0yw6")
+[ext_resource type="PackedScene" uid="uid://bw4hhnrj7m1jh" path="res://utilities/debug_tools/debug_ball_spawner.tscn" id="3_64lxw"]
+[ext_resource type="PackedScene" uid="uid://6oin2mw1xy1l" path="res://utilities/code_components/GameController.tscn" id="4_3iuw8"]
+[ext_resource type="PackedScene" uid="uid://d1roo8csw0bth" path="res://elements/ball.tscn" id="6_kxevh"]
+[ext_resource type="PackedScene" uid="uid://ct547iacw40w3" path="res://elements/playfield_inserts/round_insert.tscn" id="7_ahgcl"]
 
 [sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_rw54l"]
 
 [node name="Cabinet" type="Node3D"]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_cupc5")
+environment = ExtResource("1_7rx4a")
 camera_attributes = SubResource("CameraAttributesPractical_rw54l")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(0.964465, -0.0801747, 0.251751, 0, 0.952847, 0.303451, -0.26421, -0.292668, 0.918988, 0, 1.95647, 0)
+transform = Transform3D(0.964465, -0.233861, 0.122947, 3.72529e-09, 0.465336, 0.885134, -0.26421, -0.853681, 0.448801, 11.9036, 9.2405, 27.6133)
+shadow_enabled = true
+
+[node name="DirectionalLight3D2" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.636536, 0.687226, -0.35006, 0.331503, 0.653615, 0.680362, 0.696368, 0.317029, -0.643867, -14.7454, 18.1532, -21.8679)
+light_energy = 0.5
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(0.999477, 0.0137649, -0.029246, 0, 0.904794, 0.425849, 0.0323234, -0.425627, 0.904322, -0.788921, 1.00871, 3.45766)
+transform = Transform3D(0.999847, -0.0117125, 0.012915, 0, 0.740751, 0.671779, -0.017435, -0.671677, 0.740639, -0.328761, 8.21514, 23.962)
+current = true
 script = ExtResource("1_7mt0k")
-default_velocity = 2.0
+speed_scale = 10.0
 
 [node name="Playfield" parent="." instance=ExtResource("2_mx5vv")]
 transform = Transform3D(1, 0, 0, 0, 0.994522, -0.104528, 0, 0.104528, 0.994522, 0, 0, 0)
+
+[node name="DebugBallSpawner" parent="Playfield" instance=ExtResource("3_64lxw")]
+
+[node name="GameController" parent="." instance=ExtResource("4_3iuw8")]
+
+[node name="Ball" parent="." instance=ExtResource("6_kxevh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.71393, -0.147447, 7.18702)
+
+[node name="PlayfieldInsert" parent="." instance=ExtResource("7_ahgcl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.26949, -0.693824, 8.34179)

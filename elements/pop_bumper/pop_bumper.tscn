@@ -1,8 +1,9 @@
-[gd_scene load_steps=13 format=3 uid="uid://cgdjulw3q7axd"]
+[gd_scene load_steps=14 format=3 uid="uid://cgdjulw3q7axd"]
 
 [ext_resource type="Script" path="res://elements/pop_bumper/pop_bumper.gd" id="1_hvtx7"]
 [ext_resource type="Script" path="res://elements/pop_bumper/Kicker.gd" id="2_8lq0t"]
-[ext_resource type="PackedScene" uid="uid://brj6pblp2w8hj" path="res://utilities/SolenoidSpring.tscn" id="3_6ga7p"]
+[ext_resource type="PackedScene" uid="uid://b0t40leiarlgs" path="res://utilities/code_components/ScoringElement.tscn" id="2_an5yb"]
+[ext_resource type="PackedScene" uid="uid://brj6pblp2w8hj" path="res://utilities/physics_components/SolenoidSpring.tscn" id="3_6ga7p"]
 [ext_resource type="Material" uid="uid://b43rlaqm12whx" path="res://materials/ball.tres" id="3_y3ayh"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_42nhi"]
@@ -13,46 +14,45 @@ emission_energy_multiplier = 0.47
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_xa0o1"]
 material = SubResource("StandardMaterial3D_42nhi")
-top_radius = 0.2
-bottom_radius = 0.25
-height = 0.1
+top_radius = 0.97
+bottom_radius = 1.295
+height = 0.5
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_eqae3"]
-top_radius = 0.1
-bottom_radius = 0.1
-height = 0.3
+top_radius = 0.75
+bottom_radius = 0.75
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_xxs4f"]
-height = 0.3
-radius = 0.1
+radius = 0.75
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_hpw4f"]
-height = 0.3
-radius = 0.141623
+height = 0.945644
+radius = 1.17857
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_it0wu"]
 material = ExtResource("3_y3ayh")
-top_radius = 0.2
-bottom_radius = 0.1
-height = 0.08
+top_radius = 1.045
+bottom_radius = 0.815
+height = 0.4
 
-[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_qb4g8"]
-points = PackedVector3Array(0.0331713, 0.04, 0.177052, -0.0362507, 0.0375382, -0.193488, -0.0331713, 0.04, -0.177052, 0.193502, 0.037549, -0.0362531, -0.0924725, -0.0392027, 0.040459, -0.193488, 0.0375382, 0.0362506, 0.0982199, -0.0391979, -0.0231063, -0.0687235, -0.0388293, -0.0744654, 0.0687234, -0.0388293, 0.0744654, -0.0781204, 0.0373344, 0.180347, 0.101847, 0.0372267, -0.167829, 0.167819, 0.0372327, 0.101878, -0.167808, 0.0372221, -0.101871, 0.0230662, -0.0391911, -0.0982397, -0.0231011, -0.0391888, 0.098234, 0.0362506, 0.0375382, 0.193488, -0.0982205, -0.0391981, -0.0231065, -0.155563, 0.0371605, 0.119652, 0.155596, 0.0371764, -0.11964, -0.177052, 0.04, 0.0331713, 0.177052, 0.04, -0.0331713, -0.119652, 0.0371605, -0.155563, 0.119652, 0.0371605, 0.155563, 0.0982205, -0.0391981, 0.0231065, 0.0687221, -0.0388285, -0.0744639, 0.19349, 0.0375468, 0.036251, -0.193477, 0.0375361, -0.0362485, 0.0362485, 0.0375361, -0.193477, -0.0687221, -0.0388285, 0.0744639, -0.0404182, -0.0391982, -0.0924983, 0.0404502, -0.039194, 0.0924888, -0.0362485, 0.0375361, 0.193477)
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_llatc"]
+points = PackedVector3Array(-0.000204444, 0.2, -1.045, -0.000204444, 0.119969, -0.999174, -0.102495, 0.2, -1.04009, 0.102291, 0.2, -1.04009, 0.0887883, -0.0400157, -0.902816, -0.000204444, -0.2, -0.815051, -0.0889926, -0.0400157, -0.902816, -0.194966, 0.119969, -0.979943, -0.203967, 0.2, -1.02495, 0.203763, 0.2, -1.02495, 0.194761, 0.119969, -0.979943, 0.15896, -0.2, -0.799503, 0.0797868, -0.2, -0.811164, -0.079991, -0.2, -0.811164, -0.159164, -0.2, -0.799503, -0.303394, 0.2, -1.0002, 0.303189, 0.2, -1.0002, 0.236496, -0.2, -0.780067, -0.2367, -0.2, -0.780067, -0.32958, -0.120008, -0.795616, -0.399956, 0.2, -0.965622, 0.329376, -0.120008, -0.795616, 0.399752, 0.2, -0.965622, 0.311782, -0.2, -0.753063, -0.311986, -0.2, -0.753063, -0.384203, -0.2, -0.718898, -0.44926, 0.0399765, -0.840623, -0.470945, 0.119969, -0.881131, -0.492631, 0.2, -0.921638, 0.449056, 0.0399765, -0.840623, 0.383999, -0.2, -0.718898, 0.492427, 0.2, -0.921638, 0.470741, 0.119969, -0.881131, -0.452942, -0.2, -0.677777, -0.52966, 0.0399765, -0.792547, -0.580601, 0.2, -0.86906, 0.529456, 0.0399765, -0.792547, 0.452738, -0.2, -0.677777, 0.580397, 0.2, -0.86906, -0.517181, -0.2, -0.63011, -0.575486, -0.0400157, -0.701304, -0.663047, 0.2, -0.807891, 0.662843, 0.2, -0.807891, 0.575282, -0.0400157, -0.701304, 0.516976, -0.2, -0.63011, -0.576305, -0.2, -0.576305, -0.706418, 0.119969, -0.706418, -0.738947, 0.2, -0.738947, 0.738742, 0.2, -0.738947, 0.706214, 0.119969, -0.706418, 0.5761, -0.2, -0.576305, -0.63011, -0.2, -0.517181, -0.701304, -0.0400157, -0.575486, -0.807891, 0.2, -0.663047, 0.7011, -0.0400157, -0.575486, 0.807686, 0.2, -0.663047, 0.629905, -0.2, -0.517181, -0.677777, -0.2, -0.452942, -0.792547, 0.0399765, -0.52966, -0.86906, 0.2, -0.580601, 0.792343, 0.0399765, -0.52966, 0.868856, 0.2, -0.580601, 0.677573, -0.2, -0.452942, -0.718898, -0.2, -0.384203, -0.840623, 0.0399765, -0.44926, -0.881131, 0.119969, -0.470945, -0.921638, 0.2, -0.492631, 0.718693, -0.2, -0.384203, 0.880926, 0.119969, -0.470945, 0.840419, 0.0399765, -0.44926, 0.921433, 0.2, -0.492631, -0.753063, -0.2, -0.311986, -0.795616, -0.120008, -0.32958, -0.965622, 0.2, -0.399956, 0.795411, -0.120008, -0.32958, 0.752859, -0.2, -0.311986, 0.965418, 0.2, -0.399956, -0.780067, -0.2, -0.2367, -1.0002, 0.2, -0.303394, 0.779863, -0.2, -0.2367, 0.999992, 0.2, -0.303394, -0.799503, -0.2, -0.159164, -0.979943, 0.119969, -0.194966, -1.02495, 0.2, -0.203967, 0.799298, -0.2, -0.159164, 1.02475, 0.2, -0.203967, 0.979739, 0.119969, -0.194966, -0.811164, -0.2, -0.079991, -0.902816, -0.0400157, -0.0889926, -1.04009, 0.2, -0.102495, 0.810959, -0.2, -0.079991, 0.902612, -0.0400157, -0.0889926, 1.03989, 0.2, -0.102495, -0.815051, -0.2, -0.000204444, -0.999174, 0.119969, -0.000204444, -1.045, 0.2, -0.000204444, 0.814847, -0.2, -0.000204444, 0.998969, 0.119969, -0.000204444, 1.0448, 0.2, -0.000204444, -0.811164, -0.2, 0.0797868, -0.902816, -0.0400157, 0.0887883, -1.04009, 0.2, 0.102291, 0.810959, -0.2, 0.0797868, 0.902612, -0.0400157, 0.0887883, 1.03989, 0.2, 0.102291, -0.799503, -0.2, 0.15896, -0.979943, 0.119969, 0.194761, -1.02495, 0.2, 0.203763, 0.799298, -0.2, 0.15896, 0.979739, 0.119969, 0.194761, 1.02475, 0.2, 0.203763, -0.780067, -0.2, 0.236496, -1.0002, 0.2, 0.303189, 0.779863, -0.2, 0.236496, 0.999992, 0.2, 0.303189, -0.753063, -0.2, 0.311782, -0.795616, -0.120008, 0.329376, -0.965622, 0.2, 0.399752, 0.795411, -0.120008, 0.329376, 0.752859, -0.2, 0.311782, 0.965418, 0.2, 0.399752, -0.718898, -0.2, 0.383999, -0.840623, 0.0399765, 0.449056, -0.881131, 0.119969, 0.470741, -0.921638, 0.2, 0.492427, 0.718693, -0.2, 0.383999, 0.840419, 0.0399765, 0.449056, 0.921433, 0.2, 0.492427, 0.880926, 0.119969, 0.470741, -0.677777, -0.2, 0.452738, -0.792547, 0.0399765, 0.529456, -0.86906, 0.2, 0.580397, 0.792343, 0.0399765, 0.529456, 0.677573, -0.2, 0.452738, 0.868856, 0.2, 0.580397, -0.63011, -0.2, 0.516976, -0.701304, -0.0400157, 0.575282, -0.807891, 0.2, 0.662843, 0.807686, 0.2, 0.662843, 0.7011, -0.0400157, 0.575282, 0.629905, -0.2, 0.516976, -0.576305, -0.2, 0.5761, -0.706418, 0.119969, 0.706214, -0.738947, 0.2, 0.738742, 0.738742, 0.2, 0.738742, 0.706214, 0.119969, 0.706214, 0.5761, -0.2, 0.5761, -0.517181, -0.2, 0.629905, -0.575486, -0.0400157, 0.7011, -0.663047, 0.2, 0.807686, 0.662843, 0.2, 0.807686, 0.575282, -0.0400157, 0.7011, 0.516976, -0.2, 0.629905, -0.452942, -0.2, 0.677573, -0.52966, 0.0399765, 0.792343, -0.580601, 0.2, 0.868856, 0.580397, 0.2, 0.868856, 0.529456, 0.0399765, 0.792343, 0.452738, -0.2, 0.677573, -0.384203, -0.2, 0.718693, -0.44926, 0.0399765, 0.840419, -0.470945, 0.119969, 0.880926, -0.492631, 0.2, 0.921433, 0.492427, 0.2, 0.921433, 0.470741, 0.119969, 0.880926, 0.449056, 0.0399765, 0.840419, 0.383999, -0.2, 0.718693, -0.311986, -0.2, 0.752859, -0.32958, -0.120008, 0.795411, -0.399956, 0.2, 0.965418, 0.399752, 0.2, 0.965418, 0.329376, -0.120008, 0.795411, 0.311782, -0.2, 0.752859, -0.2367, -0.2, 0.779863, -0.303394, 0.2, 0.999992, 0.303189, 0.2, 0.999992, 0.236496, -0.2, 0.779863, -0.159164, -0.2, 0.799298, -0.194966, 0.119969, 0.979739, -0.203967, 0.2, 1.02475, 0.203763, 0.2, 1.02475, 0.194761, 0.119969, 0.979739, 0.15896, -0.2, 0.799298, -0.079991, -0.2, 0.810959, -0.0889926, -0.0400157, 0.902612, -0.102495, 0.2, 1.03989, 0.102291, 0.2, 1.03989, 0.0887883, -0.0400157, 0.902612, 0.0797868, -0.2, 0.810959, -0.000204444, -0.2, 0.814847, -0.000204444, 0.119969, 0.998969, -0.000204444, 0.2, 1.0448)
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_jlmpe"]
-height = 0.333283
-radius = 0.201343
+height = 1.98246
+radius = 1.03402
 
 [node name="PopBumper" type="Node3D"]
 editor_description = "a pop bumper detects when the ball comes near and activates its kicker, sending the ball away at high speed."
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.147503, 0)
 script = ExtResource("1_hvtx7")
 
 [node name="BumperCapMesh" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.191129, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.11426, 0)
+visible = false
 mesh = SubResource("CylinderMesh_xa0o1")
 
 [node name="BumperBodyMesh" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 mesh = SubResource("CylinderMesh_eqae3")
 
 [node name="BodyCollider" type="StaticBody3D" parent="BumperBodyMesh"]
@@ -67,20 +67,19 @@ collision_layer = 0
 collision_mask = 8
 
 [node name="TriggerArea" type="CollisionShape3D" parent="BumperBodyMesh/PopTrigger"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.533936, 0)
 shape = SubResource("CylinderShape3D_hpw4f")
 
 [node name="Kicker" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.065191, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.51036, 0)
 
-[node name="JoltSliderJoint3D" type="JoltSliderJoint3D" parent="Kicker"]
-limit_enabled = true
-limit_lower = -0.15
-limit_spring_frequency = 100.0
-limit_spring_damping = 0.1
-node_b = NodePath("../Kicker")
-transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
+[node name="SliderJoint3D" type="SliderJoint3D" parent="Kicker"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
+node_a = NodePath("../Kicker")
+linear_limit/lower_distance = -0.5
 
 [node name="Kicker" type="RigidBody3D" parent="Kicker"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.119675, 0)
 collision_layer = 4
 collision_mask = 0
 mass = 0.1
@@ -88,22 +87,26 @@ continuous_cd = true
 linear_damp = 6.063
 script = ExtResource("2_8lq0t")
 
-[node name="LinearSolenoidSpring" parent="Kicker/Kicker" instance=ExtResource("3_6ga7p")]
-transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0)
-solenoid_force = 0.8
-spring_stiffness = 30.0
-resting_spring_extension = 0.2
-
 [node name="KickerMesh" type="MeshInstance3D" parent="Kicker/Kicker"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.101264, 0)
 mesh = SubResource("CylinderMesh_it0wu")
 skeleton = NodePath("../..")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Kicker/Kicker"]
-shape = SubResource("ConvexPolygonShape3D_qb4g8")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.101264, 0)
+shape = SubResource("ConvexPolygonShape3D_llatc")
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="Kicker/Kicker"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.209276, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.10245, 0)
 shape = SubResource("CylinderShape3D_jlmpe")
+
+[node name="LinearSolenoidSpring" parent="Kicker/Kicker" instance=ExtResource("3_6ga7p")]
+transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0)
+solenoid_force = 100.0
+spring_stiffness = 10.0
+resting_spring_extension = 1.0
+
+[node name="ScoringElement" parent="." instance=ExtResource("2_an5yb")]
 
 [connection signal="body_entered" from="BumperBodyMesh/PopTrigger" to="." method="_on_pop_trigger_body_entered"]
 [connection signal="body_entered" from="BumperBodyMesh/PopTrigger" to="Kicker/Kicker" method="_on_pop_trigger_body_entered"]

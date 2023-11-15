@@ -1,0 +1,40 @@
+[gd_scene load_steps=5 format=3 uid="uid://brxotrgb6e6cd"]
+
+[ext_resource type="PackedScene" uid="uid://bxw7ll8xbtbw" path="res://utilities/physics_components/AxisSpring.tscn" id="1_akerp"]
+[ext_resource type="PackedScene" uid="uid://dm3kn01moydlq" path="res://utilities/LocalAxisLock.tscn" id="2_6cjnx"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_ywot2"]
+height = 0.1
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_n8loe"]
+height = 0.1
+
+[node name="Rollover" type="Node3D"]
+
+[node name="SliderJoint3D" type="SliderJoint3D" parent="."]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
+node_a = NodePath("../RolloverBody")
+linear_limit/upper_distance = 0.0
+linear_limit/softness = 0.9
+linear_limit/restitution = 0.5
+angular_motion/restitution = 1.0
+
+[node name="RolloverBody" type="RigidBody3D" parent="."]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, -0.2, 0)
+collision_layer = 4
+collision_mask = 8
+mass = 0.1
+
+[node name="RolloverMesh" type="MeshInstance3D" parent="RolloverBody"]
+mesh = SubResource("CylinderMesh_ywot2")
+
+[node name="RolloverShape" type="CollisionShape3D" parent="RolloverBody"]
+shape = SubResource("CylinderShape3D_n8loe")
+
+[node name="AxisSpring" parent="RolloverBody" instance=ExtResource("1_akerp")]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
+spring_stiffness = 50.0
+spring_preload = 0.5
+
+[node name="LocalAxisLock" parent="RolloverBody" instance=ExtResource("2_6cjnx")]
+lock_rotation_y = true

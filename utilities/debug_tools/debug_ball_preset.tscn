@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://cm8k2rwmhkuns"]
+
+[ext_resource type="Script" path="res://utilities/debug_tools/DebugBallPreset.gd" id="1_csgfw"]
+
+[node name="DebugBallPreset" type="Marker3D"]
+gizmo_extents = 1.0
+script = ExtResource("1_csgfw")
+
+[node name="PresetDirection" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
+gizmo_extents = 0.1
