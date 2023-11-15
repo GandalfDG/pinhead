@@ -4,14 +4,14 @@
 
 [sub_resource type="PrismMesh" id="PrismMesh_7jnkn"]
 material = ExtResource("1_5incl")
-size = Vector3(0.5, 1, 0.1)
+size = Vector3(0.5, 1, 0.2)
 
 [sub_resource type="BoxMesh" id="BoxMesh_2k74g"]
 material = ExtResource("1_5incl")
-size = Vector3(0.1, 2, 0.1)
+size = Vector3(0.2, 2, 0.2)
 
 [node name="DebugArrow" type="Node3D"]
-transform = Transform3D(1, 0, 0, 0, 0.0545319, -0.998512, 0, 0.998512, 0.0545319, 0, 0, 0)
+top_level = true
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 0)

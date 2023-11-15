@@ -10,10 +10,6 @@ var force_vector: Vector3 = Vector3.UP
 
 func _ready():
 	force_vector *= global_transform.basis
-	var debug_arrow_resource = preload("res://utilities/debug_tools/debug_arrow.tscn")
-	var debug_arrow_node = debug_arrow_resource.instantiate()
-	add_child(debug_arrow_node)
-	debug_arrow_node.transform.basis = global_transform.basis
 
 func _physics_process(_delta):
 
