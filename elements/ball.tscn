@@ -3,7 +3,7 @@
 [ext_resource type="Material" uid="uid://b43rlaqm12whx" path="res://materials/ball.tres" id="1_s7q3g"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_we231"]
-friction = 0.9
+friction = 0.5
 bounce = 0.2
 
 [sub_resource type="SphereMesh" id="SphereMesh_jfb4u"]
