@@ -50,7 +50,7 @@ func reparent_cutouts(parent_node):
 			child.set_owner(node)
 
 		var transform_emitter = TransformEmitter.new()
-		transform_emitter.global_position = node.global_position
+		transform_emitter.position = Vector3.ZERO
 		parent_node.add_child(transform_emitter)
 		transform_emitter.set_owner(parent_node)
 
@@ -80,7 +80,7 @@ func ping_emitters():
 		emitter.transform_changed.emit(emitter.global_transform)
 
 
-func _on_child_entered_tree(node: Node):
+func _on_child_entered_tree(_node: Node):
 	acquire_child_cutouts.call_deferred()
 
 
