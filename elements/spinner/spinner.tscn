@@ -26,7 +26,7 @@ angular_damp_mode = 1
 angular_damp = 1.0
 
 [node name="SpinnerMesh" type="MeshInstance3D" parent="SpinnerBody"]
-transform = Transform3D(1, 0, 0, 0, -0.999162, -0.040934, 0, 0.040934, -0.999162, 0, 0, 0)
+transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0)
 mesh = SubResource("BoxMesh_xw0ia")
 
 [node name="SpinnerCollider" type="CollisionShape3D" parent="SpinnerBody"]

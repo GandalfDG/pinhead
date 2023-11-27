@@ -19,10 +19,9 @@ func _physics_process(_delta):
 		var spring_force_vector = spring_stiffness * (spring_displacement + spring_preload) * force_vector
 		parent_node.apply_force(spring_force_vector)
 
-	# elif force_type == PhysicsTypes.ForceType.ROTATIONAL:
-	# 	var resting_vector = parent_rest_transform.basis * Vector3.UP
-	# 	var current_vector = parent_node.global_transform.basis * Vector3.UP
-	# 	var spring_displacement = current_vector.angle_to(resting_vector)
-	# 	var spring_force_vector = spring_stiffness * (spring_displacement + spring_preload) * force_vector * global_transform.basis
-	# 	parent_node.apply_torque(spring_force_vector * parent_node.global_transform.basis)
-
+	elif force_type == PhysicsTypes.ForceType.ROTATIONAL:
+		var resting_vector = parent_rest_transform.basis * Vector3.UP
+		var current_vector = parent_node.global_transform.basis * Vector3.UP
+		var spring_displacement = current_vector.angle_to(resting_vector)
+		var spring_force_vector = spring_stiffness * (spring_displacement + spring_preload) * force_vector
+		parent_node.apply_torque(spring_force_vector * parent_node.global_transform.basis)
