@@ -1,0 +1,28 @@
+[gd_scene load_steps=3 format=3 uid="uid://dttbqyemertln"]
+
+[ext_resource type="Script" path="res://utilities/wall_generator/CSGWall.gd" id="1_xi6kg"]
+
+[sub_resource type="Curve3D" id="Curve3D_x47g2"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 1.58831, 0.099516, -0.929646, 0, 0, 0, 0, 0, 0, 3.09263, -0.0995162, -1.62756, 0, 0, 0, 0, 0, 0, 3.33818, -1.06519, -1.16057, 0, 0, 0, 0, 0, 0, 2.66597, -1.87606, -0.288563, 0, 0, 0, 0, 0, 0, 0.778325, -1.67703, 0.618765, 0, 0, 0, 0, 0, 0, -1.136, -1.09468, 1.30205, 0, 0, 0, 0, 0, 0, -1.47651, 0.571296, 0.450984, 0, 0, 0, 0, 0, 0, -0.902057, 0.770328, 0.0132594, 0, 0, 0, 0, 0, 0, 0.661767, 0.991475, -0.978727, 0, 0, 0, 0, 0, 0, 1.80015, 1.0357, -1.62816, 0, 0, 0, 0, 0, 0, 2.0485, 0.143745, -1.20859, 0, 0, 0, 0, 0, 0, 1.57287, -0.460723, -0.572458, 0, 0, 0, 0, 0, 0, 0.693898, -0.932503, 0.201412, 0, 0, 0, 0, 0, 0, -0.95084, -0.703985, 0.957681, 0, 0, 0, 0, 0, 0, -1.43754, -0.534439, 1.11802, 0, 0, 0, 0, 0, 0, 1.58831, 0.099516, -0.929646),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 16
+
+[node name="CSGWall" type="Path3D"]
+curve = SubResource("Curve3D_x47g2")
+script = ExtResource("1_xi6kg")
+
+[node name="CSGPolygon3D" type="CSGPolygon3D" parent="."]
+mode = 2
+path_node = NodePath("..")
+path_interval_type = 0
+path_interval = 1.0
+path_simplify_angle = 0.0
+path_rotation = 2
+path_local = false
+path_continuous_u = true
+path_u_distance = 1.0
+path_joined = false
+
+[connection signal="curve_changed" from="." to="." method="_on_curve_changed"]
