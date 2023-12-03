@@ -3,6 +3,8 @@ extends Path3D
 class_name CSGWall
 
 @onready var wall_geometry = $WallGeometry
+@onready var mesh_instance = $WallPhysicsBody/WallMesh
+@onready var collision_shape = $WallPhysicsBody/WallCollisionShape
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -16,6 +18,15 @@ func _process(delta):
 
 
 func _on_curve_changed():
-	# pass the curve as the CSGPolygon's path node
-	print("curve changed")
-	pass # Replace with function body.
+	# get the mesh from the csg polygon
+	var meshes_array = wall_geometry.get_meshes()
+	var mesh_transform = meshes_array[0]
+	var mesh_data = meshes_array[1]
+	
+	# set it as the mesh resource for the mesh_instance
+	mesh_instance.set_mesh(mesh_data)
+	
+	# generate a trimesh collision from the mesh instance for the collision shape
+	var trimesh_shape = mesh_data.create_trimesh_shape()
+	collision_shape.set_shape(trimesh_shape)
+
