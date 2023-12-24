@@ -3,6 +3,7 @@ extends Path3D
 class_name CSGWall
 
 @onready var wall_geometry = $WallGeometry
+@onready var physics_body = $WallPhysicsBody
 @onready var mesh_instance = $WallPhysicsBody/WallMesh
 @onready var collision_shape = $WallPhysicsBody/WallCollisionShape
 
@@ -22,7 +23,10 @@ func _on_curve_changed():
 	var meshes_array = wall_geometry.get_meshes()
 	var mesh_transform = meshes_array[0]
 	var mesh_data = meshes_array[1]
+
+	print(mesh_transform)
 	
+	physics_body.global_transform = mesh_transform
 	# set it as the mesh resource for the mesh_instance
 	mesh_instance.set_mesh(mesh_data)
 	
