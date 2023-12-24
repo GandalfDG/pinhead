@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://khsoawiix6md"]
+
+[ext_resource type="Script" path="res://utilities/ramp_generator/RampGenerator.gd" id="1_f76dk"]
+
+[sub_resource type="Curve3D" id="Curve3D_yswf5"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -0.0470772, 0.0385486, 0.0459192, 0, 0, 0, 0, 0, 0, -1.32559, 0.839402, 0.0575171),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[node name="RampGenerator" type="Node3D"]
+script = ExtResource("1_f76dk")
+
+[node name="RampSurfacePath" type="Path3D" parent="."]
+curve = SubResource("Curve3D_yswf5")
+
+[node name="RampSurfaceMesh" type="MeshInstance3D" parent="RampSurfacePath"]
+
+[connection signal="curve_changed" from="RampSurfacePath" to="." method="_on_ramp_surface_path_curve_changed"]
