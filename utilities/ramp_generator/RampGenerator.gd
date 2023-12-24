@@ -23,11 +23,15 @@ func generate_ramp_surface():
 
 	var st: SurfaceTool = SurfaceTool.new()
 	st.begin(Mesh.PRIMITIVE_TRIANGLES)
-	for i in ramp_surface_points.size() / 2:
-		var point_a = ramp_surface_points[i*2]
-		var point_a_up = ramp_surface_up_vectors[i*2]
-		var point_b = ramp_surface_points[i*2 + 1]
-		var point_b_up = ramp_surface_up_vectors[i*2 + 1]
+	for i in ramp_surface_points.size() - 1:
+		var point_a = ramp_surface_points[i]
+		var point_a_up = ramp_surface_up_vectors[i]
+		var point_b = ramp_surface_points[i + 1]
+		var point_b_up = ramp_surface_up_vectors[i + 1]
+		
+		# create a basis from a vector between point a and point b and the tilt angle
+		var curve_direction_vector = point_b - point_a
+		var curve_point_basis = Basis.looking_at(curve_direction_vector)
 
 		# create a basis from the curve point's up vector
 		var curve_point_a_basis = Basis.looking_at(point_a_up)
@@ -35,10 +39,10 @@ func generate_ramp_surface():
 		
 		# create a vector representing a movement from the curve point to
 		# the right ramp edge point and transform it by the basis
-		var right_edge_point_1 = Vector3(1, 0, 0) * curve_point_a_basis + point_a
-		var left_edge_point_1 = Vector3(-1, 0, 0) * curve_point_a_basis + point_a
-		var right_edge_point_2 = Vector3(1, 0, 0) * curve_point_b_basis + point_b
-		var left_edge_point_2 = Vector3(-1, 0, 0) * curve_point_b_basis + point_b
+		var right_edge_point_1 = Vector3(1, 0, 0) * curve_point_basis + point_a
+		var left_edge_point_1 = Vector3(-1, 0, 0) * curve_point_basis + point_a
+		var right_edge_point_2 = Vector3(1, 0, 0) * curve_point_basis + point_b
+		var left_edge_point_2 = Vector3(-1, 0, 0) * curve_point_basis + point_b
 
 		# generate a rectangle along the curve by creating two triangles
 		st.add_vertex(right_edge_point_1)
