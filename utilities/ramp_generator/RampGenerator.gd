@@ -1,8 +1,16 @@
 @tool
 extends Node3D
+class_name RampGenerator
 
-@export var curve_sample_interval = 0.2
-@export var ramp_base_thickness: float = 0.1
+@export_range(0,1) var curve_sample_interval: float:
+	set(value):
+		curve_sample_interval = value
+		ramp_surface.curve.bake_interval = value
+		generate_ramp_surface()
+@export_range(0.01,1) var ramp_base_thickness: float:
+	set(value):
+		ramp_base_thickness = value
+		generate_ramp_surface()
 
 @onready var ramp_surface = $RampSurfacePath
 @onready var ramp_surface_mesh: MeshInstance3D = $RampSurfacePath/RampSurfaceMesh
