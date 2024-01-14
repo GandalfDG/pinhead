@@ -16,7 +16,7 @@ func _ready():
 func _process(delta):
 	pass
 
-func create_curve_point_basis(point_a: Vector3, point_b: Vector3) -> Basis:
+func create_curve_point_basis(point_a: Vector3, point_b: Vector3, tilt: float) -> Basis:
 	# create a basis from a vector between point a and point b and the tilt angle
 	var curve_direction_vector = point_b - point_a
 	# project the vector onto the x-z plane to become the forward axis of the first basis
@@ -27,9 +27,8 @@ func create_curve_point_basis(point_a: Vector3, point_b: Vector3) -> Basis:
 	var curve_point_basis = Basis().looking_at(projection * -1, Vector3.DOWN, false)
 
 	var tilt_angle = curve_point_basis.z.angle_to(curve_direction_vector)
-	print(rad_to_deg(tilt_angle))
 	curve_point_basis = curve_point_basis.rotated(Vector3.LEFT, tilt_angle)
-	print(curve_point_basis)
+	curve_point_basis = curve_point_basis.rotated(Vector3.FORWARD, tilt)
 	return curve_point_basis
 
 func generate_ramp_surface():
@@ -49,8 +48,8 @@ func generate_ramp_surface():
 		var point_b_tilt = ramp_surface_tilts[i + 1]
 		var point_c = ramp_surface_points[i + 2]
 
-		var curve_point_basis_a = create_curve_point_basis(point_a, point_b)
-		var curve_point_basis_b = create_curve_point_basis(point_b, point_c)
+		var curve_point_basis_a = create_curve_point_basis(point_a, point_b, point_a_tilt)
+		var curve_point_basis_b = create_curve_point_basis(point_b, point_c, point_b_tilt)
 
 		# create a vector representing a movement from the curve point to
 		# the right ramp edge point and transform it by the basis
