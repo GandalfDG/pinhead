@@ -2,6 +2,7 @@
 extends Node3D
 
 @export var curve_sample_interval = 0.2
+@export var ramp_base_thickness: float = 0.1
 
 @onready var ramp_surface = $RampSurfacePath
 @onready var ramp_surface_mesh: MeshInstance3D = $RampSurfacePath/RampSurfaceMesh
@@ -58,8 +59,10 @@ func generate_ramp_surface():
 
 		var right_edge_point_2 = Vector3(1, 0, 0) * curve_point_basis_b + point_b
 		var left_edge_point_2 = Vector3(-1, 0, 0) * curve_point_basis_b + point_b
+		
+		var ramp_thickness_vector = Vector3(0, ramp_base_thickness, 0)
 
-		# generate a rectangle along the curve by creating two triangles
+		# top surface
 		st.add_vertex(right_edge_point_1)
 		st.add_vertex(left_edge_point_1)
 		st.add_vertex(left_edge_point_2)
@@ -67,6 +70,33 @@ func generate_ramp_surface():
 		st.add_vertex(right_edge_point_1)
 		st.add_vertex(left_edge_point_2)
 		st.add_vertex(right_edge_point_2)
+		
+		# bottom surface
+		st.add_vertex(right_edge_point_1 + ramp_thickness_vector * curve_point_basis_a)
+		st.add_vertex(left_edge_point_2  + ramp_thickness_vector * curve_point_basis_b)
+		st.add_vertex(left_edge_point_1  + ramp_thickness_vector * curve_point_basis_a)
+		
+		st.add_vertex(right_edge_point_1 + ramp_thickness_vector * curve_point_basis_a)
+		st.add_vertex(right_edge_point_2  + ramp_thickness_vector * curve_point_basis_b)
+		st.add_vertex(left_edge_point_2  + ramp_thickness_vector * curve_point_basis_b)
+		
+		# left edge
+		st.add_vertex(left_edge_point_1)
+		st.add_vertex(left_edge_point_1  + ramp_thickness_vector * curve_point_basis_a)		
+		st.add_vertex(left_edge_point_2)
+		
+		st.add_vertex(left_edge_point_2)
+		st.add_vertex(left_edge_point_1  + ramp_thickness_vector * curve_point_basis_a)		
+		st.add_vertex(left_edge_point_2  + ramp_thickness_vector * curve_point_basis_b)
+		
+		# right edge
+		st.add_vertex(right_edge_point_1)
+		st.add_vertex(right_edge_point_2)
+		st.add_vertex(right_edge_point_1  + ramp_thickness_vector * curve_point_basis_a)		
+		
+		st.add_vertex(right_edge_point_2)
+		st.add_vertex(right_edge_point_2  + ramp_thickness_vector * curve_point_basis_b)		
+		st.add_vertex(right_edge_point_1  + ramp_thickness_vector * curve_point_basis_a)		
 
 	st.generate_normals()
 	st.generate_tangents()
