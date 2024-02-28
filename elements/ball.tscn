@@ -4,7 +4,7 @@
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_we231"]
 friction = 0.5
-bounce = 0.2
+bounce = 0.1
 
 [sub_resource type="SphereMesh" id="SphereMesh_jfb4u"]
 material = ExtResource("1_s7q3g")
@@ -15,8 +15,8 @@ material = ExtResource("1_s7q3g")
 collision_layer = 8
 collision_mask = 15
 physics_material_override = SubResource("PhysicsMaterial_we231")
-continuous_cd = true
 can_sleep = false
+continuous_cd = true
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("SphereMesh_jfb4u")

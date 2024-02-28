@@ -1,7 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://bd88gqyajis8u"]
+[gd_scene load_steps=3 format=3 uid="uid://bd88gqyajis8u"]
 
 [ext_resource type="PackedScene" uid="uid://d0spl613h8ksn" path="res://utilities/playfield_cutout/CSGPlayfield.tscn" id="1_kv3pa"]
+[ext_resource type="PackedScene" uid="uid://ct547iacw40w3" path="res://elements/playfield_inserts/round_insert.tscn" id="2_wia1o"]
 
 [node name="test_playfield" type="Node3D"]
 
 [node name="CSGPlayfield" parent="." instance=ExtResource("1_kv3pa")]
+
+[node name="PlayfieldInsert" parent="CSGPlayfield" instance=ExtResource("2_wia1o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.94871, 0, -0.0904047)

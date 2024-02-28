@@ -20,6 +20,8 @@ func _ready():
 	super._ready()
 	var force_sign = -1 if reverse_force else 1
 	force_vector = force_sign * Vector3(0,1,0) * global_transform.basis
+	if force_type == ForceType.LINEAR:
+		print("pop bumper", force_vector)
 		
 
 # apply impulse in positive Z direction of our Node3D
@@ -27,7 +29,7 @@ func _physics_process(_delta):
 	# spring force is a function of the stiffness and the distance from the rest position
 
 	if force_type == ForceType.LINEAR:
-		var spring_displacement = (parent_body.position + (resting_spring_extension * force_vector) - parent_rest_transform.origin) * transform.basis
+		var spring_displacement = abs(parent_body.position - parent_rest_transform.origin)
 		var spring_force = spring_stiffness * spring_displacement
 		parent_body.apply_force(spring_force)
 		if activated:
