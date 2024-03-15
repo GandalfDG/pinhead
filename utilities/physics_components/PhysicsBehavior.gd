@@ -8,8 +8,12 @@ var physics_body: RigidBody3D:
 		physics_body = body
 		body_rest_transform = body.transform
 
-func _ready():
-	pass
+func init(body: RigidBody3D):
+	self.physics_body = body
+	self.body_rest_transform = body.transform
 
 func process_behavior(_delta):
 	pass
+
+func _physics_process(delta):
+	process_behavior(delta)

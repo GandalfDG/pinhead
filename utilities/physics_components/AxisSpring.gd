@@ -3,7 +3,7 @@ extends PhysicsBehavior
 @export var force_type: PhysicsTypes.ForceType = PhysicsTypes.ForceType.LINEAR
 
 @export var spring_stiffness: float = 500
-@export var spring_preload: float = 10
+@export var spring_preload: float = 1
 
 var force_vector: Vector3 = Vector3.UP
 
@@ -15,9 +15,9 @@ func _ready():
 func _physics_process(_delta):
 
 	if force_type == PhysicsTypes.ForceType.LINEAR:
-		var spring_displacement = abs((physics_body.transform.origin - body_rest_transform.origin).length())
+		var spring_displacement = (physics_body.transform.origin - body_rest_transform.origin).length()
 		var spring_force_vector = spring_stiffness * (spring_displacement + spring_preload) * force_vector
-		physics_body.apply_force(spring_force_vector)
+		physics_body.apply_force(spring_force_vector * physics_body.global_transform.basis)
 
 	# elif force_type == PhysicsTypes.ForceType.ROTATIONAL:
 	# 	var resting_vector = parent_rest_transform.basis * Vector3.UP
