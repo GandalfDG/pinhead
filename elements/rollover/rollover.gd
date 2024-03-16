@@ -11,7 +11,7 @@ var displaced = false
 func _ready():
 	behavior.init(rollover_body)
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	var rollover_displacement = (rollover_body.global_transform.origin - rollover_rest_transform.origin).length()
 	if not displaced and rollover_displacement > 0.2:
 		displaced = true

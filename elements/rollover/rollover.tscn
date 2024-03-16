@@ -23,21 +23,23 @@ linear_limit/restitution = 0.5
 angular_motion/restitution = 1.0
 
 [node name="RolloverBody" type="RigidBody3D" parent="."]
-transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, -0.2, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.2, 0)
 collision_layer = 4
 collision_mask = 8
 mass = 0.1
 script = ExtResource("2_aoidp")
+lock_translation_x = true
+lock_translation_z = true
 
 [node name="RolloverMesh" type="MeshInstance3D" parent="RolloverBody"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
 mesh = SubResource("CylinderMesh_ywot2")
 
 [node name="RolloverShape" type="CollisionShape3D" parent="RolloverBody"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
 shape = SubResource("CylinderShape3D_n8loe")
 
 [node name="AxisSpring" parent="RolloverBody" instance=ExtResource("1_akerp")]
-transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
-spring_stiffness = 10.0
-spring_preload = 0.5
+spring_stiffness = 30.0
 
 [node name="ScoringElement" parent="." instance=ExtResource("4_728mu")]
