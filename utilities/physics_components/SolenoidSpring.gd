@@ -17,9 +17,8 @@ enum ForceType {LINEAR, ROTATIONAL}
 var force_vector: Vector3 = Vector3()
 
 func _ready():
-	super._ready()
 	var force_sign = -1 if reverse_force else 1
-	force_vector = force_sign * Vector3(0,1,0) * global_transform.basis
+	force_vector = force_sign * Vector3.UP * global_transform.basis
 		
 
 # apply impulse in positive Z direction of our Node3D
