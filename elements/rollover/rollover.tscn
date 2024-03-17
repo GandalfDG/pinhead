@@ -1,8 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://brxotrgb6e6cd"]
+[gd_scene load_steps=6 format=3 uid="uid://brxotrgb6e6cd"]
 
 [ext_resource type="PackedScene" uid="uid://bxw7ll8xbtbw" path="res://utilities/physics_components/AxisSpring.tscn" id="1_akerp"]
 [ext_resource type="Script" path="res://elements/rollover/rollover.gd" id="1_xmqg8"]
-[ext_resource type="Script" path="res://utilities/physics_components/GlobalLockRigidBody3D.gd" id="2_aoidp"]
 [ext_resource type="PackedScene" uid="uid://b0t40leiarlgs" path="res://utilities/code_components/ScoringElement.tscn" id="4_728mu"]
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_ywot2"]
@@ -15,21 +14,24 @@ height = 0.1
 script = ExtResource("1_xmqg8")
 
 [node name="SliderJoint3D" type="SliderJoint3D" parent="."]
-transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 0, -0.2, 0)
 node_a = NodePath("../RolloverBody")
 linear_limit/upper_distance = 0.0
 linear_limit/softness = 0.9
 linear_limit/restitution = 0.5
+linear_ortho/restitution = 1.0
+angular_limit/softness = 0.01
+angular_limit/restitution = 1.0
+angular_limit/damping = 1.0
+angular_motion/softness = 0.01
 angular_motion/restitution = 1.0
+angular_ortho/restitution = 1.0
 
 [node name="RolloverBody" type="RigidBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.2, 0)
 collision_layer = 4
 collision_mask = 8
 mass = 0.1
-script = ExtResource("2_aoidp")
-lock_translation_x = true
-lock_translation_z = true
 
 [node name="RolloverMesh" type="MeshInstance3D" parent="RolloverBody"]
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
@@ -40,6 +42,6 @@ transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 
 shape = SubResource("CylinderShape3D_n8loe")
 
 [node name="AxisSpring" parent="RolloverBody" instance=ExtResource("1_akerp")]
-spring_stiffness = 30.0
+spring_stiffness = 25.0
 
 [node name="ScoringElement" parent="." instance=ExtResource("4_728mu")]
