@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3 uid="uid://cyk40gboyxm82"]
+
+[ext_resource type="Script" path="res://utilities/physics_components/solenoid_spring.gd" id="1_22lhe"]
+[ext_resource type="PackedScene" uid="uid://ckqrvn5hsj5kv" path="res://utilities/physics_components/Solenoid.tscn" id="1_nkwt6"]
+[ext_resource type="PackedScene" uid="uid://bxw7ll8xbtbw" path="res://utilities/physics_components/AxisSpring.tscn" id="2_s7q6h"]
+
+[node name="SolenoidSpring" type="Node3D"]
+script = ExtResource("1_22lhe")
+solenoid_strength = 20.0
+spring_strength = 15.0
+
+[node name="Solenoid" parent="." instance=ExtResource("1_nkwt6")]
+transform = Transform3D(-1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="AxisSpring" parent="." instance=ExtResource("2_s7q6h")]
