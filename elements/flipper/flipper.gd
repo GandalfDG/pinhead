@@ -3,14 +3,17 @@ extends PhysicsBehavior
 signal flipping(pressed)
 signal enable
 
-@export_enum("left", "right") var flipper_side: String = "left"
+@export_enum("left", "right") var flipper_side: String = "left":
+	set(side):
+		flipper_side = side
+		flip_action = "left_flipper" if flipper_side == "left" else "right_flipper" 
+		actuator
 
 var flip_action: String
-@onready var actuator: SolenoidSpring = $FlipperBody/SolenoidSpring
 @onready var body: RigidBody3D = $FlipperBody
+@onready var actuator: SolenoidSpring = $FlipperBody/SolenoidSpring
 
 func _ready():
-	flip_action = "left_flipper" if flipper_side == "left" else "right_flipper"
 	actuator.reverse_force = flipper_side == "right"
 	
 func mirror_flipper():
@@ -19,10 +22,12 @@ func mirror_flipper():
 	
 	
 func _physics_process(_delta):
-	if Input.is_action_just_pressed(flip_action):
-		flipping.emit(true)
-	if Input.is_action_just_released(flip_action):
-		flipping.emit(false)
+	#if Input.is_action_just_pressed(flip_action):
+		#flipping.emit(true)
+	#if Input.is_action_just_released(flip_action):
+		#flipping.emit(false)
+		
+	pass
 	
 #	debug_flipper_velocity(body.angular_velocity)
 

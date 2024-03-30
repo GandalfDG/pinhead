@@ -1,5 +1,7 @@
 extends ActivatedPhysicsBehavior
 
+class_name SolenoidSpring
+
 @export var solenoid_strength: float:
 	set(strength):
 		solenoid_strength = strength
@@ -12,13 +14,18 @@ extends ActivatedPhysicsBehavior
 		if spring_behavior && spring_behavior.is_node_ready():
 			spring_behavior.spring_stiffness = strength
 
+@export var reverse_force: bool:
+	set(reverse):
+		pass
+
 @onready var solenoid_behavior = $Solenoid
 @onready var spring_behavior = $AxisSpring
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	solenoid_behavior.solenoid_force = solenoid_strength
-	spring_behavior.spring_stiffness = spring_strength
+	#solenoid_behavior.solenoid_force = solenoid_strength
+	#spring_behavior.spring_stiffness = spring_strength
+	pass
 	
 func init(body):
 	solenoid_behavior.init(body)
