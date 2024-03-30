@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://elements/pop_bumper/pop_bumper.gd" id="1_hvtx7"]
 [ext_resource type="PackedScene" uid="uid://b0t40leiarlgs" path="res://utilities/code_components/ScoringElement.tscn" id="2_an5yb"]
-[ext_resource type="PackedScene" uid="uid://cyk40gboyxm82" path="res://utilities/physics_components/solenoid_spring.tscn" id="3_6ga7p"]
+[ext_resource type="PackedScene" uid="uid://dtwldvvy1hokt" path="res://utilities/physics_components/solenoid_spring.tscn" id="3_6ga7p"]
 [ext_resource type="Material" uid="uid://b43rlaqm12whx" path="res://materials/ball.tres" id="3_y3ayh"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_42nhi"]
@@ -99,8 +99,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.10245, 0)
 shape = SubResource("CylinderShape3D_jlmpe")
 
 [node name="SolenoidSpring" parent="Kicker/Kicker" instance=ExtResource("3_6ga7p")]
-solenoid_strength = 40.0
-spring_strength = 20.0
+solenoid_strength = 50.0
 activation_type = 1
 
 [node name="ScoringElement" parent="." instance=ExtResource("2_an5yb")]

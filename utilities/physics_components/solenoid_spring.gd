@@ -18,18 +18,16 @@ class_name SolenoidSpring
 	set(reverse):
 		pass
 
-@onready var solenoid_behavior = $Solenoid
-@onready var spring_behavior = $AxisSpring
+var solenoid_behavior = null
+var spring_behavior = null
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	#solenoid_behavior.solenoid_force = solenoid_strength
-	#spring_behavior.spring_stiffness = spring_strength
-	pass
+	solenoid_behavior = $Solenoid
+	spring_behavior = $AxisSpring
 	
 func init(body):
 	solenoid_behavior.init(body)
-	
 	spring_behavior.init(body)
 	spring_behavior.spring_preload = 1
 
