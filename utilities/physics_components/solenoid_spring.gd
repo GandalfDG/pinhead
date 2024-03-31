@@ -14,10 +14,6 @@ class_name SolenoidSpring
 		if spring_behavior && spring_behavior.is_node_ready():
 			spring_behavior.spring_stiffness = strength
 
-@export var reverse_force: bool:
-	set(reverse):
-		pass
-
 var solenoid_behavior = null
 var spring_behavior = null
 
@@ -25,6 +21,8 @@ var spring_behavior = null
 func _ready():
 	solenoid_behavior = $Solenoid
 	spring_behavior = $AxisSpring
+	spring_strength = spring_strength
+	solenoid_strength = solenoid_strength
 	
 func init(body):
 	solenoid_behavior.init(body)

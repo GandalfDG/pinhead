@@ -1,11 +1,7 @@
 extends PhysicsBehavior
 
-@export var force_type: PhysicsTypes.ForceType = PhysicsTypes.ForceType.LINEAR
-
 @export var spring_stiffness: float = 500
 @export var spring_preload: float = 1
-
-var force_vector: Vector3 = Vector3.UP
 
 func _ready():
 	force_vector *= global_transform.basis
