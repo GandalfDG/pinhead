@@ -27,6 +27,7 @@ mass = 0.1
 physics_material_override = SubResource("PhysicsMaterial_ar7xr")
 center_of_mass_mode = 1
 continuous_cd = true
+angular_damp = 2.0
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="FlipperBody"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.449877, 0)
@@ -38,8 +39,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.449877, 0)
 shape = SubResource("ConvexPolygonShape3D_5a80o")
 
 [node name="SolenoidSpring" parent="FlipperBody" instance=ExtResource("3_abhes")]
-solenoid_strength = 100.0
-spring_strength = 80.0
+solenoid_strength = 140.0
+spring_strength = 200.0
 activation_type = 1
 force_type = 1
 reverse_force = true
