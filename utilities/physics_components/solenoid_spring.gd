@@ -13,16 +13,31 @@ class_name SolenoidSpring
 		spring_strength = strength
 		if spring_behavior && spring_behavior.is_node_ready():
 			spring_behavior.spring_stiffness = strength
+			
 
-var solenoid_behavior = null
-var spring_behavior = null
 
+@onready var solenoid_behavior = $Solenoid
+@onready var spring_behavior = $AxisSpring
+
+func _set(property, value):
+	if property == "force_type":
+		print("hello")
+		set_force_type(value)
+
+func set_force_type(value):
+	solenoid_behavior.force_type = value
+	spring_behavior.force_type = value
+	force_type = value
+	
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	solenoid_behavior = $Solenoid
-	spring_behavior = $AxisSpring
 	spring_strength = spring_strength
 	solenoid_strength = solenoid_strength
+	spring_behavior.force_type = force_type
+	solenoid_behavior.force_type = force_type
+	solenoid_behavior.activation_type = activation_type
+	solenoid_behavior.reverse_force = !reverse_force
+	spring_behavior.reverse_force = reverse_force
 	
 func init(body):
 	solenoid_behavior.init(body)

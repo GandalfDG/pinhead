@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://cyk40gboyxm82"]
+[gd_scene load_steps=4 format=3 uid="uid://dtwldvvy1hokt"]
 
 [ext_resource type="Script" path="res://utilities/physics_components/solenoid_spring.gd" id="1_22lhe"]
 [ext_resource type="PackedScene" uid="uid://ckqrvn5hsj5kv" path="res://utilities/physics_components/Solenoid.tscn" id="1_nkwt6"]
