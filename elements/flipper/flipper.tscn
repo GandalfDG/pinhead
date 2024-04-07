@@ -1,9 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://dxy60i7pcq7a6"]
+[gd_scene load_steps=6 format=3 uid="uid://dxy60i7pcq7a6"]
 
 [ext_resource type="Script" path="res://elements/flipper/flipper.gd" id="1_p24pt"]
-[ext_resource type="Script" path="res://elements/flipper/FlipperBody.gd" id="2_4le5i"]
-[ext_resource type="Script" path="res://utilities/physics_components/solenoid_spring.gd" id="3_mm2rr"]
-[ext_resource type="ArrayMesh" uid="uid://biq442y7iw8u1" path="res://meshes/flipper4.obj" id="4_yog22"]
+[ext_resource type="PackedScene" uid="uid://dtwldvvy1hokt" path="res://utilities/physics_components/solenoid_spring.tscn" id="3_abhes"]
+[ext_resource type="ArrayMesh" uid="uid://hvil4qfd4d2u" path="res://meshes/flipper4.obj" id="4_yog22"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ar7xr"]
 friction = 0.9
@@ -28,12 +27,6 @@ mass = 0.1
 physics_material_override = SubResource("PhysicsMaterial_ar7xr")
 center_of_mass_mode = 1
 continuous_cd = true
-script = ExtResource("2_4le5i")
-
-[node name="SolenoidSpring" type="Node3D" parent="FlipperBody"]
-rotation_edit_mode = 1
-script = ExtResource("3_mm2rr")
-activation_type = 1
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="FlipperBody"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.449877, 0)
@@ -43,6 +36,13 @@ skeleton = NodePath("../..")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="FlipperBody"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.449877, 0)
 shape = SubResource("ConvexPolygonShape3D_5a80o")
+
+[node name="SolenoidSpring" parent="FlipperBody" instance=ExtResource("3_abhes")]
+solenoid_strength = 100.0
+spring_strength = 80.0
+activation_type = 1
+force_type = 1
+reverse_force = true
 
 [connection signal="enable" from="." to="FlipperBody" method="_on_flipper_enable"]
 [connection signal="flipping" from="." to="FlipperBody" method="_on_flipper_flipping"]
