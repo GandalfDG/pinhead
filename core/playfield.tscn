@@ -1,10 +1,9 @@
-[gd_scene load_steps=14 format=3 uid="uid://bayeondowqkqd"]
+[gd_scene load_steps=13 format=3 uid="uid://bayeondowqkqd"]
 
-[ext_resource type="Texture2D" uid="uid://c80lm5dpbvxcq" path="res://image_assets/addams_family_playfield/addams_family_playfield_corrected.png" id="1_37nnh"]
+[ext_resource type="Texture2D" uid="uid://covaum7t4gbn" path="res://image_assets/addams_family_playfield/addams_family_playfield_corrected.png" id="1_37nnh"]
 [ext_resource type="PackedScene" uid="uid://cgdjulw3q7axd" path="res://elements/pop_bumper/pop_bumper.tscn" id="1_f5eqv"]
-[ext_resource type="PackedScene" uid="uid://b6lutlv2hiprv" path="res://elements/drop_target/drop_target.tscn" id="5_nt322"]
-[ext_resource type="PackedScene" uid="uid://dxy60i7pcq7a6" path="res://elements/flipper/flipper.tscn" id="6_7ejc7"]
 [ext_resource type="PackedScene" uid="uid://brxotrgb6e6cd" path="res://elements/rollover/rollover.tscn" id="6_k6b13"]
+[ext_resource type="PackedScene" uid="uid://dxy60i7pcq7a6" path="res://elements/flipper/flipper.tscn" id="6_m3mp3"]
 [ext_resource type="PackedScene" uid="uid://c1js3s3yg7oda" path="res://elements/spinner/spinner.tscn" id="6_xf1jd"]
 [ext_resource type="PackedScene" uid="uid://d1roo8csw0bth" path="res://elements/ball.tscn" id="7_0v0ut"]
 
@@ -45,16 +44,6 @@ shape = SubResource("BoxShape3D_mcn0f")
 
 [node name="Spinner2" parent="." instance=ExtResource("6_xf1jd")]
 transform = Transform3D(0.99912, 0, 0.0419451, 0, 1, 0, -0.0419451, 0, 0.99912, -2.688, 0, 6.095)
-
-[node name="DropTarget" parent="." instance=ExtResource("5_nt322")]
-transform = Transform3D(0.976728, 0, -0.21448, 0, 1, 0, 0.21448, 0, 0.976728, 0.69, 0, 5.91)
-
-[node name="Flipper" parent="." instance=ExtResource("6_7ejc7")]
-transform = Transform3D(0.913545, 0, -0.406736, 0, 1, 0, 0.406736, 0, 0.913545, -4.43984, 0.488848, 18.6542)
-
-[node name="Flipper2" parent="." instance=ExtResource("6_7ejc7")]
-transform = Transform3D(-0.913545, 7.98647e-08, 0.406736, -8.74227e-08, -1, 0, 0.406736, -3.5558e-08, 0.913545, 4.06953, 0.488848, 18.679)
-flipper_side = "right"
 
 [node name="Walls" type="Node3D" parent="."]
 
@@ -171,3 +160,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.53654, 0, 13.1415)
 
 [node name="Ball" parent="." instance=ExtResource("7_0v0ut")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.88095, 0.5, 15.7503)
+
+[node name="Flipper" parent="." instance=ExtResource("6_m3mp3")]
+transform = Transform3D(0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, 0.866025, -4.25115, 0.442927, 18.6079)
+
+[node name="Flipper2" parent="." instance=ExtResource("6_m3mp3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.40789, 0.442927, 19.6468)
+flipper_side = "right"
