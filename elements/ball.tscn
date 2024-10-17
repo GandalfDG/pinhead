@@ -8,15 +8,19 @@ bounce = 0.2
 
 [sub_resource type="SphereMesh" id="SphereMesh_jfb4u"]
 material = ExtResource("1_s7q3g")
+radius = 0.108
+height = 0.216
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_wppk0"]
+radius = 0.108
 
 [node name="Ball" type="RigidBody3D"]
 collision_layer = 8
 collision_mask = 15
+mass = 0.652
 physics_material_override = SubResource("PhysicsMaterial_we231")
-continuous_cd = true
 can_sleep = false
+continuous_cd = true
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("SphereMesh_jfb4u")

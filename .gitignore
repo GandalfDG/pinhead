@@ -5,3 +5,6 @@
 *.blend1
 
 *.import
+
+# Cad backup files
+*.FCBak
